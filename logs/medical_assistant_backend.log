@@ -1,0 +1,476 @@
+[2026-07-25 23:36:22] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-25 23:36:22] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-25 23:36:59] [WARNING] [ml.preprocessing:50]: NLTK initialization failed (DLL load failed while importing _regex: An Application Control policy has blocked this file.). Operating with built-in pure-Python NLP fallback.
+[2026-07-25 23:37:00] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-25 23:37:00] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-25 23:37:00] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=False)
+[2026-07-25 23:37:00] [INFO] [ml.predict:61]: Loading production disease diagnosis artifacts...
+[2026-07-25 23:37:02] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-25 23:37:02] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-25 23:37:02] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-25 23:37:02] [INFO] [ml.predict:65]: All inference artifacts successfully loaded into memory.
+[2026-07-25 23:37:02] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-25 23:37:20] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-25 23:37:20] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-25 23:37:22] [WARNING] [ml.preprocessing:50]: NLTK initialization failed (DLL load failed while importing _regex: An Application Control policy has blocked this file.). Operating with built-in pure-Python NLP fallback.
+[2026-07-25 23:37:22] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-25 23:37:22] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-25 23:37:22] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=False)
+[2026-07-25 23:37:22] [INFO] [ml.predict:61]: Loading production disease diagnosis artifacts...
+[2026-07-25 23:37:22] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-25 23:37:22] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-25 23:37:22] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-25 23:37:22] [INFO] [ml.predict:65]: All inference artifacts successfully loaded into memory.
+[2026-07-25 23:37:22] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-25 23:37:22] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+[2026-07-25 23:37:49] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-25 23:37:49] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-25 23:37:51] [WARNING] [ml.preprocessing:50]: NLTK initialization failed (DLL load failed while importing _regex: An Application Control policy has blocked this file.). Operating with built-in pure-Python NLP fallback.
+[2026-07-25 23:37:51] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-25 23:37:51] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-25 23:37:51] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=False)
+[2026-07-25 23:37:51] [INFO] [ml.predict:61]: Loading production disease diagnosis artifacts...
+[2026-07-25 23:37:51] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-25 23:37:51] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-25 23:37:51] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-25 23:37:51] [INFO] [ml.predict:65]: All inference artifacts successfully loaded into memory.
+[2026-07-25 23:37:51] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-25 23:37:51] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+[2026-07-25 23:37:51] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/version "HTTP/1.1 200 OK"
+[2026-07-25 23:37:51] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 422 Unprocessable Entity"
+[2026-07-25 23:37:51] [WARNING] [passlib.handlers.bcrypt:622]: (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+[2026-07-25 23:37:51] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 400 Bad Request"
+[2026-07-25 23:38:09] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-25 23:38:09] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-25 23:38:10] [WARNING] [ml.preprocessing:50]: NLTK initialization failed (DLL load failed while importing _regex: An Application Control policy has blocked this file.). Operating with built-in pure-Python NLP fallback.
+[2026-07-25 23:38:10] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-25 23:38:10] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-25 23:38:10] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=False)
+[2026-07-25 23:38:10] [INFO] [ml.predict:61]: Loading production disease diagnosis artifacts...
+[2026-07-25 23:38:11] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-25 23:38:11] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-25 23:38:11] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-25 23:38:11] [INFO] [ml.predict:65]: All inference artifacts successfully loaded into memory.
+[2026-07-25 23:38:11] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-25 23:38:11] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+[2026-07-25 23:38:11] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/version "HTTP/1.1 200 OK"
+[2026-07-25 23:38:11] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 422 Unprocessable Entity"
+[2026-07-25 23:38:11] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 201 Created"
+[2026-07-25 23:38:11] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 401 Unauthorized"
+[2026-07-25 23:38:12] [INFO] [app.services.auth:90]: User authenticated successfully: patient@example.com
+[2026-07-25 23:38:12] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-07-25 23:38:12] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-25 23:38:12] [INFO] [httpx:1025]: HTTP Request: PUT http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-25 23:38:12] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: c23aa624-7c28-4a27-b3f2-58fa3cab4f8b
+[2026-07-25 23:38:12] [INFO] [ml.predict:82]: [PREDICTION] Input: 'I am experiencing severe chest pain, shortness of breath, pa...' | Predicted: 'ischemic heart disease' | Confidence: 0.2569 | Latency: 6.58ms
+[2026-07-25 23:38:12] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: 787aa26e-220f-40d9-a7d7-15d15bfc00d8
+[2026-07-25 23:38:12] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: c23aa624-7c28-4a27-b3f2-58fa3cab4f8b
+[2026-07-25 23:38:12] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+[2026-07-25 23:38:12] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: e6be57fd-c328-4250-89e4-94768dd1492c
+[2026-07-25 23:38:12] [ERROR] [app.main:108]: Unhandled Exception on /chat: (sqlite3.IntegrityError) NOT NULL constraint failed: conversations.updated_at
+[SQL: UPDATE conversations SET updated_at=? WHERE conversations.id = ?]
+[parameters: (None, 'e6be57fd-c328-4250-89e4-94768dd1492c')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: conversations.updated_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\backend\app\api\v1\chatbot.py", line 33, in chat_with_assistant
+    response = chatbot_service.process_chat(
+        db,
+    ...<2 lines>...
+        conversation_id=request.conversation_id
+    )
+  File "C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\backend\app\services\chatbot.py", line 186, in process_chat
+    conversation_repository.create_message(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        db,
+        ^^^
+    ...<2 lines>...
+        text=message_text
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\backend\app\repositories\conversation.py", line 65, in create_message
+    db.commit()
+    ~~~~~~~~~^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2030, in commit
+    trans.commit(_to_root=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 2, in commit
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 1311, in commit
+    self._prepare_impl()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 1286, in _prepare_impl
+    self.session.flush()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 4331, in flush
+    self._flush(objects)
+    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 4466, in _flush
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 4427, in _flush
+    flush_context.execute()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self.mapper,
+        ^^^^^^^^^^^^
+        uow.states_for_mapper_hierarchy(self.mapper, False, False),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        uow,
+        ^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\persistence.py", line 85, in save_obj
+    _emit_update_statements(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        base_mapper,
+        ^^^^^^^^^^^^
+    ...<3 lines>...
+        update,
+        ^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\persistence.py", line 912, in _emit_update_statements
+    c = connection.execute(
+        statement, multiparams, execution_options=execution_options
+    )
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) NOT NULL constraint failed: conversations.updated_at
+[SQL: UPDATE conversations SET updated_at=? WHERE conversations.id = ?]
+[parameters: (None, 'e6be57fd-c328-4250-89e4-94768dd1492c')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+[2026-07-25 23:38:30] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-25 23:38:30] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-25 23:38:31] [WARNING] [ml.preprocessing:50]: NLTK initialization failed (DLL load failed while importing _regex: An Application Control policy has blocked this file.). Operating with built-in pure-Python NLP fallback.
+[2026-07-25 23:38:31] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-25 23:38:31] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-25 23:38:31] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=False)
+[2026-07-25 23:38:31] [INFO] [ml.predict:61]: Loading production disease diagnosis artifacts...
+[2026-07-25 23:38:31] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-25 23:38:31] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-25 23:38:31] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-25 23:38:31] [INFO] [ml.predict:65]: All inference artifacts successfully loaded into memory.
+[2026-07-25 23:38:31] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-25 23:38:31] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+[2026-07-25 23:38:31] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/version "HTTP/1.1 200 OK"
+[2026-07-25 23:38:31] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 422 Unprocessable Entity"
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 201 Created"
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 401 Unauthorized"
+[2026-07-25 23:38:32] [INFO] [app.services.auth:90]: User authenticated successfully: patient@example.com
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: PUT http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-25 23:38:32] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: 2a69d4eb-2d6c-4305-b331-4f8e6936b9d6
+[2026-07-25 23:38:32] [INFO] [ml.predict:82]: [PREDICTION] Input: 'I am experiencing severe chest pain, shortness of breath, pa...' | Predicted: 'ischemic heart disease' | Confidence: 0.2569 | Latency: 7.74ms
+[2026-07-25 23:38:32] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: 940fdd07-e235-4d95-9cce-75cf804ce2f8
+[2026-07-25 23:38:32] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: 2a69d4eb-2d6c-4305-b331-4f8e6936b9d6
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+[2026-07-25 23:38:32] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: 55f0d3e7-fa6b-4bae-9714-f5a8ecd19394
+[2026-07-25 23:38:32] [WARNING] [app.services.chatbot:109]: Emergency indicator 'chest pain' flagged in user input.
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:38:32] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: d9248cad-9921-4e07-890f-25f118480a6e
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:38:32] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: 2a69d4eb-2d6c-4305-b331-4f8e6936b9d6
+[2026-07-25 23:38:32] [INFO] [ml.predict:82]: [PREDICTION] Input: 'I feel very feverish and have a dry cough It started about 3...' | Predicted: 'pulmonary hypertension' | Confidence: 0.0828 | Latency: 4.92ms
+[2026-07-25 23:38:32] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: c3f5f207-90cb-401f-bee1-db9390059f95
+[2026-07-25 23:38:32] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: 2a69d4eb-2d6c-4305-b331-4f8e6936b9d6
+[2026-07-25 23:38:32] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:38:32] [ERROR] [app.main:108]: Unhandled Exception on /history: The unique() method must be invoked on this Result, as it contains results that include joined eager loads against collections
+Traceback (most recent call last):
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\fastapi\routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\starlette\concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\anyio\to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\anyio\_backends\_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\anyio\_backends\_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\backend\app\api\v1\history.py", line 40, in list_history
+    return history_service.get_user_history(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        db,
+        ^^^
+    ...<2 lines>...
+        limit=limit
+        ^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\backend\app\services\history.py", line 36, in get_user_history
+    return history_repository.get_by_user_detailed(db, user_id=user_id, skip=skip, limit=limit)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\backend\app\repositories\history.py", line 48, in get_by_user_detailed
+    return list(db.scalars(query).all())
+                ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\result.py", line 1786, in all
+    return self._allrows()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\result.py", line 577, in _allrows
+    strategy(made_row) if strategy else made_row,
+    ~~~~~~~~^^^^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\loading.py", line 286, in require_unique
+    raise sa_exc.InvalidRequestError(
+    ...<3 lines>...
+    )
+sqlalchemy.exc.InvalidRequestError: The unique() method must be invoked on this Result, as it contains results that include joined eager loads against collections
+[2026-07-25 23:38:51] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-25 23:38:51] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-25 23:38:52] [WARNING] [ml.preprocessing:50]: NLTK initialization failed (DLL load failed while importing _regex: An Application Control policy has blocked this file.). Operating with built-in pure-Python NLP fallback.
+[2026-07-25 23:38:52] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-25 23:38:52] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-25 23:38:52] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=False)
+[2026-07-25 23:38:52] [INFO] [ml.predict:61]: Loading production disease diagnosis artifacts...
+[2026-07-25 23:38:53] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-25 23:38:53] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-25 23:38:53] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-25 23:38:53] [INFO] [ml.predict:65]: All inference artifacts successfully loaded into memory.
+[2026-07-25 23:38:53] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-25 23:38:53] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+[2026-07-25 23:38:53] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/version "HTTP/1.1 200 OK"
+[2026-07-25 23:38:53] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 422 Unprocessable Entity"
+[2026-07-25 23:38:53] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 201 Created"
+[2026-07-25 23:38:53] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 401 Unauthorized"
+[2026-07-25 23:38:54] [INFO] [app.services.auth:90]: User authenticated successfully: patient@example.com
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: PUT http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: d6e91255-569e-4bf6-894c-85f6dd0bbde2
+[2026-07-25 23:38:54] [INFO] [ml.predict:82]: [PREDICTION] Input: 'I am experiencing severe chest pain, shortness of breath, pa...' | Predicted: 'ischemic heart disease' | Confidence: 0.2569 | Latency: 5.56ms
+[2026-07-25 23:38:54] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: 356d2774-6679-4108-8fad-dea9a45e15da
+[2026-07-25 23:38:54] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: d6e91255-569e-4bf6-894c-85f6dd0bbde2
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: cf8e1035-c382-4d34-be5b-b99c6b8095ef
+[2026-07-25 23:38:54] [WARNING] [app.services.chatbot:109]: Emergency indicator 'chest pain' flagged in user input.
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: de8a3dcb-ebd1-470f-89b7-b081cea57a54
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: d6e91255-569e-4bf6-894c-85f6dd0bbde2
+[2026-07-25 23:38:54] [INFO] [ml.predict:82]: [PREDICTION] Input: 'I feel very feverish and have a dry cough It started about 3...' | Predicted: 'pulmonary hypertension' | Confidence: 0.0828 | Latency: 4.06ms
+[2026-07-25 23:38:54] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: eeb11749-2ca0-4161-aa53-0409afbfce81
+[2026-07-25 23:38:54] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: d6e91255-569e-4bf6-894c-85f6dd0bbde2
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history/8359eebc-871e-4443-bb53-a97df19cacac "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history?q=chest "HTTP/1.1 200 OK"
+[2026-07-25 23:38:54] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 401 Unauthorized"
+[2026-07-25 23:39:13] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-25 23:39:13] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-25 23:39:14] [WARNING] [ml.preprocessing:50]: NLTK initialization failed (DLL load failed while importing _regex: An Application Control policy has blocked this file.). Operating with built-in pure-Python NLP fallback.
+[2026-07-25 23:39:14] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-25 23:39:14] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-25 23:39:14] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=False)
+[2026-07-25 23:39:14] [INFO] [ml.predict:61]: Loading production disease diagnosis artifacts...
+[2026-07-25 23:39:15] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-25 23:39:15] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-25 23:39:15] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-25 23:39:15] [INFO] [ml.predict:65]: All inference artifacts successfully loaded into memory.
+[2026-07-25 23:39:15] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-25 23:39:15] [INFO] [app.main:40]: First administrator account absent. Seeding from configuration...
+[2026-07-25 23:39:15] [INFO] [app.main:50]: Default admin seeded successfully. Credentials: admin@medical-assistant.com
+[2026-07-25 23:39:15] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+[2026-07-25 23:39:15] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/version "HTTP/1.1 200 OK"
+[2026-07-25 23:39:15] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 422 Unprocessable Entity"
+[2026-07-25 23:39:15] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 201 Created"
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 401 Unauthorized"
+[2026-07-25 23:39:16] [INFO] [app.services.auth:90]: User authenticated successfully: patient@example.com
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: PUT http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: 2b3631a7-26b7-4e2a-a9cd-fba51fff8c0e
+[2026-07-25 23:39:16] [INFO] [ml.predict:82]: [PREDICTION] Input: 'I am experiencing severe chest pain, shortness of breath, pa...' | Predicted: 'ischemic heart disease' | Confidence: 0.2569 | Latency: 8.34ms
+[2026-07-25 23:39:16] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: e1b98817-a22c-4aa7-85b6-95e60234fb27
+[2026-07-25 23:39:16] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: 2b3631a7-26b7-4e2a-a9cd-fba51fff8c0e
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: a07e2f1c-9d26-4541-b575-dd63f31d9d7e
+[2026-07-25 23:39:16] [WARNING] [app.services.chatbot:109]: Emergency indicator 'chest pain' flagged in user input.
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: 3129a871-b4a2-4cbd-95ee-7739cb85a9b8
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: 2b3631a7-26b7-4e2a-a9cd-fba51fff8c0e
+[2026-07-25 23:39:16] [INFO] [ml.predict:82]: [PREDICTION] Input: 'I feel very feverish and have a dry cough It started about 3...' | Predicted: 'pulmonary hypertension' | Confidence: 0.0828 | Latency: 5.07ms
+[2026-07-25 23:39:16] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: 0a129845-e414-49e9-aa47-67ea106d931f
+[2026-07-25 23:39:16] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: 2b3631a7-26b7-4e2a-a9cd-fba51fff8c0e
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history/3b12f3ef-602e-40b7-a585-d9a6806e63a8 "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history?q=chest "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [app.services.auth:90]: User authenticated successfully: admin@medical-assistant.com
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/admin/dashboard "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [app.services.history:104]: History record 3b12f3ef-602e-40b7-a585-d9a6806e63a8 and related prediction/chat successfully deleted.
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: DELETE http://testserver/history/3b12f3ef-602e-40b7-a585-d9a6806e63a8 "HTTP/1.1 200 OK"
+[2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
