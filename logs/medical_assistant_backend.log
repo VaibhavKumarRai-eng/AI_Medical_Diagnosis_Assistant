@@ -474,3 +474,26 @@ sqlalchemy.exc.InvalidRequestError: The unique() method must be invoked on this 
 [2026-07-25 23:39:16] [INFO] [app.services.history:104]: History record 3b12f3ef-602e-40b7-a585-d9a6806e63a8 and related prediction/chat successfully deleted.
 [2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: DELETE http://testserver/history/3b12f3ef-602e-40b7-a585-d9a6806e63a8 "HTTP/1.1 200 OK"
 [2026-07-25 23:39:16] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
+[2026-07-26 23:16:10] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-26 23:16:10] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-26 23:16:51] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-26 23:16:51] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-26 23:16:51] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-26 23:16:51] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-26 23:16:51] [INFO] [ml.predict:61]: Loading production disease diagnosis artifacts...
+[2026-07-26 23:16:51] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-26 23:16:51] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-26 23:16:51] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-26 23:16:51] [INFO] [ml.predict:65]: All inference artifacts successfully loaded into memory.
+[2026-07-26 23:16:51] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-26 23:16:51] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-26 23:16:51] [INFO] [app.core.database:55]: Initializing database tables...
+[2026-07-26 23:16:51] [INFO] [app.core.database:57]: Database tables initialized successfully.
+[2026-07-26 23:16:51] [INFO] [app.main:40]: First administrator account absent. Seeding from configuration...
+[2026-07-26 23:16:51] [INFO] [app.main:50]: Default admin seeded successfully. Credentials: admin@medical-assistant.com
+[2026-07-26 23:19:56] [INFO] [app.services.auth:90]: User authenticated successfully: raivaibhav64@gmail.com
+[2026-07-26 23:21:18] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-26 23:21:21] [INFO] [ml.predict:82]: [PREDICTION] Input: 'i feel dizzy and laziness, there is headache too...' | Predicted: 'labyrinthitis' | Confidence: 0.5103 | Latency: 2741.33ms
+[2026-07-26 23:21:21] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: de359227-6cde-4eb4-92f5-e5a7ae05444f
+[2026-07-26 23:21:21] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-26 23:22:02] [INFO] [app.main:72]: FastAPI application shutting down...
