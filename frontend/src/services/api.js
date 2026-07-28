@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://ai-medical-diagnosis-assistant-1wvl.onrender.com';
+const API_BASE_URL = (window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1' || 
+                       window.location.hostname.startsWith('192.168.'))
+  ? `http://${window.location.hostname}:8000`
+  : 'https://ai-medical-diagnosis-assistant-1wvl.onrender.com';
 
 const api = axios.create({
   baseURL: API_BASE_URL,

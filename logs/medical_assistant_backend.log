@@ -774,3 +774,140 @@ WHERE users.email = ?]
 [2026-07-28 12:34:53] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
 [2026-07-28 12:34:53] [INFO] [app.core.database:67]: Database schema check completed.
 [2026-07-28 12:37:22] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-28 19:36:56] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 19:36:56] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 19:37:03] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 19:37:03] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 19:37:03] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 19:37:03] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 19:37:03] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 19:37:03] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 19:37:03] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 19:37:03] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 19:37:03] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 19:37:03] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 19:37:04] [INFO] [app.main:40]: First administrator account absent. Seeding from configuration...
+[2026-07-28 19:37:04] [INFO] [app.main:50]: Default admin seeded successfully. Credentials: admin@medical-assistant.com
+[2026-07-28 19:37:04] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+[2026-07-28 19:37:04] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/version "HTTP/1.1 200 OK"
+[2026-07-28 19:37:05] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 422 Unprocessable Entity"
+[2026-07-28 19:37:05] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 201 Created"
+[2026-07-28 19:37:06] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 401 Unauthorized"
+[2026-07-28 19:37:06] [INFO] [app.services.auth:90]: User authenticated successfully: patient@example.com
+[2026-07-28 19:37:06] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-07-28 19:37:06] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-28 19:37:06] [INFO] [httpx:1025]: HTTP Request: PUT http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-28 19:37:06] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: ffe82078-1978-4aa0-a831-63cb147efb52
+[2026-07-28 19:37:11] [INFO] [ml.predict:85]: [PREDICTION] Input: 'I am experiencing severe chest pain, shortness of breath, pa...' | Predicted: 'ischemic heart disease' | Confidence: 0.2569 | Latency: 4724.27ms
+[2026-07-28 19:37:11] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: 94d3e498-7ff3-4a80-b137-88c973fb8f14
+[2026-07-28 19:37:11] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: ffe82078-1978-4aa0-a831-63cb147efb52
+[2026-07-28 19:37:11] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+[2026-07-28 19:37:11] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: be597c16-41d6-4e35-bedc-67bdce78c7be
+[2026-07-28 19:37:11] [WARNING] [app.services.chatbot:109]: Emergency indicator 'chest pain' flagged in user input.
+[2026-07-28 19:37:11] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-28 19:37:11] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: 8f9bfe16-3c4a-4c17-83bd-b577537c3070
+[2026-07-28 19:37:11] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-28 19:37:11] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-28 19:37:11] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-28 19:37:11] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: ffe82078-1978-4aa0-a831-63cb147efb52
+[2026-07-28 19:37:11] [INFO] [ml.predict:85]: [PREDICTION] Input: 'I feel very feverish and have a dry cough It started about 3...' | Predicted: 'pulmonary hypertension' | Confidence: 0.0828 | Latency: 6.09ms
+[2026-07-28 19:37:11] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: 584a53c7-4109-4b9d-ba26-383fb509539f
+[2026-07-28 19:37:11] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: ffe82078-1978-4aa0-a831-63cb147efb52
+[2026-07-28 19:37:11] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-28 19:37:11] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
+[2026-07-28 19:37:11] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history/f671d06b-3959-4ba8-860e-63a1a9d4bbdb "HTTP/1.1 200 OK"
+[2026-07-28 19:37:11] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history?q=chest "HTTP/1.1 200 OK"
+[2026-07-28 19:37:12] [INFO] [app.services.auth:90]: User authenticated successfully: admin@medical-assistant.com
+[2026-07-28 19:37:12] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-07-28 19:37:12] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/admin/dashboard "HTTP/1.1 200 OK"
+[2026-07-28 19:37:12] [INFO] [app.services.history:104]: History record f671d06b-3959-4ba8-860e-63a1a9d4bbdb and related prediction/chat successfully deleted.
+[2026-07-28 19:37:12] [INFO] [httpx:1025]: HTTP Request: DELETE http://testserver/history/f671d06b-3959-4ba8-860e-63a1a9d4bbdb "HTTP/1.1 200 OK"
+[2026-07-28 19:37:12] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
+[2026-07-28 19:40:43] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 19:40:43] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 19:40:46] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 19:40:46] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 19:40:46] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 19:40:46] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 19:40:46] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 19:40:46] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 19:40:46] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 19:40:46] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 19:40:46] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 19:40:46] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 19:40:46] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 19:40:46] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-28 19:40:46] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-28 19:40:46] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-28 19:40:46] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-28 19:40:57] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-28 19:41:34] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 19:41:34] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 19:42:09] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 19:42:09] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 19:42:09] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 19:42:09] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 19:42:09] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 19:42:09] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 19:42:09] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 19:42:09] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 19:42:09] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 19:42:09] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 19:42:09] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 19:42:09] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-28 19:42:09] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-28 19:42:09] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-28 19:42:09] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-28 19:42:23] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-28 19:42:23] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-28 19:42:23] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-28 19:42:23] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-28 19:45:55] [INFO] [app.services.auth:90]: User authenticated successfully: shakti@gmail.com
+[2026-07-28 19:46:35] [INFO] [app.services.auth:90]: User authenticated successfully: shakti@gmail.com
+[2026-07-28 19:47:07] [INFO] [app.services.auth:190]: OTP saved in database for user: shakti@gmail.com
+[2026-07-28 19:47:07] [INFO] [app.services.auth:193]: 
+========================================
+[OTP DEV LOG] Generated OTP for email: shakti@gmail.com is [992252]
+========================================
+
+[2026-07-28 19:47:07] [WARNING] [app.services.auth:219]: SMTP settings missing from env. Falling back to terminal OTP log.
+[2026-07-28 19:47:07] [INFO] [app.api.v1.auth:84]: Password reset requested for shakti@gmail.com. Token generated: 992252
+[2026-07-28 19:59:02] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 19:59:02] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 19:59:08] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 19:59:08] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 19:59:08] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 19:59:08] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 19:59:08] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 19:59:08] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 19:59:08] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 19:59:08] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 19:59:08] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 19:59:08] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 19:59:08] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 19:59:08] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-28 19:59:08] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-28 19:59:08] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-28 19:59:08] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-28 20:00:06] [INFO] [app.services.auth:90]: User authenticated successfully: shakti@gmail.com
+[2026-07-28 20:00:38] [INFO] [app.services.auth:190]: OTP saved in database for user: shakti@gmail.com
+[2026-07-28 20:00:38] [INFO] [app.services.auth:193]: 
+========================================
+[OTP DEV LOG] Generated OTP for email: shakti@gmail.com is [588177]
+========================================
+
+[2026-07-28 20:00:38] [WARNING] [app.services.auth:219]: SMTP settings missing from env. Falling back to terminal OTP log.
+[2026-07-28 20:00:38] [INFO] [app.api.v1.auth:84]: Password reset requested for shakti@gmail.com. Token generated: 588177
+[2026-07-28 20:01:12] [INFO] [app.services.auth:264]: Password successfully reset via OTP for email: shakti@gmail.com
+[2026-07-28 20:01:38] [INFO] [app.services.auth:90]: User authenticated successfully: shakti@gmail.com
+[2026-07-28 20:02:16] [WARNING] [app.services.auth:178]: OTP generation requested for non-existent or inactive email: vansh1234@gmail.com
+[2026-07-28 20:03:18] [INFO] [app.services.auth:190]: OTP saved in database for user: raivaibhav64@gmail.com
+[2026-07-28 20:03:18] [INFO] [app.services.auth:193]: 
+========================================
+[OTP DEV LOG] Generated OTP for email: raivaibhav64@gmail.com is [260525]
+========================================
+
+[2026-07-28 20:03:18] [WARNING] [app.services.auth:219]: SMTP settings missing from env. Falling back to terminal OTP log.
+[2026-07-28 20:03:18] [INFO] [app.api.v1.auth:84]: Password reset requested for raivaibhav64@gmail.com. Token generated: 260525
+[2026-07-28 20:03:51] [INFO] [app.services.auth:264]: Password successfully reset via OTP for email: raivaibhav64@gmail.com
+[2026-07-28 20:04:25] [INFO] [app.services.auth:90]: User authenticated successfully: raivaibhav64@gmail.com
