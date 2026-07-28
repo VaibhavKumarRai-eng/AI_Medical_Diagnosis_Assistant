@@ -19,9 +19,12 @@ import joblib
 try:
     from ml.logger import get_logger, log_artifact_event
     from ml.config import config
-except ImportError:
-    from logger import get_logger, log_artifact_event
-    from config import config
+except ImportError as e:
+    if getattr(e, 'name', None) == 'ml':
+        from logger import get_logger, log_artifact_event
+        from config import config
+    else:
+        raise
 
 logger = get_logger(__name__)
 

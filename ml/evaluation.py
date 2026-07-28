@@ -30,9 +30,12 @@ from sklearn.model_selection import learning_curve
 try:
     from ml.config import config
     from ml.logger import get_logger
-except ImportError:
-    from config import config
-    from logger import get_logger
+except ImportError as e:
+    if getattr(e, 'name', None) == 'ml':
+        from config import config
+        from logger import get_logger
+    else:
+        raise
 
 logger = get_logger(__name__)
 

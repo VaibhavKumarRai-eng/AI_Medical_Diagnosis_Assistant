@@ -16,11 +16,14 @@ try:
     from ml.preprocessing import MedicalTextPreprocessor
     from ml.feature_engineering import SymptomFeatureExtractor
     from ml.utils import save_artifact, save_json
-except ImportError:
-    from config import config
-    from preprocessing import MedicalTextPreprocessor
-    from feature_engineering import SymptomFeatureExtractor
-    from utils import save_artifact, save_json
+except ImportError as e:
+    if getattr(e, 'name', None) == 'ml':
+        from config import config
+        from preprocessing import MedicalTextPreprocessor
+        from feature_engineering import SymptomFeatureExtractor
+        from utils import save_artifact, save_json
+    else:
+        raise
 
 def run_quick_fit():
     print("Starting rapid model artifact fitting...")

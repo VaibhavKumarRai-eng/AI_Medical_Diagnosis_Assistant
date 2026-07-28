@@ -497,3 +497,51 @@ sqlalchemy.exc.InvalidRequestError: The unique() method must be invoked on this 
 [2026-07-26 23:21:21] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: de359227-6cde-4eb4-92f5-e5a7ae05444f
 [2026-07-26 23:21:21] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
 [2026-07-26 23:22:02] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-28 11:20:43] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 11:20:43] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 11:20:56] [CRITICAL] [app.ml.adapter:27]: Critical import failure: ML module could not be loaded from root directory (No module named 'config'). Ensure Python path is correct and dependencies are installed.
+[2026-07-28 11:38:55] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 11:38:55] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 11:39:00] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 11:39:00] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 11:39:00] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 11:39:00] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 11:39:00] [INFO] [ml.predict:61]: Loading production disease diagnosis artifacts...
+[2026-07-28 11:39:00] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'c:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 11:39:00] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'c:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 11:39:00] [INFO] [ml.utils:114]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'c:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 11:39:00] [INFO] [ml.predict:65]: All inference artifacts successfully loaded into memory.
+[2026-07-28 11:39:00] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 11:40:57] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 11:40:57] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 11:41:01] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 11:41:01] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 11:41:01] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 11:41:01] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 11:41:01] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 11:41:01] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 11:41:01] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 11:41:01] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 11:41:01] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 11:41:01] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 11:41:01] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 11:41:01] [INFO] [app.core.database:55]: Initializing database tables...
+[2026-07-28 11:41:01] [INFO] [app.core.database:57]: Database tables initialized successfully.
+[2026-07-28 11:41:41] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-28 11:41:41] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-28 11:41:42] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-28 11:41:42] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-28 11:42:49] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: 351dd2a2-f487-4920-9d2b-91e0364a0d29
+[2026-07-28 11:42:50] [ERROR] [app.services.chatbot:63]: Gemini API invocation failed: HTTP Error 404: Not Found
+[2026-07-28 11:42:50] [ERROR] [app.services.chatbot:242]: Fallback to rules engine due to LLM error: HTTP Error 404: Not Found
+[2026-07-28 11:44:43] [ERROR] [app.services.chatbot:63]: Gemini API invocation failed: HTTP Error 404: Not Found
+[2026-07-28 11:44:43] [ERROR] [app.services.chatbot:242]: Fallback to rules engine due to LLM error: HTTP Error 404: Not Found
+[2026-07-28 11:45:20] [ERROR] [app.services.chatbot:63]: Gemini API invocation failed: HTTP Error 404: Not Found
+[2026-07-28 11:45:20] [ERROR] [app.services.chatbot:242]: Fallback to rules engine due to LLM error: HTTP Error 404: Not Found
+[2026-07-28 11:45:39] [ERROR] [app.services.chatbot:63]: Gemini API invocation failed: HTTP Error 404: Not Found
+[2026-07-28 11:45:39] [ERROR] [app.services.chatbot:242]: Fallback to rules engine due to LLM error: HTTP Error 404: Not Found
+[2026-07-28 11:45:39] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-28 11:45:44] [INFO] [ml.predict:85]: [PREDICTION] Input: 'i feel too much cold and my body is sivering yes i have a fe...' | Predicted: 'degenerative disc disease' | Confidence: 0.2543 | Latency: 5339.81ms
+[2026-07-28 11:45:44] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: 64e7831e-5b39-4143-bf9d-89a2a216317e
+[2026-07-28 11:45:44] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-28 11:51:04] [INFO] [app.main:72]: FastAPI application shutting down...

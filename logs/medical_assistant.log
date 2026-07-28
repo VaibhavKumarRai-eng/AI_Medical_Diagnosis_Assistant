@@ -93,3 +93,14 @@
 [2026-07-26 23:16:51] [INFO] [ml.utils] [PID:15636]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
 [2026-07-26 23:16:51] [INFO] [ml.predict] [PID:15636]: All inference artifacts successfully loaded into memory.
 [2026-07-26 23:21:21] [INFO] [ml.predict] [PID:15636]: [PREDICTION] Input: 'i feel dizzy and laziness, there is headache too...' | Predicted: 'labyrinthitis' | Confidence: 0.5103 | Latency: 2741.33ms
+[2026-07-28 11:39:00] [INFO] [ml.predict] [PID:10616]: Loading production disease diagnosis artifacts...
+[2026-07-28 11:39:00] [INFO] [ml.utils] [PID:10616]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'c:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 11:39:00] [INFO] [ml.utils] [PID:10616]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'c:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 11:39:00] [INFO] [ml.utils] [PID:10616]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'c:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 11:39:00] [INFO] [ml.predict] [PID:10616]: All inference artifacts successfully loaded into memory.
+[2026-07-28 11:41:01] [INFO] [ml.predict] [PID:14500]: Loading production disease diagnosis artifacts...
+[2026-07-28 11:41:01] [INFO] [ml.utils] [PID:14500]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 11:41:01] [INFO] [ml.utils] [PID:14500]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 11:41:01] [INFO] [ml.utils] [PID:14500]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 11:41:01] [INFO] [ml.predict] [PID:14500]: All inference artifacts successfully loaded into memory.
+[2026-07-28 11:45:44] [INFO] [ml.predict] [PID:14500]: [PREDICTION] Input: 'i feel too much cold and my body is sivering yes i have a fe...' | Predicted: 'degenerative disc disease' | Confidence: 0.2543 | Latency: 5339.81ms

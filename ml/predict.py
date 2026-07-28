@@ -20,11 +20,14 @@ try:
     from ml.logger import get_logger, log_prediction_request, log_artifact_event
     from ml.preprocessing import MedicalTextPreprocessor
     from ml.utils import load_artifact
-except ImportError:
-    from config import config
-    from logger import get_logger, log_prediction_request, log_artifact_event
-    from preprocessing import MedicalTextPreprocessor
-    from utils import load_artifact
+except ImportError as e:
+    if getattr(e, 'name', None) == 'ml':
+        from config import config
+        from logger import get_logger, log_prediction_request, log_artifact_event
+        from preprocessing import MedicalTextPreprocessor
+        from utils import load_artifact
+    else:
+        raise
 
 logger = get_logger(__name__)
 

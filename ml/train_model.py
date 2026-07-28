@@ -33,12 +33,15 @@ try:
     from ml.preprocessing import MedicalTextPreprocessor
     from ml.feature_engineering import SymptomFeatureExtractor
     from ml.utils import save_artifact, save_json, format_metrics_table
-except ImportError:
-    from config import config
-    from logger import get_logger, log_training_event, log_artifact_event
-    from preprocessing import MedicalTextPreprocessor
-    from feature_engineering import SymptomFeatureExtractor
-    from utils import save_artifact, save_json, format_metrics_table
+except ImportError as e:
+    if getattr(e, 'name', None) == 'ml':
+        from config import config
+        from logger import get_logger, log_training_event, log_artifact_event
+        from preprocessing import MedicalTextPreprocessor
+        from feature_engineering import SymptomFeatureExtractor
+        from utils import save_artifact, save_json, format_metrics_table
+    else:
+        raise
 
 logger = get_logger(__name__)
 

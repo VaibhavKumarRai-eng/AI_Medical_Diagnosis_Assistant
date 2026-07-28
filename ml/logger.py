@@ -18,8 +18,11 @@ from typing import Optional, Dict, Any
 
 try:
     from ml.config import config
-except ImportError:
-    from config import config
+except ImportError as e:
+    if getattr(e, 'name', None) == 'ml':
+        from config import config
+    else:
+        raise
 
 
 def get_logger(name: str = "medical_assistant") -> logging.Logger:
