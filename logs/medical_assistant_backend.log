@@ -545,3 +545,232 @@ sqlalchemy.exc.InvalidRequestError: The unique() method must be invoked on this 
 [2026-07-28 11:45:44] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: 64e7831e-5b39-4143-bf9d-89a2a216317e
 [2026-07-28 11:45:44] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
 [2026-07-28 11:51:04] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-28 12:06:54] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 12:06:54] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 12:06:57] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 12:06:57] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 12:06:57] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 12:06:57] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 12:06:57] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 12:06:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 12:06:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 12:06:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 12:06:57] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 12:06:57] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 12:06:58] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 12:06:58] [INFO] [app.core.database:55]: Initializing database tables...
+[2026-07-28 12:06:58] [INFO] [app.core.database:57]: Database tables initialized successfully.
+[2026-07-28 12:14:59] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-28 12:14:59] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-28 12:14:59] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-28 12:14:59] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-28 12:27:29] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-28 12:27:32] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 12:27:32] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 12:27:40] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 12:27:40] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 12:27:40] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 12:27:40] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 12:27:40] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 12:27:40] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 12:27:40] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 12:27:40] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 12:27:40] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 12:27:40] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 12:27:41] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 12:27:41] [INFO] [app.core.database:55]: Initializing database tables...
+[2026-07-28 12:27:41] [INFO] [app.core.database:57]: Database tables initialized successfully.
+[2026-07-28 12:27:42] [ERROR] [app.main:54]: Error seeding default administrator: (sqlite3.OperationalError) no such column: users.otp_code
+[SQL: SELECT users.id, users.email, users.hashed_password, users.full_name, users.role, users.is_active, users.otp_code, users.otp_expires_at, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?]
+[parameters: ('admin@medical-assistant.com',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: users.otp_code
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\backend\app\main.py", line 38, in seed_admin_user
+    admin = user_repository.get_by_email(db, email=admin_email)
+  File "C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\backend\app\repositories\user.py", line 31, in get_by_email
+    return db.scalar(query)
+           ~~~~~~~~~^^^^^^^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2399, in scalar
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\raiva\AppData\Local\Programs\Python\Python314\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: users.otp_code
+[SQL: SELECT users.id, users.email, users.hashed_password, users.full_name, users.role, users.is_active, users.otp_code, users.otp_expires_at, users.created_at, users.updated_at 
+FROM users 
+WHERE users.email = ?]
+[parameters: ('admin@medical-assistant.com',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2026-07-28 12:27:46] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-28 12:27:49] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 12:27:50] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 12:27:57] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 12:27:57] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 12:27:57] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 12:27:57] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 12:27:57] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 12:27:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 12:27:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 12:27:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 12:27:57] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 12:27:57] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 12:27:58] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 12:27:58] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-28 12:27:58] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-28 12:27:58] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-28 12:27:58] [INFO] [app.core.database:58]: Column 'otp_code' is missing. Executing ALTER TABLE...
+[2026-07-28 12:27:58] [INFO] [app.core.database:65]: Column 'otp_expires_at' is missing. Executing ALTER TABLE...
+[2026-07-28 12:27:58] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-28 12:28:28] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-28 12:28:32] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 12:28:32] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 12:28:38] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 12:28:38] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 12:28:38] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 12:28:38] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 12:28:38] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 12:28:38] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 12:28:39] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 12:28:39] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 12:28:39] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 12:28:39] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 12:28:39] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 12:28:39] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-28 12:28:39] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-28 12:28:39] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-28 12:28:39] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-28 12:28:51] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-28 12:28:55] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 12:28:55] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 12:29:03] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 12:29:03] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 12:29:03] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 12:29:03] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 12:29:03] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 12:29:03] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 12:29:03] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 12:29:03] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 12:29:03] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 12:29:03] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 12:29:04] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 12:29:04] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-28 12:29:04] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-28 12:29:04] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-28 12:29:04] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-28 12:29:07] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 12:29:07] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 12:29:14] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 12:29:14] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 12:29:14] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 12:29:14] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 12:29:14] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 12:29:14] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 12:29:14] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 12:29:14] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 12:29:14] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 12:29:14] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 12:29:14] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 12:29:14] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-28 12:29:14] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-28 12:29:14] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-28 12:29:14] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-28 12:34:43] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-28 12:34:47] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-28 12:34:47] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-28 12:34:52] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-28 12:34:52] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-28 12:34:52] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-28 12:34:52] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-28 12:34:52] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-28 12:34:52] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-28 12:34:52] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-28 12:34:52] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-28 12:34:52] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-28 12:34:52] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-28 12:34:53] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-28 12:34:53] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-28 12:34:53] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-28 12:34:53] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-28 12:34:53] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-28 12:37:22] [INFO] [app.main:72]: FastAPI application shutting down...

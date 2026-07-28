@@ -157,52 +157,111 @@ class AuthService:
         logger.info(f"Password updated for user: {user.email}")
 
     def generate_password_reset_token(self, db: Session, *, email: str) -> Optional[str]:
-        """Generate a single-use signed token for password reset request.
+        """Generate a 6-digit One-Time Password (OTP) for password reset request.
         
         Args:
             db (Session): Database transaction session.
             email (str): Target email.
             
         Returns:
-            str | None: Decoded JWT token containing subject payload.
+            str | None: Generated OTP code, or None if user not found.
         """
+        import random
+        import os
+        import smtplib
+        from datetime import datetime, timezone
+        from email.mime.text import MIMEText
+        from email.mime.multipart import MIMEMultipart
+
         user = user_repository.get_by_email(db, email=email)
         if not user or not user.is_active:
+            logger.warning(f"OTP generation requested for non-existent or inactive email: {email}")
             return None
         
-        # Access token expiring in 15 minutes
-        expire = timedelta(minutes=15)
-        # We sign using the user's current password hash as part of salt for safety, or a simple access token with a reset type claim
-        token = create_access_token(subject=user.email, expires_delta=expire)
-        logger.info(f"Password reset token issued for email: {email}")
-        return token
+        # Generate 6-digit numeric OTP
+        otp = f"{random.randint(100000, 999999)}"
+        expiry = datetime.now(timezone.utc) + timedelta(minutes=10)
+        
+        # Update user record
+        user_repository.update(db, db_obj=user, obj_in={
+            "otp_code": otp,
+            "otp_expires_at": expiry
+        })
+        logger.info(f"OTP saved in database for user: {email}")
+        
+        # Try to send SMTP email or fallback to developer console log
+        logger.info(f"\n========================================\n[OTP DEV LOG] Generated OTP for email: {email} is [{otp}]\n========================================\n")
+        
+        smtp_host = os.getenv("SMTP_HOST")
+        smtp_port = os.getenv("SMTP_PORT")
+        smtp_user = os.getenv("SMTP_USER")
+        smtp_pass = os.getenv("SMTP_PASS")
+        
+        if smtp_host and smtp_port and smtp_user and smtp_pass:
+            try:
+                msg = MIMEMultipart()
+                msg['From'] = smtp_user
+                msg['To'] = email
+                msg['Subject'] = "Aegis AI - Password Reset OTP"
+                
+                body = f"Your 6-digit One-Time Password (OTP) for Aegis AI password reset is: {otp}\n\nThis OTP is valid for 10 minutes."
+                msg.attach(MIMEText(body, 'plain'))
+                
+                server = smtplib.SMTP(smtp_host, int(smtp_port))
+                server.starttls()
+                server.login(smtp_user, smtp_pass)
+                server.sendmail(smtp_user, email, msg.as_string())
+                server.quit()
+                logger.info(f"OTP email successfully sent via SMTP to {email}")
+            except Exception as e:
+                logger.error(f"Failed to send OTP email to {email} via SMTP: {e}", exc_info=True)
+        else:
+            logger.warning("SMTP settings missing from env. Falling back to terminal OTP log.")
+            
+        return otp
 
-    def reset_password(self, db: Session, *, email_token: str, new_password: str) -> bool:
-        """Reset password utilizing email payload token.
+    def reset_password(self, db: Session, *, email: str, otp: str, new_password: str) -> bool:
+        """Reset password utilizing the email and 6-digit OTP code verification.
         
         Args:
             db (Session): Database transaction session.
-            email_token (str): Serialized reset token.
+            email (str): User email.
+            otp (str): Submitted OTP code.
             new_password (str): New password structure.
             
         Returns:
             bool: True if reset succeeded, False otherwise.
         """
-        payload = decode_token(email_token)
-        if not payload:
-            return False
-
-        email = payload.get("sub")
-        if not email:
-            return False
+        from datetime import datetime, timezone
 
         user = user_repository.get_by_email(db, email=email)
         if not user or not user.is_active:
+            logger.warning(f"Reset password failed: user not found or inactive for email {email}")
             return False
 
+        # Validate OTP
+        if not user.otp_code or user.otp_code != otp:
+            logger.warning(f"Reset password failed: incorrect OTP for email {email}")
+            return False
+
+        # Verify expiration
+        # Ensure user.otp_expires_at is timezone-aware
+        expires_at = user.otp_expires_at
+        if expires_at:
+            if expires_at.tzinfo is None:
+                expires_at = expires_at.replace(tzinfo=timezone.utc)
+            if datetime.now(timezone.utc) > expires_at:
+                logger.warning(f"Reset password failed: expired OTP for email {email}")
+                return False
+
+        # Clear OTP and hash new password
         hashed_new = hash_password(new_password)
-        user_repository.update(db, db_obj=user, obj_in={"hashed_password": hashed_new})
-        logger.info(f"Password successfully reset for user email: {email}")
+        user_repository.update(db, db_obj=user, obj_in={
+            "hashed_password": hashed_new,
+            "otp_code": None,
+            "otp_expires_at": None
+        })
+        logger.info(f"Password successfully reset via OTP for email: {email}")
         return True
 
 

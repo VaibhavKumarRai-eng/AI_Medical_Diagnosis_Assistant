@@ -103,6 +103,20 @@ export const authAPI = {
   changePassword: async (passwordData) => {
     const response = await api.post('/profile/change-password', passwordData);
     return response.data;
+  },
+  
+  forgotPassword: async (email) => {
+    const response = await api.post('/forgot-password', { email });
+    return response.data;
+  },
+  
+  verifyOtp: async (email, otp, newPassword) => {
+    const response = await api.post('/reset-password', { 
+      email, 
+      token: otp, 
+      new_password: newPassword 
+    });
+    return response.data;
   }
 };
 

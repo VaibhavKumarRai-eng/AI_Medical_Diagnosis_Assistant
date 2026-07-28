@@ -96,11 +96,16 @@ def reset_password(
     data: ResetPassword,
     db: Session = Depends(get_db)
 ) -> Any:
-    """Reset user password using a valid email recovery token."""
-    success = auth_service.reset_password(db, email_token=data.token, new_password=data.new_password)
+    """Reset user password using email and 6-digit OTP code."""
+    success = auth_service.reset_password(
+        db, 
+        email=data.email, 
+        otp=data.token, 
+        new_password=data.new_password
+    )
     if not success:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Invalid or expired reset token."
+            detail="Invalid or expired OTP code."
         )
     return MessageResponse(message="Password reset successful.")

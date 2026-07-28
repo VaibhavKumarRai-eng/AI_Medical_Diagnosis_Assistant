@@ -1,100 +1,178 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @import "tailwindcss";
 
-
 @theme {
-  --font-sans: 'Outfit', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Outfit', sans-serif;
   
-  /* Modern premium color scheme: Teal/Cyan & Indigo/Blue */
-  --color-brand-50: #f0fdfa;
-  --color-brand-100: #ccfbf1;
-  --color-brand-200: #99f6e4;
-  --color-brand-500: #14b8a6;
-  --color-brand-600: #0d9488;
-  --color-brand-700: #0f766e;
-  --color-brand-800: #115e59;
-  --color-brand-900: #134e4a;
+  /* SaaS Design Color Palette */
+  --color-primary: #2563EB;
+  --color-secondary: #14B8A6;
+  --color-accent: #22C55E;
   
-  --color-dark-bg: #090d16;
-  --color-dark-surface: #0e1626;
-  --color-dark-card: #152035;
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-500: #2563eb;
+  --color-brand-600: #1d4ed8;
+  --color-brand-700: #1e40af;
+  --color-brand-800: #1e3a8a;
+  --color-brand-900: #172554;
+  
+  --color-dark-bg: #0B1120;
+  --color-dark-surface: #111827;
+  --color-dark-card: #151e30;
   --color-dark-border: rgba(255, 255, 255, 0.08);
 }
 
 /* Custom scrollbars and styling */
 body {
-  background-color: #090d16; /* dark-bg */
-  color: #e5e7eb;
-  font-family: 'Outfit', sans-serif;
+  background-color: #0B1120; /* dark-bg */
+  color: #CBD5E1; /* dark-text-secondary */
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
   overflow-x: hidden;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(20, 184, 166, 0.05) 0px, transparent 50%);
+  background-attachment: fixed;
 }
 
 /* Custom scrollbar layout */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #0B1120;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f2937;
-  border-radius: 4px;
+  background: #1e293b;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #374151;
+  background: #334155;
 }
 
 /* Glassmorphism custom classes */
 .glass-panel {
-  background: rgba(14, 22, 38, 0.7);
-  backdrop-filter: blur(16px) saturate(180%);
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5);
 }
 
 .glass-card {
   background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.04);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(20, 184, 166, 0.25);
-  box-shadow: 0 12px 30px 0 rgba(20, 184, 166, 0.1);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(37, 99, 235, 0.25);
+  box-shadow: 
+    0 20px 40px 0 rgba(0, 0, 0, 0.3),
+    0 0 25px 0 rgba(37, 99, 235, 0.1);
+  transform: translateY(-4px);
 }
 
 .glass-input {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  color: #fff;
-  transition: all 0.2s ease-in-out;
+  border-radius: 12px;
+  color: #F8FAFC;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-input:focus {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: #14b8a6;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #2563EB;
   outline: none;
-  box-shadow: 0 0 10px 0 rgba(20, 184, 166, 0.25);
+  box-shadow: 
+    0 0 0 3px rgba(37, 99, 235, 0.15),
+    0 4px 12px 0 rgba(37, 99, 235, 0.05);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #14b8a6 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #2563EB 0%, #14B8A6 50%, #22C55E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: textShine 6s linear infinite;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-teal {
+  background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 /* Micro-animations */
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 0.9; }
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float-dna {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes float-ecg {
+  0%, 100% { transform: translateY(0px) scaleX(1); }
+  50% { transform: translateY(-5px) scaleX(1.02); }
 }
 
 .animate-pulse-slow {
-  animation: pulse-slow 3s infinite ease-in-out;
+  animation: pulse-slow 4s infinite ease-in-out;
+}
+
+.animate-float-dna {
+  animation: float-dna 6s infinite ease-in-out;
+}
+
+.animate-float-ecg {
+  animation: float-ecg 5s infinite ease-in-out;
+}
+
+/* Interactive Grid Background Layer */
+.grid-bg {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Print/A4 Clean Report Styling */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .print\:hidden {
+    display: none !important;
+  }
 }

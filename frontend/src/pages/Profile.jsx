@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { authAPI } from '../services/api';
-import { User, Lock, Mail, Shield, AlertCircle, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { User, Lock, Mail, Shield, AlertCircle, CheckCircle, Settings, ShieldCheck } from 'lucide-react';
 
 const Profile = () => {
   const { user, refreshUser } = useAuth();
@@ -80,60 +81,78 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 space-y-8 text-left">
-      <div className="border-b border-white/5 pb-4">
-        <h1 className="text-3xl font-extrabold text-white">Account Profile</h1>
-        <p className="text-sm text-gray-400">Manage your patient registration details and security parameters.</p>
+    <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 space-y-8 text-left relative grid-bg">
+      <div className="border-b border-white/[0.06] pb-4">
+        <h1 className="text-3xl font-extrabold text-white flex items-center gap-3">
+          <div className="p-2 rounded-xl bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(37,99,235,0.15)]">
+            <Settings className="h-6 w-6 text-primary" />
+          </div>
+          Account Settings
+        </h1>
+        <p className="text-xs text-gray-400 mt-1.5">Manage patient profile details, contact emails, and security credentials.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left column: Overview */}
-        <div className="glass-panel p-6 rounded-2xl border border-white/5 h-fit text-center space-y-4">
-          <div className="mx-auto h-20 w-20 bg-brand-500/10 rounded-full flex items-center justify-center border border-brand-500/20">
-            <User className="h-10 w-10 text-brand-500" />
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="lg:col-span-4 glass-panel p-6 rounded-3xl border border-white/[0.06] h-fit text-center space-y-5 shadow-xl relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-bl-full pointer-events-none" />
+          
+          <div className="mx-auto h-20 w-20 bg-primary/10 rounded-full flex items-center justify-center border border-primary/20 shadow-[0_0_20px_rgba(37,99,235,0.15)]">
+            <User className="h-9 w-9 text-primary animate-pulse" />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-white">{user?.full_name}</h3>
-            <p className="text-xs text-gray-400 capitalize">{user?.role} Account</p>
+            <h3 className="text-lg font-bold text-white leading-tight">{user?.full_name}</h3>
+            <p className="text-[10px] font-bold text-primary uppercase tracking-widest mt-1.5 bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-md inline-block">
+              {user?.role} Account
+            </p>
           </div>
-          <div className="border-t border-white/5 pt-4 text-left space-y-2 text-sm text-gray-300">
-            <div className="flex items-center gap-2">
-              <Mail className="h-4 w-4 text-brand-500 shrink-0" />
+          <div className="border-t border-white/5 pt-4 text-left space-y-3.5 text-xs text-gray-300">
+            <div className="flex items-center gap-2.5 bg-white/[0.01] p-3 rounded-xl border border-white/5">
+              <Mail className="h-4 w-4 text-primary shrink-0" />
               <span className="truncate">{user?.email}</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Shield className="h-4 w-4 text-brand-500 shrink-0" />
-              <span>Status: <b className="text-green-400">Active</b></span>
+            <div className="flex items-center gap-2.5 bg-white/[0.01] p-3 rounded-xl border border-white/5">
+              <ShieldCheck className="h-4 w-4 text-accent shrink-0" />
+              <span>Status: <b className="text-accent font-extrabold">Active</b></span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right column: Edit forms */}
-        <div className="md:col-span-2 space-y-8">
+        <div className="lg:col-span-8 space-y-8">
           {/* Edit Profile Form */}
-          <div className="glass-panel p-6 rounded-2xl border border-white/5">
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-              <User className="h-5 w-5 text-brand-500" />
-              Profile Details
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="glass-panel p-6 rounded-3xl border border-white/[0.06] shadow-xl"
+          >
+            <h3 className="text-sm font-bold text-white mb-5 flex items-center gap-2">
+              <User className="h-4.5 w-4.5 text-primary" />
+              Personal Information
             </h3>
             
             {profileError && (
-              <div className="bg-red-500/10 border border-red-500/20 text-red-200 px-4 py-3 rounded-lg flex items-start gap-2.5 text-sm mb-4">
-                <AlertCircle className="h-5 w-5 text-red-400 shrink-0" />
+              <div className="bg-red-500/10 border border-red-500/25 text-red-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4">
+                <AlertCircle className="h-4.5 w-4.5 text-red-400 shrink-0 mt-0.5" />
                 <span>{profileError}</span>
               </div>
             )}
             
             {profileSuccess && (
-              <div className="bg-green-500/10 border border-green-500/20 text-green-200 px-4 py-3 rounded-lg flex items-start gap-2.5 text-sm mb-4">
-                <CheckCircle className="h-5 w-5 text-green-400 shrink-0" />
+              <div className="bg-green-500/10 border border-green-500/25 text-green-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4">
+                <CheckCircle className="h-4.5 w-4.5 text-accent shrink-0 mt-0.5" />
                 <span>{profileSuccess}</span>
               </div>
             )}
 
             <form onSubmit={handleUpdateProfile} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
+              <div className="space-y-1.5">
+                <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                   Full Name
                 </label>
                 <input
@@ -141,60 +160,65 @@ const Profile = () => {
                   required
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="glass-input w-full px-4 py-2.5 text-sm"
+                  className="glass-input w-full px-4 py-2.5 text-xs font-semibold"
                   placeholder="John Doe"
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
+              <div className="space-y-1.5">
+                <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                   Email Address
                 </label>
                 <input
                   type="email"
                   disabled
                   value={user?.email || ''}
-                  className="glass-input w-full px-4 py-2.5 text-sm opacity-50 cursor-not-allowed"
+                  className="glass-input w-full px-4 py-2.5 text-xs opacity-50 cursor-not-allowed"
                 />
-                <p className="text-[10px] text-gray-400 mt-1">Contact system admin to modify account email.</p>
+                <p className="text-[9px] text-gray-500 mt-1">To change registered email, contact administrator.</p>
               </div>
 
               <div className="pt-2">
                 <button
                   type="submit"
                   disabled={profileLoading}
-                  className="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer disabled:opacity-50"
+                  className="bg-primary hover:bg-primary/95 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition-all shadow-lg shadow-primary/10 cursor-pointer disabled:opacity-50"
                 >
-                  {profileLoading ? 'Updating...' : 'Save Profile'}
+                  {profileLoading ? 'Saving...' : 'Save Profile'}
                 </button>
               </div>
             </form>
-          </div>
+          </motion.div>
 
           {/* Change Password Form */}
-          <div className="glass-panel p-6 rounded-2xl border border-white/5">
-            <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-              <Lock className="h-5 w-5 text-brand-500" />
-              Update Password
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="glass-panel p-6 rounded-3xl border border-white/[0.06] shadow-xl"
+          >
+            <h3 className="text-sm font-bold text-white mb-5 flex items-center gap-2">
+              <Lock className="h-4.5 w-4.5 text-primary" />
+              Credentials Security
             </h3>
 
             {passError && (
-              <div className="bg-red-500/10 border border-red-500/20 text-red-200 px-4 py-3 rounded-lg flex items-start gap-2.5 text-sm mb-4">
-                <AlertCircle className="h-5 w-5 text-red-400 shrink-0" />
+              <div className="bg-red-500/10 border border-red-500/25 text-red-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4">
+                <AlertCircle className="h-4.5 w-4.5 text-red-400 shrink-0 mt-0.5" />
                 <span>{passError}</span>
               </div>
             )}
 
             {passSuccess && (
-              <div className="bg-green-500/10 border border-green-500/20 text-green-200 px-4 py-3 rounded-lg flex items-start gap-2.5 text-sm mb-4">
-                <CheckCircle className="h-5 w-5 text-green-400 shrink-0" />
+              <div className="bg-green-500/10 border border-green-500/25 text-green-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4">
+                <CheckCircle className="h-4.5 w-4.5 text-accent shrink-0 mt-0.5" />
                 <span>{passSuccess}</span>
               </div>
             )}
 
             <form onSubmit={handleChangePassword} className="space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
+              <div className="space-y-1.5">
+                <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                   Current Password
                 </label>
                 <input
@@ -202,14 +226,14 @@ const Profile = () => {
                   required
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
-                  className="glass-input w-full px-4 py-2.5 text-sm"
+                  className="glass-input w-full px-4 py-2.5 text-xs"
                   placeholder="••••••••"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
+                <div className="space-y-1.5">
+                  <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
                     New Password
                   </label>
                   <input
@@ -217,20 +241,20 @@ const Profile = () => {
                     required
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    className="glass-input w-full px-4 py-2.5 text-sm"
+                    className="glass-input w-full px-4 py-2.5 text-xs"
                     placeholder="At least 8 chars"
                   />
                 </div>
-                <div>
-                  <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
-                    Confirm New Password
+                <div className="space-y-1.5">
+                  <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                    Confirm Password
                   </label>
                   <input
                     type="password"
                     required
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="glass-input w-full px-4 py-2.5 text-sm"
+                    className="glass-input w-full px-4 py-2.5 text-xs"
                     placeholder="Repeat new password"
                   />
                 </div>
@@ -240,13 +264,13 @@ const Profile = () => {
                 <button
                   type="submit"
                   disabled={passLoading}
-                  className="bg-brand-500 hover:bg-brand-600 text-white font-semibold px-4 py-2 rounded-lg text-sm transition-all duration-200 cursor-pointer disabled:opacity-50"
+                  className="bg-primary hover:bg-primary/95 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition-all shadow-lg shadow-primary/10 cursor-pointer disabled:opacity-50"
                 >
                   {passLoading ? 'Updating...' : 'Change Password'}
                 </button>
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

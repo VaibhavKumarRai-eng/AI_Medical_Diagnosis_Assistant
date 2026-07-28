@@ -71,5 +71,6 @@ class ForgotPassword(BaseModel):
 
 
 class ResetPassword(BaseModel):
+    email: EmailStr
     token: str
     new_password: str = Field(..., min_length=8)
