@@ -63,7 +63,7 @@ def migrate_tables() -> None:
                 conn.execute(text("SELECT otp_expires_at FROM users LIMIT 1"))
             except Exception:
                 logger.info("Column 'otp_expires_at' is missing. Executing ALTER TABLE...")
-                conn.execute(text("ALTER TABLE users ADD COLUMN otp_expires_at DATETIME"))
+                conn.execute(text("ALTER TABLE users ADD COLUMN otp_expires_at TIMESTAMP"))
         logger.info("Database schema check completed.")
     except Exception as e:
         logger.error(f"Error checking or migrating database schema: {e}", exc_info=True)
