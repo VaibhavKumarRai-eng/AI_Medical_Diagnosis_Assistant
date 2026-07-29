@@ -149,9 +149,6 @@ function App() {
               
               <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500">
                 <span>&copy; {new Date().getFullYear()} Aegis AI. All rights reserved.</span>
-                <div className="flex items-center gap-2 bg-white/[0.02] border border-white/[0.05] rounded-full px-3.5 py-1 text-gray-400 text-[10px]">
-                  <span>Made with React + FastAPI + Gemini AI</span>
-                </div>
               </div>
             </div>
           </footer>
