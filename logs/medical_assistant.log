@@ -191,3 +191,22 @@
 [2026-07-30 22:55:07] [INFO] [ml.predict] [PID:24008]: [PREDICTION] Input: 'I am experiencing severe chest pain, shortness of breath, pa...' | Predicted: 'ischemic heart disease' | Confidence: 0.2569 | Latency: 4801.45ms
 [2026-07-30 22:55:08] [INFO] [ml.predict] [PID:24008]: [PREDICTION] Input: 'I feel very feverish and have a dry cough It started about 3...' | Predicted: 'pulmonary hypertension' | Confidence: 0.0828 | Latency: 9.95ms
 [2026-07-30 22:56:39] [WARNING] [ml.predict] [PID:22448]: No clinical symptoms recognized in input text: 'hi I am Vaibhav Rai and My friend Vansh said there are issue in you (moderate severity, lasting for 3 Days).'
+[2026-07-30 23:34:08] [INFO] [ml.predict] [PID:5384]: Loading production disease diagnosis artifacts...
+[2026-07-30 23:34:08] [INFO] [ml.utils] [PID:5384]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-30 23:34:08] [INFO] [ml.utils] [PID:5384]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-30 23:34:08] [INFO] [ml.utils] [PID:5384]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-30 23:34:08] [INFO] [ml.predict] [PID:5384]: All inference artifacts successfully loaded into memory.
+[2026-07-30 23:34:12] [INFO] [ml.predict] [PID:5384]: [PREDICTION] Input: 'I am experiencing severe chest pain, shortness of breath, pa...' | Predicted: 'ischemic heart disease' | Confidence: 0.2569 | Latency: 2009.39ms
+[2026-07-30 23:34:12] [INFO] [ml.predict] [PID:5384]: [PREDICTION] Input: 'I feel very feverish and have a dry cough It started about 3...' | Predicted: 'pulmonary hypertension' | Confidence: 0.0828 | Latency: 5.77ms
+[2026-07-30 23:37:03] [INFO] [ml.predict] [PID:23184]: Loading production disease diagnosis artifacts...
+[2026-07-30 23:37:03] [INFO] [ml.utils] [PID:23184]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-30 23:37:03] [INFO] [ml.utils] [PID:23184]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-30 23:37:03] [INFO] [ml.utils] [PID:23184]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-30 23:37:03] [INFO] [ml.predict] [PID:23184]: All inference artifacts successfully loaded into memory.
+[2026-07-30 23:37:07] [INFO] [ml.predict] [PID:23184]: [PREDICTION] Input: 'I am experiencing severe chest pain, shortness of breath, pa...' | Predicted: 'ischemic heart disease' | Confidence: 0.2569 | Latency: 2507.12ms
+[2026-07-30 23:37:07] [INFO] [ml.predict] [PID:23184]: [PREDICTION] Input: 'I feel very feverish and have a dry cough It started about 3...' | Predicted: 'pulmonary hypertension' | Confidence: 0.0828 | Latency: 7.07ms
+[2026-07-30 23:38:27] [INFO] [ml.predict] [PID:16380]: Loading production disease diagnosis artifacts...
+[2026-07-30 23:38:27] [INFO] [ml.utils] [PID:16380]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-30 23:38:27] [INFO] [ml.utils] [PID:16380]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-30 23:38:27] [INFO] [ml.utils] [PID:16380]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-30 23:38:27] [INFO] [ml.predict] [PID:16380]: All inference artifacts successfully loaded into memory.

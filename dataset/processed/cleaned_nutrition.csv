@@ -1,0 +1,312 @@
+food_name,category,calories,protein,carbs,fat,fiber,sugar,sodium,potassium,vitamin_c,calcium,iron,is_indian,region,cooking_method,spice_level,protein_ratio,fat_ratio,carb_ratio,health_score,diabetic_friendly,heart_friendly,weight_loss_friendly,muscle_gain_friendly,bmi_friendly_category
+"Apple, candied",Apples,134.0,1.34,29.61,2.15,0.0,0.0,0.0,0.0,3.6,0.0,0.12,False,International,Various,Mild,0.04,0.065,0.895,42.6,False,True,False,False,low_density
+"Apple, raw",Apples,61.0,0.17,14.8,0.15,0.0,0.0,0.0,0.0,4.6,0.0,0.03,False,International,Various,Mild,0.011,0.01,0.979,41.3,True,True,False,False,low_density
+"Apple, dried",Dried fruits,243.0,0.93,65.89,0.32,0.0,0.0,0.0,0.0,3.9,0.0,1.4,False,International,Various,Mild,0.014,0.005,0.981,43.2,False,True,False,False,moderate_density
+"Crisp, apple",Cakes and pies,215.0,2.81,30.18,9.59,0.0,0.0,0.0,0.0,0.6,0.0,1.0,False,International,Various,Mild,0.066,0.225,0.709,39.0,False,True,False,False,moderate_density
+"Apple, baked",Apples,113.0,0.32,22.7,3.08,0.0,0.0,0.0,0.0,3.9,0.0,0.19,False,International,Various,Mild,0.012,0.118,0.87,38.7,True,True,False,False,low_density
+Apple cider,Apple juice,46.0,0.1,11.3,0.13,0.0,0.0,0.0,0.0,0.9,0.0,0.12,False,International,Various,Mild,0.009,0.011,0.98,40.4,True,True,False,False,low_density
+"Cobbler, apple",Cakes and pies,217.0,2.05,33.56,8.66,0.0,0.0,0.0,0.0,0.6,0.0,0.98,False,International,Various,Mild,0.046,0.196,0.758,37.6,False,True,False,False,moderate_density
+"Croissants, apple",Baked Products,1060.0,7.4,37.1,8.7,0.0,0.0,0.0,0.0,0.5,0.0,1.1,False,International,Various,Mild,0.139,0.164,0.697,53.6,False,True,False,False,high_density
+"Pie, apple",Cakes and pies,296.0,2.7,37.55,15.28,0.0,0.0,0.0,0.0,0.5,0.0,1.23,False,International,Various,Mild,0.049,0.275,0.676,32.9,False,False,False,False,moderate_density
+"Strudel, apple",Cakes and pies,281.0,1.96,37.18,14.08,0.0,0.0,0.0,0.0,0.5,0.0,0.3,False,International,Various,Mild,0.037,0.265,0.699,31.9,False,False,False,False,moderate_density
+Apple pie filling,Apples,100.0,0.1,26.1,0.1,0.0,0.0,0.0,0.0,1.7,0.0,0.29,False,International,Various,Mild,0.004,0.004,0.992,40.5,False,True,False,False,low_density
+"Apple juice, 100%",Apple juice,48.0,0.09,11.34,0.25,0.0,0.0,0.0,0.0,38.6,0.0,0.06,False,International,Various,Mild,0.008,0.021,0.971,47.7,True,True,False,False,low_density
+Apple salad with dressing,Other fruits and fruit salads,180.0,1.45,12.2,14.24,0.0,0.0,0.0,0.0,3.4,0.0,0.28,False,International,Various,Mild,0.052,0.511,0.437,30.8,True,False,False,False,moderate_density
+"Cake or cupcake, apple",Cakes and pies,376.0,2.41,52.52,17.5,0.0,0.0,0.0,0.0,0.2,0.0,0.9,False,International,Various,Mild,0.033,0.242,0.725,29.8,False,False,False,False,high_density
+"Fruit butters, apple",Sweets,173.0,0.39,42.5,0.3,0.0,0.0,0.0,0.0,0.6,0.0,0.31,False,International,Various,Mild,0.009,0.007,0.984,41.0,False,True,False,False,moderate_density
+"Rose-apples, raw",Fruits and Fruit Juices,105.0,0.6,5.7,0.3,0.0,0.0,0.0,0.0,22.3,0.0,0.07,False,International,Various,Mild,0.091,0.045,0.864,46.0,True,True,False,False,low_density
+"Carrots, raw, salad with apples","Coleslaw, non-lettuce salads",181.0,0.85,8.59,16.02,0.0,0.0,0.0,0.0,6.4,0.0,0.16,False,International,Various,Mild,0.033,0.629,0.337,27.8,True,False,False,False,moderate_density
+"Banana, baked",Bananas,161.0,0.82,32.43,3.21,0.0,0.0,0.0,0.0,10.4,0.0,0.06,False,International,Various,Mild,0.022,0.088,0.889,41.3,False,True,False,False,moderate_density
+"Banana, raw",Bananas,97.0,0.74,22.71,0.28,0.0,0.0,0.0,0.0,12.0,0.0,0.0,False,International,Various,Mild,0.031,0.012,0.957,44.3,True,True,False,False,low_density
+Banana chips,Dried fruits,519.0,2.3,58.4,33.6,0.0,0.0,0.0,0.0,6.3,0.0,1.25,False,International,Various,Mild,0.024,0.356,0.619,14.6,False,False,False,False,high_density
+Banana nectar,Fruit drinks,74.0,0.26,18.01,0.13,0.0,0.0,0.0,0.0,4.3,0.0,0.0,False,International,Various,Mild,0.014,0.007,0.979,41.5,True,True,False,False,low_density
+Banana pudding,Pudding,160.0,2.57,28.0,4.26,0.0,0.0,0.0,0.0,3.2,0.0,0.42,False,International,Various,Mild,0.074,0.122,0.804,44.1,False,True,False,False,moderate_density
+Banana split,Ice cream and frozen dairy desserts,199.0,2.42,32.59,6.88,0.0,0.0,0.0,0.0,4.5,0.0,0.17,False,International,Various,Mild,0.058,0.164,0.778,41.3,False,True,False,False,moderate_density
+"Bananas, raw",Fruits and Fruit Juices,371.0,1.09,22.8,0.33,0.0,0.0,0.0,0.0,8.7,0.0,0.26,False,International,Various,Mild,0.045,0.014,0.941,44.7,True,True,False,False,high_density
+"Bananas, overripe, raw",Fruits and Fruit Juices,85.0,0.73,20.1,0.22,0.0,0.0,0.0,0.0,9.7,0.0,0.0,False,International,Various,Mild,0.035,0.01,0.955,43.9,True,True,False,False,low_density
+"Cake or cupcake, banana",Cakes and pies,379.0,2.47,53.07,17.51,0.0,0.0,0.0,0.0,1.0,0.0,0.88,False,International,Various,Mild,0.034,0.24,0.726,30.1,False,False,False,False,high_density
+"Melon, banana (Navajo)",American Indian/Alaska Native Foods,90.0,0.84,4.06,0.2,0.0,0.0,0.0,0.0,8.1,0.0,0.21,False,International,Various,Mild,0.165,0.039,0.796,43.9,True,True,False,False,low_density
+"Pepper, banana, raw",Vegetables and Vegetable Products,27.0,1.66,5.35,0.45,0.0,0.0,0.0,0.0,82.7,0.0,0.46,False,International,Various,Mild,0.223,0.06,0.717,61.1,True,True,False,False,low_density
+"Peppers, banana, raw",Other vegetables and combinations,27.0,1.66,5.35,0.45,0.0,0.0,0.0,0.0,82.7,0.0,0.46,False,International,Various,Mild,0.223,0.06,0.717,61.1,True,True,False,False,low_density
+"Pie, banana cream",Cakes and pies,284.0,2.42,32.35,16.17,0.0,0.0,0.0,0.0,0.8,0.0,0.6,False,International,Various,Mild,0.048,0.317,0.635,31.2,False,False,False,False,moderate_density
+"Snacks, banana chips",Snacks,519.0,2.3,58.4,33.6,0.0,0.0,0.0,0.0,6.3,0.0,1.25,False,International,Various,Mild,0.024,0.356,0.619,14.6,False,False,False,False,high_density
+"Orange, raw",Citrus fruits,50.0,0.92,11.78,0.14,0.0,0.0,0.0,0.0,56.2,0.0,0.22,False,International,Various,Mild,0.072,0.011,0.917,53.9,True,True,False,False,low_density
+"Marmalade, orange",Sweets,246.0,0.3,66.3,0.0,0.0,0.0,0.0,0.0,4.8,0.0,0.15,False,International,Various,Mild,0.005,0.0,0.995,41.9,False,True,False,False,moderate_density
+Orange Blossom,Liquor and cocktails,98.0,0.57,9.32,0.26,0.0,0.0,0.0,0.0,21.2,0.0,0.06,False,International,Various,Mild,0.056,0.026,0.918,45.7,True,True,False,False,low_density
+Orange chicken,Stir-fry and soy-based sauce mixtures,262.0,14.46,22.46,12.68,0.0,0.0,0.0,0.0,0.9,0.0,0.94,False,International,Various,Mild,0.292,0.256,0.453,70.9,True,False,False,True,moderate_density
+"Sherbet, orange",Sweets,144.0,1.1,30.4,2.0,0.0,0.0,0.0,0.0,2.3,0.0,0.14,False,International,Various,Mild,0.033,0.06,0.907,41.8,False,True,False,False,low_density
+"Orange, canned, NFS",Citrus fruits,46.0,0.6,11.82,0.04,0.0,0.0,0.0,0.0,33.3,0.0,0.26,False,International,Various,Mild,0.048,0.003,0.949,48.4,True,True,False,False,low_density
+"Beverages, carbonated, orange",Beverages,201.0,0.0,12.3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.06,False,International,Various,Mild,0.0,0.0,1.0,40.0,True,True,False,False,moderate_density
+"Orange peel, raw",Fruits and Fruit Juices,405.0,1.5,25.0,0.2,0.0,0.0,0.0,0.0,136.0,0.0,0.8,False,International,Various,Mild,0.056,0.007,0.936,71.5,False,True,False,False,high_density
+"Orange, canned, in syrup",Citrus fruits,55.0,0.59,14.07,0.04,0.0,0.0,0.0,0.0,32.5,0.0,0.26,False,International,Various,Mild,0.04,0.003,0.957,48.2,True,True,False,False,low_density
+"Oranges, raw, Florida",Fruits and Fruit Juices,46.0,0.7,11.5,0.21,0.0,0.0,0.0,0.0,45.0,0.0,0.09,False,International,Various,Mild,0.056,0.017,0.927,50.9,True,True,False,False,low_density
+"Oranges, raw, navels",Fruits and Fruit Juices,47.0,0.91,11.8,0.15,0.0,0.0,0.0,0.0,59.1,0.0,0.33,False,International,Various,Mild,0.071,0.012,0.918,54.4,True,True,False,False,low_density
+"Oranges, raw, with peel",Fruits and Fruit Juices,262.0,1.3,15.5,0.3,0.0,0.0,0.0,0.0,71.0,0.0,0.8,False,International,Various,Mild,0.076,0.018,0.906,57.8,True,True,False,False,moderate_density
+"Tomatoes, orange, raw",Vegetables and Vegetable Products,67.0,1.16,3.18,0.19,0.0,0.0,0.0,0.0,16.0,0.0,0.47,False,International,Various,Mild,0.256,0.042,0.702,46.5,True,True,False,False,low_density
+"Grapes, raw",Grapes,83.0,0.9,19.4,0.2,0.0,0.0,0.0,0.0,3.2,0.0,0.18,False,International,Various,Mild,0.044,0.01,0.946,43.1,True,True,False,False,low_density
+"Grape juice, 100%",Other fruit juice,66.0,0.18,15.73,0.28,0.0,0.0,0.0,0.0,50.4,0.0,0.08,False,International,Various,Mild,0.011,0.017,0.972,50.3,True,True,False,False,low_density
+"Grape leaves, canned",Vegetables and Vegetable Products,69.0,4.27,11.7,1.97,0.0,0.0,0.0,0.0,11.3,0.0,2.98,False,International,Various,Mild,0.238,0.11,0.652,53.1,True,True,False,False,low_density
+"Grape leaves, raw",Vegetables and Vegetable Products,390.0,5.6,17.3,2.12,0.0,0.0,0.0,0.0,11.1,0.0,2.63,False,International,Various,Mild,0.224,0.085,0.691,56.9,True,True,False,False,high_density
+"Grapes, muscadine, raw",Fruits and Fruit Juices,238.0,0.81,13.9,0.47,0.0,0.0,0.0,0.0,6.5,0.0,0.26,False,International,Various,Mild,0.053,0.031,0.916,43.3,True,True,False,False,moderate_density
+"Tomatoes, grape, raw",Vegetables and Vegetable Products,27.0,0.83,5.51,0.63,0.0,0.0,0.0,0.0,27.2,0.0,0.33,False,International,Various,Mild,0.119,0.09,0.791,47.3,True,True,False,False,low_density
+"Beverages, carbonated, grape soda",Beverages,180.0,0.0,11.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.08,False,International,Various,Mild,0.0,0.0,1.0,40.0,True,True,False,False,moderate_density
+"Beverages, grape drink, canned",Beverages,61.0,0.0,15.7,0.0,0.0,0.0,0.0,0.0,31.4,0.0,0.07,False,International,Various,Mild,0.0,0.0,1.0,46.3,True,True,False,False,low_density
+"Grape juice drink, light",Fruit drinks,23.0,0.06,5.51,0.1,0.0,0.0,0.0,0.0,17.6,0.0,0.03,False,International,Various,Mild,0.011,0.018,0.972,43.6,True,True,False,False,low_density
+Grape leaves stuffed with rice,Rice mixed dishes,168.0,2.28,13.88,11.95,0.0,0.0,0.0,0.0,5.6,0.0,1.25,False,International,Various,Mild,0.081,0.425,0.494,36.0,True,True,False,False,moderate_density
+"Beverages, grape juice drink, canned",Beverages,237.0,0.0,14.6,0.0,0.0,0.0,0.0,0.0,26.5,0.0,0.13,False,International,Various,Mild,0.0,0.0,1.0,45.3,True,True,False,False,moderate_density
+"Beverages, OCEAN SPRAY, Cran Grape",Beverages,224.0,0.21,13.2,0.0,0.0,0.0,0.0,0.0,28.1,0.0,0.04,False,International,Various,Mild,0.016,0.0,0.984,46.2,True,True,False,False,moderate_density
+"Grape juice, 100%, with calcium added",Other fruit juice,62.0,0.37,14.77,0.13,0.0,0.0,0.0,0.0,25.0,0.0,0.25,False,International,Various,Mild,0.024,0.009,0.967,46.0,True,True,False,False,low_density
+Stuffed grape leaves with beef and rice,Meat mixed dishes,228.0,8.15,11.3,17.03,0.0,0.0,0.0,0.0,9.7,0.0,1.91,False,International,Various,Mild,0.223,0.467,0.31,49.4,True,False,False,False,moderate_density
+Stuffed grape leaves with lamb and rice,Meat mixed dishes,271.0,8.17,11.89,21.52,0.0,0.0,0.0,0.0,8.0,0.0,1.83,False,International,Various,Mild,0.196,0.518,0.286,44.6,True,False,False,False,moderate_density
+"Mango, raw",Mango and papaya,60.0,0.82,14.98,0.38,0.0,0.0,0.0,0.0,36.4,0.0,0.16,False,International,Various,Mild,0.051,0.023,0.926,49.4,True,True,False,False,low_density
+"Mango, canned",Mango and papaya,65.0,0.62,16.22,0.3,0.0,0.0,0.0,0.0,21.8,0.0,0.12,False,International,Various,Mild,0.036,0.018,0.946,45.9,True,True,False,False,low_density
+"Mango, frozen",Mango and papaya,60.0,0.82,14.98,0.38,0.0,0.0,0.0,0.0,36.4,0.0,0.16,False,International,Various,Mild,0.051,0.023,0.926,49.4,True,True,False,False,low_density
+Mango nectar,Fruit drinks,51.0,0.11,13.12,0.06,0.0,0.0,0.0,0.0,15.2,0.0,0.36,False,International,Various,Mild,0.008,0.005,0.987,43.3,True,True,False,False,low_density
+"Mango, dried",Dried fruits,319.0,2.45,78.58,1.18,0.0,0.0,0.0,0.0,42.3,0.0,0.23,False,International,Various,Mild,0.03,0.014,0.956,54.6,False,True,False,False,moderate_density
+"Mangos, raw",Fruits and Fruit Juices,60.0,0.82,15.0,0.38,0.0,0.0,0.0,0.0,36.4,0.0,0.16,False,International,Various,Mild,0.051,0.023,0.926,49.4,True,True,False,False,low_density
+"Mango nectar, canned",Fruits and Fruit Juices,51.0,0.11,13.1,0.06,0.0,0.0,0.0,0.0,15.2,0.0,0.36,False,International,Various,Mild,0.008,0.005,0.987,43.3,True,True,False,False,low_density
+"Mango, dried, sweetened",Fruits and Fruit Juices,1340.0,2.45,78.6,1.18,0.0,0.0,0.0,0.0,42.3,0.0,0.23,False,International,Various,Mild,0.03,0.014,0.956,54.6,False,True,False,False,high_density
+"Beverages, V8 SPLASH Smoothies, Peach Mango",Beverages,37.0,1.22,7.76,0.0,0.0,0.0,0.0,0.0,24.5,0.0,0.15,False,International,Various,Mild,0.136,0.0,0.864,48.6,True,True,False,False,low_density
+"Yogurt, Greek, 2% fat, mango, CHOBANI",Dairy and Egg Products,93.0,7.64,11.8,1.69,0.0,0.0,0.0,0.0,0.0,0.0,0.03,False,International,Various,Mild,0.362,0.08,0.558,61.2,True,True,False,False,low_density
+"Beverages, V8 SPLASH Juice Drinks, Mango Peach",Beverages,33.0,0.0,8.23,0.0,0.0,0.0,0.0,0.0,24.7,0.0,0.0,False,International,Various,Mild,0.0,0.0,1.0,44.9,True,True,False,False,low_density
+"Beverages, V8 V-FUSION Juices, Peach Mango",Beverages,49.0,0.41,11.4,0.0,0.0,0.0,0.0,0.0,24.4,0.0,0.15,False,International,Various,Mild,0.035,0.0,0.965,46.1,True,True,False,False,low_density
+"Fruit juice smoothie, NAKED JUICE, MIGHTY MANGO",Fruits and Fruit Juices,262.0,0.42,15.0,0.0,0.0,0.0,0.0,0.0,2.5,0.0,0.15,False,International,Various,Mild,0.027,0.0,0.973,41.8,True,True,False,False,moderate_density
+"Salsa, red, homemade",Tomato-based condiments,34.0,1.44,6.74,0.19,0.0,0.0,0.0,0.0,1.9,0.0,0.42,False,International,Various,Mild,0.172,0.023,0.805,44.5,True,True,False,False,low_density
+"Pear, raw",Pears,59.0,0.37,15.18,0.15,0.0,0.0,0.0,0.0,4.3,0.0,0.18,False,International,Various,Mild,0.024,0.01,0.967,41.8,True,True,False,False,low_density
+Pear nectar,Fruit drinks,60.0,0.11,15.76,0.01,0.0,0.0,0.0,0.0,1.1,0.0,0.26,False,International,Various,Mild,0.007,0.001,0.992,40.5,True,True,False,False,low_density
+"Pear, dried",Dried fruits,262.0,1.87,69.7,0.63,0.0,0.0,0.0,0.0,7.0,0.0,2.1,False,International,Various,Mild,0.026,0.009,0.965,46.4,False,True,False,False,moderate_density
+"Pears, raw",Fruits and Fruit Juices,57.0,0.36,15.2,0.14,0.0,0.0,0.0,0.0,4.3,0.0,0.18,False,International,Various,Mild,0.023,0.009,0.968,41.8,True,True,False,False,low_density
+"Pear, Asian, raw",Pears,42.0,0.5,10.65,0.23,0.0,0.0,0.0,0.0,3.8,0.0,0.0,False,International,Various,Mild,0.044,0.02,0.936,42.0,True,True,False,False,low_density
+"Pear, canned, in syrup",Pears,59.0,0.18,15.15,0.05,0.0,0.0,0.0,0.0,0.9,0.0,0.2,False,International,Various,Mild,0.012,0.003,0.985,40.7,True,True,False,False,low_density
+"Pear, canned, NFS",Pears,52.0,0.2,13.47,0.06,0.0,0.0,0.0,0.0,1.0,0.0,0.25,False,International,Various,Mild,0.015,0.004,0.981,40.7,True,True,False,False,low_density
+"Pears, asian, raw",Fruits and Fruit Juices,176.0,0.5,10.6,0.23,0.0,0.0,0.0,0.0,3.8,0.0,0.0,False,International,Various,Mild,0.044,0.02,0.936,42.0,True,True,False,False,moderate_density
+"Pears, raw, bartlett",Fruits and Fruit Juices,238.0,0.38,15.1,0.16,0.0,0.0,0.0,0.0,4.4,0.0,0.17,False,International,Various,Mild,0.024,0.01,0.965,41.9,True,True,False,False,moderate_density
+"Prickly pears, raw",Fruits and Fruit Juices,172.0,0.73,9.57,0.51,0.0,0.0,0.0,0.0,14.0,0.0,0.3,False,International,Various,Mild,0.068,0.047,0.885,44.5,True,True,False,False,moderate_density
+"Pear, canned, juice pack",Pears,45.0,0.23,11.79,0.07,0.0,0.0,0.0,0.0,1.1,0.0,0.29,False,International,Various,Mild,0.019,0.006,0.975,40.8,True,True,False,False,low_density
+"Pears, dried, sulfured, uncooked",Fruits and Fruit Juices,1100.0,1.87,69.7,0.63,0.0,0.0,0.0,0.0,7.0,0.0,2.1,False,International,Various,Mild,0.026,0.009,0.965,46.4,False,True,False,False,high_density
+"Pears, raw, red anjou",Fruits and Fruit Juices,62.0,0.33,14.9,0.14,0.0,0.0,0.0,0.0,5.2,0.0,0.19,False,International,Various,Mild,0.021,0.009,0.969,41.9,True,True,False,False,low_density
+"Strawberries, raw",Strawberries,36.0,0.64,7.96,0.22,0.0,0.0,0.0,0.0,59.6,0.0,0.26,False,International,Various,Mild,0.073,0.025,0.902,53.6,True,True,False,False,low_density
+"Strawberries, canned",Strawberries,92.0,0.56,23.53,0.26,0.0,0.0,0.0,0.0,31.7,0.0,0.49,False,International,Various,Mild,0.023,0.011,0.966,47.8,True,True,False,False,low_density
+"Strawberries, frozen",Strawberries,35.0,0.43,9.13,0.11,0.0,0.0,0.0,0.0,41.2,0.0,0.75,False,International,Various,Mild,0.044,0.011,0.944,49.4,True,True,False,False,low_density
+"Pie, strawberry",Cakes and pies,289.0,2.88,44.22,11.6,0.0,0.0,0.0,0.0,15.8,0.0,1.37,False,International,Various,Mild,0.049,0.198,0.753,40.2,False,True,False,False,moderate_density
+"Toppings, strawberry",Sweets,1060.0,0.2,66.3,0.1,0.0,0.0,0.0,0.0,13.7,0.0,0.28,False,International,Various,Mild,0.003,0.002,0.995,43.2,False,True,False,False,high_density
+"Cake or cupcake, strawberry",Cakes and pies,326.0,2.22,50.25,12.89,0.0,0.0,0.0,0.0,3.3,0.0,0.87,False,International,Various,Mild,0.034,0.197,0.769,34.4,False,False,False,False,moderate_density
+"Cake, strawberry shortcake",Cakes and pies,214.0,3.31,40.09,4.73,0.0,0.0,0.0,0.0,12.4,0.0,1.6,False,International,Various,Mild,0.069,0.098,0.833,47.7,False,True,False,False,moderate_density
+"Guavas, strawberry, raw",Fruits and Fruit Juices,289.0,0.58,17.4,0.6,0.0,0.0,0.0,0.0,37.0,0.0,0.22,False,International,Various,Mild,0.031,0.032,0.936,48.5,True,True,False,False,moderate_density
+"Ice creams, strawberry",Sweets,803.0,3.2,27.6,8.4,0.0,0.0,0.0,0.0,7.7,0.0,0.21,False,International,Various,Mild,0.082,0.214,0.704,42.7,False,True,False,False,high_density
+"McDONALD'S, Strawberry Sundae",Fast Foods,158.0,3.19,28.1,3.95,0.0,0.0,0.0,0.0,1.5,0.0,0.1,False,International,Various,Mild,0.091,0.112,0.797,45.9,False,True,False,False,moderate_density
+Strawberry drink syrup,"Jams, syrups, toppings",261.0,0.0,65.1,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.03,False,International,Various,Mild,0.0,0.0,1.0,40.0,False,True,False,False,moderate_density
+"Strawberry juice, 100%",Other fruit juice,23.0,0.42,5.17,0.14,0.0,0.0,0.0,0.0,38.7,0.0,0.17,False,International,Various,Mild,0.073,0.024,0.902,48.9,True,True,False,False,low_density
+"Strawberry milk, NFS","Flavored milk, reduced fat",65.0,3.2,8.54,2.06,0.0,0.0,0.0,0.0,0.1,0.0,0.02,False,International,Various,Mild,0.232,0.149,0.619,47.6,True,True,False,False,low_density
+"Strawberry milk, whole","Flavored milk, whole",86.0,3.03,11.79,2.97,0.0,0.0,0.0,0.0,0.0,0.0,0.03,False,International,Various,Mild,0.17,0.167,0.663,46.1,True,True,False,False,low_density
+"Fast foods, sundae, strawberry",Fast Foods,732.0,4.09,29.2,5.13,0.0,0.0,0.0,0.0,1.3,0.0,0.21,False,International,Various,Mild,0.106,0.134,0.76,47.4,False,True,False,False,high_density
+"Kefir, lowfat, strawberry, LIFEWAY",Dairy and Egg Products,62.0,3.39,10.2,0.9,0.0,0.0,0.0,0.0,1.5,0.0,0.04,False,International,Various,Mild,0.234,0.062,0.704,49.6,True,True,False,False,low_density
+SILK Strawberry soy yogurt,Legumes and Legume Products,94.0,2.35,18.2,1.18,0.0,0.0,0.0,0.0,17.6,0.0,0.64,False,International,Various,Mild,0.108,0.054,0.838,49.4,True,True,False,False,low_density
+"Strawberries, frozen, sweetened, sliced",Fruits and Fruit Juices,402.0,0.53,25.9,0.13,0.0,0.0,0.0,0.0,41.4,0.0,0.59,False,International,Various,Mild,0.02,0.005,0.975,49.7,False,True,False,False,high_density
+"Blueberries, raw",Blueberries and other berries,64.0,0.7,14.57,0.31,0.0,0.0,0.0,0.0,8.1,0.0,0.34,False,International,Various,Mild,0.045,0.02,0.935,43.4,True,True,False,False,low_density
+"Blueberries, frozen",Blueberries and other berries,51.0,0.42,12.17,0.64,0.0,0.0,0.0,0.0,2.5,0.0,0.18,False,International,Various,Mild,0.032,0.048,0.92,41.1,True,True,False,False,low_density
+"Blueberries, dried",Dried fruits,317.0,2.5,80.0,2.5,0.0,0.0,0.0,0.0,23.8,0.0,0.9,False,International,Various,Mild,0.029,0.029,0.941,49.8,False,True,False,False,moderate_density
+Blueberry juice,Other fruit juice,42.0,0.46,9.47,0.2,0.0,0.0,0.0,0.0,5.3,0.0,0.22,False,International,Various,Mild,0.045,0.02,0.935,42.2,True,True,False,False,low_density
+Blueberry syrup,"Jams, syrups, toppings",341.0,0.0,85.13,0.0,0.0,0.0,0.0,0.0,1.6,0.0,0.04,False,International,Various,Mild,0.0,0.0,1.0,40.3,False,True,False,False,moderate_density
+"Pie, blueberry",Cakes and pies,300.0,2.82,37.95,15.52,0.0,0.0,0.0,0.0,1.1,0.0,1.21,False,International,Various,Mild,0.05,0.276,0.674,33.2,False,False,False,False,moderate_density
+"Blueberries, dried, sweetened",Fruits and Fruit Juices,1330.0,2.5,80.0,2.5,0.0,0.0,0.0,0.0,23.8,0.0,0.9,False,International,Various,Mild,0.029,0.029,0.941,49.8,False,True,False,False,high_density
+"Blueberries, frozen, sweetened",Fruits and Fruit Juices,355.0,0.4,22.0,0.13,0.0,0.0,0.0,0.0,1.0,0.0,0.39,False,International,Various,Mild,0.018,0.006,0.976,41.3,True,True,False,False,high_density
+Blueberry pie filling,"Jams, syrups, toppings",181.0,0.41,44.38,0.2,0.0,0.0,0.0,0.0,0.7,0.0,0.8,False,International,Various,Mild,0.009,0.004,0.986,41.2,False,True,False,False,moderate_density
+"Muffins, blueberry, toaster-type",Baked Products,1310.0,4.6,53.3,9.5,0.0,0.0,0.0,0.0,0.0,0.0,0.51,False,International,Various,Mild,0.068,0.141,0.791,44.3,False,True,False,False,high_density
+"Pie fillings, blueberry, canned",Sweets,757.0,0.41,44.4,0.2,0.0,0.0,0.0,0.0,0.7,0.0,0.8,False,International,Various,Mild,0.009,0.004,0.986,41.2,False,True,False,False,high_density
+"Pie, blueberry, commercially prepared",Baked Products,971.0,1.8,34.9,10.0,0.0,0.0,0.0,0.0,2.7,0.0,0.3,False,International,Various,Mild,0.039,0.214,0.747,35.9,False,True,False,False,high_density
+SILK Blueberry soy yogurt,Legumes and Legume Products,88.0,2.35,17.1,1.18,0.0,0.0,0.0,0.0,17.6,0.0,0.64,False,International,Various,Mild,0.114,0.057,0.829,49.4,True,True,False,False,low_density
+"Yogurt, Greek, Blueberry, CHOBANI",Dairy and Egg Products,82.0,7.23,12.8,0.24,0.0,0.0,0.0,0.0,0.3,0.0,0.15,False,International,Various,Mild,0.357,0.012,0.631,61.5,True,True,False,False,low_density
+Potato patty,French fries and other fried white potatoes,171.0,3.89,13.49,11.32,0.0,0.0,0.0,0.0,0.5,0.0,0.75,False,International,Various,Mild,0.136,0.394,0.47,40.4,True,True,False,False,moderate_density
+"Soup, potato","Soups, cream-based",90.0,1.51,10.53,4.71,0.0,0.0,0.0,0.0,7.1,0.0,0.34,False,International,Various,Mild,0.09,0.281,0.629,41.2,True,True,False,False,low_density
+Potato pancake,Mashed potatoes and white potato mixtures,196.0,4.47,20.64,10.8,0.0,0.0,0.0,0.0,15.6,0.0,1.3,False,International,Various,Mild,0.124,0.301,0.575,45.7,True,True,False,False,moderate_density
+Stewed potatoes,Mashed potatoes and white potato mixtures,103.0,1.99,16.26,3.39,0.0,0.0,0.0,0.0,15.1,0.0,0.38,False,International,Various,Mild,0.092,0.157,0.751,45.6,True,True,False,False,low_density
+"Potato, NFS","White potatoes, baked or boiled",126.0,1.87,20.45,4.25,0.0,0.0,0.0,0.0,12.1,0.0,0.34,False,International,Various,Mild,0.07,0.16,0.77,43.8,True,True,False,False,low_density
+"Bread, potato",Baked Products,1120.0,12.5,47.1,3.13,0.0,0.0,0.0,0.0,0.0,0.0,2.25,False,International,Various,Mild,0.199,0.05,0.751,74.4,False,True,False,True,high_density
+"Gnocchi, potato","Pasta mixed dishes, excludes macaroni and cheese",135.0,2.44,17.2,6.33,0.0,0.0,0.0,0.0,1.9,0.0,0.83,False,International,Various,Mild,0.094,0.244,0.662,41.4,True,True,False,False,low_density
+Potato flour,Vegetables and Vegetable Products,357.0,6.9,83.1,0.34,0.0,0.0,0.0,0.0,3.8,0.0,1.38,False,International,Various,Mild,0.076,0.004,0.92,61.1,False,True,False,False,high_density
+Potato pancakes,Vegetables and Vegetable Products,268.0,6.08,27.8,14.8,0.0,0.0,0.0,0.0,27.6,0.0,1.67,False,International,Various,Mild,0.125,0.304,0.571,49.0,False,False,False,False,moderate_density
+"Soup, potato with meat","Soups, cream-based",109.0,3.78,8.81,6.43,0.0,0.0,0.0,0.0,5.5,0.0,0.48,False,International,Various,Mild,0.199,0.338,0.463,46.0,True,True,False,False,low_density
+"Potato tots, NFS",French fries and other fried white potatoes,237.0,1.9,24.4,15.46,0.0,0.0,0.0,0.0,6.4,0.0,0.47,False,International,Various,Mild,0.045,0.37,0.584,31.5,True,False,False,False,moderate_density
+"Potato tots, school",French fries and other fried white potatoes,166.0,2.02,19.34,9.16,0.0,0.0,0.0,0.0,10.1,0.0,0.66,False,International,Various,Mild,0.066,0.3,0.634,38.9,True,True,False,False,moderate_density
+Sweet potato tots,Fried vegetables,191.0,2.26,37.3,9.35,0.0,0.0,0.0,0.0,7.5,0.0,0.81,False,International,Various,Mild,0.046,0.191,0.763,38.9,False,True,False,False,moderate_density
+"Potato, boiled, NFS","White potatoes, baked or boiled",126.0,1.87,20.45,4.25,0.0,0.0,0.0,0.0,12.1,0.0,0.34,False,International,Various,Mild,0.07,0.16,0.77,43.8,True,True,False,False,low_density
+"Potato chips, NFS",Potato chips,532.0,6.39,53.83,33.98,0.0,0.0,0.0,0.0,21.6,0.0,1.28,False,International,Various,Mild,0.068,0.361,0.571,29.5,False,False,False,False,high_density
+"Potato chips, plain",Potato chips,532.0,6.39,53.83,33.98,0.0,0.0,0.0,0.0,21.6,0.0,1.28,False,International,Various,Mild,0.068,0.361,0.571,29.5,False,False,False,False,high_density
+"Potato chips, unsalted",Potato chips,537.0,6.25,59.66,30.3,0.0,0.0,0.0,0.0,22.6,0.0,1.19,False,International,Various,Mild,0.065,0.315,0.62,33.0,False,False,False,False,high_density
+"Potato sticks, flavored",Potato chips,517.0,6.63,52.77,34.06,0.0,0.0,0.0,0.0,46.8,0.0,2.25,False,International,Various,Mild,0.071,0.364,0.565,35.2,False,False,False,False,high_density
+"Bread, sweet potato",Yeast breads,241.0,8.64,45.38,2.87,0.0,0.0,0.0,0.0,4.1,0.0,3.14,False,International,Various,Mild,0.152,0.05,0.798,63.9,False,True,False,False,moderate_density
+"Pie, sweet potato",Cakes and pies,269.0,4.96,41.08,9.75,0.0,0.0,0.0,0.0,10.3,0.0,1.06,False,International,Various,Mild,0.089,0.175,0.736,47.2,False,True,False,False,moderate_density
+Sweet potato chips,"Tortilla, corn, other chips",529.0,2.92,56.54,32.19,0.0,0.0,0.0,0.0,0.0,0.0,2.11,False,International,Various,Mild,0.032,0.351,0.617,16.6,False,False,False,False,high_density
+Sweet potato paste,"Jams, syrups, toppings",305.0,0.49,75.14,0.34,0.0,0.0,0.0,0.0,3.9,0.0,0.16,False,International,Various,Mild,0.006,0.004,0.989,41.9,False,True,False,False,moderate_density
+"Sweet potato, candied",Other red and orange vegetables,187.0,1.18,37.69,3.48,0.0,0.0,0.0,0.0,9.3,0.0,0.31,False,International,Various,Mild,0.028,0.082,0.89,41.9,False,True,False,False,moderate_density
+"Sweet potato, NFS",Other red and orange vegetables,115.0,1.58,17.14,4.53,0.0,0.0,0.0,0.0,12.4,0.0,0.4,False,International,Various,Mild,0.068,0.195,0.737,42.7,True,True,False,False,low_density
+"Sweet potato tots, school",Fried vegetables,192.0,2.27,37.45,9.39,0.0,0.0,0.0,0.0,7.5,0.0,0.81,False,International,Various,Mild,0.046,0.191,0.763,38.9,False,True,False,False,moderate_density
+"Sweet potato, casserole or mashed",Other red and orange vegetables,99.0,1.89,17.22,2.56,0.0,0.0,0.0,0.0,10.4,0.0,0.34,False,International,Various,Mild,0.087,0.118,0.795,45.2,True,True,False,False,low_density
+"Bread, sweet potato, toasted",Yeast breads,265.0,9.5,49.87,3.15,0.0,0.0,0.0,0.0,3.8,0.0,3.45,False,International,Various,Mild,0.152,0.05,0.798,66.1,False,True,False,False,moderate_density
+"Sweet potato fries, frozen",Fried vegetables,192.0,2.27,37.45,9.39,0.0,0.0,0.0,0.0,7.5,0.0,0.81,False,International,Various,Mild,0.046,0.191,0.763,38.9,False,True,False,False,moderate_density
+"Sweet potato fries, NFS",Fried vegetables,192.0,2.27,37.45,9.39,0.0,0.0,0.0,0.0,7.5,0.0,0.81,False,International,Various,Mild,0.046,0.191,0.763,38.9,False,True,False,False,moderate_density
+"Sweet potato fries, school",Fried vegetables,192.0,2.27,37.45,9.39,0.0,0.0,0.0,0.0,7.5,0.0,0.81,False,International,Various,Mild,0.046,0.191,0.763,38.9,False,True,False,False,moderate_density
+"Sweet potato leaves, raw",Vegetables and Vegetable Products,175.0,2.49,8.82,0.51,0.0,0.0,0.0,0.0,11.0,0.0,0.97,False,International,Various,Mild,0.211,0.043,0.746,49.2,True,True,False,False,moderate_density
+"Sweet potato, canned, mashed",Vegetables and Vegetable Products,101.0,1.98,23.2,0.2,0.0,0.0,0.0,0.0,5.2,0.0,1.33,False,International,Various,Mild,0.078,0.008,0.914,46.8,True,True,False,False,low_density
+"Sweet potato, cooked, as ingredient",Not included in a food category,82.0,1.65,18.05,0.4,0.0,0.0,0.0,0.0,13.1,0.0,0.42,False,International,Various,Mild,0.082,0.02,0.898,47.2,True,True,False,False,low_density
+"Tomatoes, raw",Tomatoes,20.0,0.82,4.04,0.31,0.0,0.0,0.0,0.0,16.3,0.0,0.22,False,International,Various,Mild,0.159,0.06,0.781,45.4,True,True,False,False,low_density
+Guacamole with tomatoes,"Dips, gravies, other sauces",145.0,1.87,8.09,13.09,0.0,0.0,0.0,0.0,10.5,0.0,0.52,False,International,Various,Mild,0.081,0.568,0.351,34.6,True,False,False,False,low_density
+"Soup, tomato","Soups, broth-based",19.0,0.65,3.64,0.41,0.0,0.0,0.0,0.0,5.9,0.0,0.44,False,International,Various,Mild,0.138,0.087,0.774,42.7,True,True,False,False,low_density
+"Tomatoes, scalloped",Vegetable dishes,110.0,2.7,14.1,4.97,0.0,0.0,0.0,0.0,12.2,0.0,0.89,False,International,Various,Mild,0.124,0.228,0.648,45.6,True,True,False,False,low_density
+"Tomato products, canned, sauce, with tomato tidbits",Vegetables and Vegetable Products,134.0,1.32,7.09,0.39,0.0,0.0,0.0,0.0,21.5,0.0,0.68,False,International,Various,Mild,0.15,0.044,0.806,47.9,True,True,False,False,low_density
+Sun-dried tomatoes,Tomatoes,258.0,14.11,55.76,2.97,0.0,0.0,0.0,0.0,39.2,0.0,9.09,False,International,Various,Mild,0.194,0.041,0.766,87.2,False,True,False,True,moderate_density
+"Tomatoes, red, ripe, canned, packed in tomato juice",Vegetables and Vegetable Products,16.0,0.79,3.47,0.25,0.0,0.0,0.0,0.0,12.6,0.0,0.57,False,International,Various,Mild,0.175,0.055,0.769,44.6,True,True,False,False,low_density
+Fried green tomatoes,Fried vegetables,216.0,3.68,21.78,12.84,0.0,0.0,0.0,0.0,6.2,0.0,1.64,False,International,Various,Mild,0.096,0.335,0.569,39.4,True,False,False,False,moderate_density
+Tomato juice cocktail,Vegetable juice,22.0,0.93,3.87,0.31,0.0,0.0,0.0,0.0,54.3,0.0,0.28,False,International,Various,Mild,0.182,0.061,0.757,53.3,True,True,False,False,low_density
+"Rice, white, with tomatoes and/or tomato-based sauce, fat added",Rice mixed dishes,107.0,2.0,19.41,2.18,0.0,0.0,0.0,0.0,4.1,0.0,0.97,False,International,Various,Mild,0.085,0.092,0.823,44.6,True,True,False,False,low_density
+"Tomatoes, canned, cooked",Tomatoes,43.0,0.82,3.23,3.04,0.0,0.0,0.0,0.0,12.2,0.0,0.56,False,International,Various,Mild,0.116,0.429,0.456,41.9,True,True,False,False,low_density
+"Tomatoes, fresh, cooked",Tomatoes,50.0,1.08,4.71,3.42,0.0,0.0,0.0,0.0,15.8,0.0,0.33,False,International,Various,Mild,0.117,0.371,0.511,43.0,True,True,False,False,low_density
+Bacon and tomato dressing,Salad dressings and vegetable oils,326.0,1.8,2.0,35.0,0.0,0.0,0.0,0.0,8.8,0.0,0.27,False,International,Various,Mild,0.046,0.902,0.052,12.2,True,False,False,False,moderate_density
+"Beans and rice, with tomatoes","Bean, pea, legume dishes",137.0,4.7,21.9,3.46,0.0,0.0,0.0,0.0,1.5,0.0,1.46,False,International,Various,Mild,0.156,0.115,0.729,50.9,True,True,False,False,low_density
+Pork with chili and tomatoes,Meat mixed dishes,95.0,11.64,2.68,3.99,0.0,0.0,0.0,0.0,16.7,0.0,0.58,False,International,Various,Mild,0.636,0.218,0.146,74.3,True,True,False,False,low_density
+"Soup, cream of tomato","Soups, cream-based",70.0,1.21,6.39,4.68,0.0,0.0,0.0,0.0,6.0,0.0,0.6,False,International,Various,Mild,0.099,0.381,0.52,40.2,True,True,False,False,low_density
+"Soup, tomato, canned","Soups, broth-based",34.0,0.63,7.65,0.33,0.0,0.0,0.0,0.0,2.8,0.0,0.44,False,International,Various,Mild,0.073,0.038,0.889,42.1,True,True,False,False,low_density
+Stewed potatoes with tomatoes,Mashed potatoes and white potato mixtures,87.0,1.71,12.89,3.29,0.0,0.0,0.0,0.0,15.1,0.0,0.36,False,International,Various,Mild,0.096,0.184,0.721,44.9,True,True,False,False,low_density
+"Onions, raw",Onions,38.0,0.86,8.46,0.08,0.0,0.0,0.0,0.0,8.2,0.0,0.24,False,International,Various,Mild,0.091,0.009,0.9,44.1,True,True,False,False,low_density
+"Bread, onion",Yeast breads,238.0,8.81,44.32,2.95,0.0,0.0,0.0,0.0,0.9,0.0,3.11,False,International,Various,Mild,0.157,0.053,0.79,63.7,False,True,False,False,moderate_density
+"Onions, green, raw",Onions,32.0,1.83,7.34,0.19,0.0,0.0,0.0,0.0,18.8,0.0,1.48,False,International,Various,Mild,0.196,0.02,0.784,49.1,True,True,False,False,low_density
+"Onions, green, cooked",Onions,63.0,2.09,8.37,3.21,0.0,0.0,0.0,0.0,18.2,0.0,1.69,False,International,Various,Mild,0.153,0.235,0.612,46.7,True,True,False,False,low_density
+"Onions, pearl, cooked",Onions,50.0,0.7,6.49,2.59,0.0,0.0,0.0,0.0,4.9,0.0,0.33,False,International,Various,Mild,0.072,0.265,0.664,40.5,True,True,False,False,low_density
+"Onion dip, regular","Dips, gravies, other sauces",346.0,2.15,3.92,35.77,0.0,0.0,0.0,0.0,0.9,0.0,0.1,False,International,Various,Mild,0.051,0.855,0.094,10.9,True,False,False,False,moderate_density
+"Onion dip, light","Dips, gravies, other sauces",166.0,2.0,11.87,12.36,0.0,0.0,0.0,0.0,0.9,0.0,0.1,False,International,Various,Mild,0.076,0.471,0.453,33.8,True,False,False,False,moderate_density
+"Bread, onion, toasted",Yeast breads,262.0,9.68,48.7,3.24,0.0,0.0,0.0,0.0,0.8,0.0,3.41,False,International,Various,Mild,0.157,0.053,0.79,66.0,False,True,False,False,moderate_density
+"DENNY'S, onion rings",Restaurant Foods,385.0,5.29,41.0,22.2,0.0,0.0,0.0,0.0,0.0,0.0,0.74,False,International,Various,Mild,0.077,0.324,0.599,33.7,False,False,False,False,high_density
+Fried onion rings,Fried vegetables,352.0,4.19,39.94,19.82,0.0,0.0,0.0,0.0,1.5,0.0,0.96,False,International,Various,Mild,0.066,0.31,0.625,33.0,False,False,False,False,high_density
+Onion flavored rings,"Tortilla, corn, other chips",499.0,7.7,65.1,22.6,0.0,0.0,0.0,0.0,1.8,0.0,3.72,False,International,Various,Mild,0.081,0.237,0.682,40.9,False,False,False,False,high_density
+"Onions, cooked, as ingredient",Not included in a food category,47.0,1.29,10.99,0.12,0.0,0.0,0.0,0.0,7.4,0.0,0.25,False,International,Various,Mild,0.104,0.01,0.886,45.2,True,True,False,False,low_density
+"Onions, dehydrated flakes",Vegetables and Vegetable Products,349.0,8.95,83.3,0.46,0.0,0.0,0.0,0.0,75.0,0.0,1.55,False,International,Various,Mild,0.097,0.005,0.899,81.4,False,True,False,False,moderate_density
+"Onions, for use on a sandwich",Vegetables on a sandwich,38.0,0.86,8.46,0.08,0.0,0.0,0.0,0.0,8.2,0.0,0.24,False,International,Various,Mild,0.091,0.009,0.9,44.1,True,True,False,False,low_density
+"Onions, red, raw",Vegetables and Vegetable Products,44.0,0.94,9.93,0.1,0.0,0.0,0.0,0.0,8.1,0.0,0.24,False,International,Various,Mild,0.086,0.009,0.905,44.3,True,True,False,False,low_density
+"Onions, sweet, raw",Vegetables and Vegetable Products,32.0,0.8,7.55,0.08,0.0,0.0,0.0,0.0,4.8,0.0,0.26,False,International,Various,Mild,0.095,0.009,0.896,43.3,True,True,False,False,low_density
+"Onions, welsh, raw",Vegetables and Vegetable Products,142.0,1.9,6.5,0.4,0.0,0.0,0.0,0.0,27.0,0.0,1.22,False,International,Various,Mild,0.216,0.045,0.739,50.7,True,True,False,False,low_density
+"Onions, white, raw",Vegetables and Vegetable Products,35.0,0.89,7.68,0.13,0.0,0.0,0.0,0.0,0.0,0.0,0.15,False,International,Various,Mild,0.102,0.015,0.883,42.5,True,True,False,False,low_density
+"Onions, yellow, raw",Vegetables and Vegetable Products,38.0,0.83,8.61,0.05,0.0,0.0,0.0,0.0,8.2,0.0,0.28,False,International,Various,Mild,0.087,0.005,0.907,44.1,True,True,False,False,low_density
+Garlic sauce,"Dips, gravies, other sauces",683.0,1.43,2.87,74.02,0.0,0.0,0.0,0.0,1.0,0.0,0.22,False,International,Various,Mild,0.018,0.945,0.037,0.0,True,False,False,False,high_density
+"Garlic, cooked",Mustard and other condiments,142.0,6.58,28.03,0.38,0.0,0.0,0.0,0.0,8.0,0.0,1.69,False,International,Various,Mild,0.188,0.011,0.801,61.0,False,True,False,False,low_density
+"Garlic, raw",Mustard and other condiments,143.0,6.62,28.2,0.38,0.0,0.0,0.0,0.0,10.0,0.0,1.7,False,International,Various,Mild,0.188,0.011,0.801,61.5,False,True,False,False,low_density
+"Roll, garlic",Rolls and buns,309.0,10.84,51.92,6.44,0.0,0.0,0.0,0.0,0.2,0.0,3.71,False,International,Various,Mild,0.157,0.093,0.75,66.1,False,True,False,False,moderate_density
+"Garlic bread, frozen",Baked Products,1460.0,8.36,41.7,16.6,0.0,0.0,0.0,0.0,0.2,0.0,3.05,False,International,Various,Mild,0.125,0.249,0.626,48.5,False,False,False,False,high_density
+"Garlic bread, NFS",Yeast breads,349.0,8.34,41.64,16.58,0.0,0.0,0.0,0.0,0.2,0.0,3.04,False,International,Various,Mild,0.125,0.249,0.626,48.5,False,False,False,False,moderate_density
+"Garlic bread, from frozen",Yeast breads,350.0,8.36,41.72,16.61,0.0,0.0,0.0,0.0,0.2,0.0,3.05,False,International,Various,Mild,0.125,0.249,0.626,48.5,False,False,False,False,high_density
+"PIZZA HUT, breadstick, parmesan garlic",Fast Foods,1430.0,12.2,44.5,12.9,0.0,0.0,0.0,0.0,0.0,0.0,4.65,False,International,Various,Mild,0.175,0.185,0.639,63.7,False,False,False,True,high_density
+"Garlic bread, from fast food / restaurant",Yeast breads,349.0,8.34,41.64,16.58,0.0,0.0,0.0,0.0,0.2,0.0,3.04,False,International,Various,Mild,0.125,0.249,0.626,48.5,False,False,False,False,moderate_density
+"Garlic bread, with melted cheese, from frozen",Yeast breads,343.0,10.36,36.86,17.1,0.0,0.0,0.0,0.0,0.2,0.0,2.68,False,International,Various,Mild,0.161,0.266,0.573,54.0,False,False,False,False,moderate_density
+"Garlic bread, with parmesan cheese, from frozen",Yeast breads,351.0,8.78,41.14,16.83,0.0,0.0,0.0,0.0,0.2,0.0,3.0,False,International,Various,Mild,0.132,0.252,0.616,49.6,False,False,False,False,high_density
+"Shrimp in garlic sauce, Puerto Rican style",Seafood mixed dishes,281.0,11.56,2.45,24.96,0.0,0.0,0.0,0.0,12.0,0.0,0.41,False,International,Various,Mild,0.297,0.64,0.063,52.1,True,False,False,False,moderate_density
+"Garlic bread, with parmesan cheese, from fast food / restaurant",Yeast breads,351.0,8.76,41.06,16.8,0.0,0.0,0.0,0.0,0.2,0.0,2.99,False,International,Various,Mild,0.131,0.252,0.616,49.5,False,False,False,False,high_density
+"Garlic bread, with melted cheese, from fast food / restaurant",Yeast breads,339.0,11.41,34.21,17.34,0.0,0.0,0.0,0.0,0.2,0.0,2.48,False,International,Various,Mild,0.181,0.275,0.543,56.9,False,False,False,False,moderate_density
+"Fast foods, breadstick, soft, prepared with garlic and parmesan cheese",Fast Foods,1430.0,12.2,44.5,12.9,0.0,0.0,0.0,0.0,0.0,0.0,4.65,False,International,Various,Mild,0.175,0.185,0.639,63.7,False,False,False,True,high_density
+"HORMEL ALWAYS TENDER, Pork Loin Filets, Lemon Garlic-Flavored",Pork Products,492.0,17.8,1.79,4.16,0.0,0.0,0.0,0.0,1.7,0.0,0.6,False,International,Various,Mild,0.749,0.175,0.075,89.6,True,True,False,True,high_density
+"Abiyuch, raw",Fruits and Fruit Juices,290.0,1.5,17.6,0.1,0.0,0.0,0.0,0.0,54.1,0.0,1.61,False,International,Various,Mild,0.078,0.005,0.917,55.2,True,True,False,False,moderate_density
+Dal Tadka,Lentils,120.0,7.0,18.0,4.0,8.0,2.0,400.0,250.0,5.0,30.0,2.0,True,North,Pressure Cook,Medium,0.241,0.138,0.621,90.0,True,False,True,False,low_density
+Butter Chicken,Non-Veg,280.0,25.0,5.0,20.0,1.0,3.0,600.0,350.0,8.0,40.0,15.0,True,North,Grill,Medium,0.5,0.4,0.1,89.6,True,False,False,True,moderate_density
+Palak Paneer,Veg,220.0,14.0,8.0,18.0,4.0,2.0,450.0,200.0,25.0,200.0,12.0,True,North,Sauté,Mild,0.35,0.45,0.2,80.5,True,False,False,True,moderate_density
+Chicken Biryani,Non-Veg,320.0,28.0,35.0,15.0,2.0,5.0,800.0,400.0,10.0,60.0,18.0,True,South,Dum,Spicy,0.359,0.192,0.449,100.0,False,False,False,True,moderate_density
+Aloo Gobi,Veg,140.0,3.0,15.0,10.0,5.0,3.0,300.0,150.0,30.0,25.0,8.0,True,North,Sauté,Mild,0.107,0.357,0.536,61.0,True,True,True,False,low_density
+Masoor Dal,Lentils,110.0,8.0,19.0,2.0,7.0,1.0,350.0,280.0,2.0,25.0,3.0,True,North,Boil,Medium,0.276,0.069,0.655,91.9,True,True,True,False,low_density
+Fish Curry,Non-Veg,180.0,22.0,6.0,8.0,1.0,2.0,700.0,380.0,15.0,45.0,20.0,True,South,Curry,Spicy,0.611,0.222,0.167,95.0,True,False,False,True,moderate_density
+Chole Bhature,Veg,380.0,12.0,45.0,22.0,8.0,6.0,900.0,200.0,12.0,80.0,25.0,True,North,Deep Fry,Medium,0.152,0.278,0.57,75.4,False,False,False,True,high_density
+Tandoori Chicken,Non-Veg,240.0,30.0,3.0,12.0,0.0,1.0,650.0,420.0,20.0,35.0,25.0,True,North,Grill,Spicy,0.667,0.267,0.067,100.0,True,False,False,True,moderate_density
+Vegetable Pulao,Veg,200.0,5.0,32.0,8.0,3.0,4.0,500.0,180.0,15.0,35.0,10.0,True,North,Steam,Mild,0.111,0.178,0.711,52.0,False,False,True,False,moderate_density
+Rajma,Lentils,130.0,8.0,21.0,3.0,9.0,2.0,400.0,300.0,4.0,40.0,4.0,True,North,Pressure Cook,Medium,0.25,0.094,0.656,98.8,True,False,True,False,low_density
+Baingan Bharta,Veg,100.0,2.0,12.0,7.0,6.0,5.0,250.0,120.0,8.0,20.0,6.0,True,North,Roast,Medium,0.095,0.333,0.571,58.1,True,True,True,False,low_density
+Chicken Tikka,Non-Veg,220.0,26.0,4.0,10.0,1.0,2.0,580.0,380.0,18.0,45.0,22.0,True,North,Grill,Spicy,0.65,0.25,0.1,100.0,True,False,False,True,moderate_density
+Paneer Tikka,Veg,260.0,18.0,6.0,20.0,2.0,3.0,480.0,220.0,12.0,180.0,15.0,True,North,Grill,Mild,0.409,0.455,0.136,75.6,True,False,False,True,moderate_density
+Dosa,Snacks,180.0,4.0,28.0,8.0,3.0,1.0,400.0,150.0,2.0,20.0,8.0,True,South,Pan Fry,Mild,0.1,0.2,0.7,53.4,False,False,True,False,moderate_density
+Idli,Snacks,120.0,6.0,25.0,2.0,4.0,1.0,200.0,80.0,1.0,15.0,2.0,True,South,Steam,Mild,0.182,0.061,0.758,72.2,False,True,True,False,low_density
+Vada,Snacks,220.0,8.0,20.0,15.0,3.0,2.0,450.0,120.0,3.0,25.0,12.0,True,South,Deep Fry,Medium,0.186,0.349,0.465,56.1,True,False,False,False,moderate_density
+Samosa,Snacks,260.0,6.0,28.0,16.0,3.0,3.0,600.0,140.0,15.0,30.0,15.0,True,North,Deep Fry,Mild,0.12,0.32,0.56,48.0,False,False,False,False,moderate_density
+Pakora,Snacks,240.0,8.0,22.0,18.0,4.0,2.0,550.0,130.0,20.0,35.0,18.0,True,North,Deep Fry,Medium,0.167,0.375,0.458,60.5,True,False,False,False,moderate_density
+Kheer,Dessert,220.0,6.0,30.0,12.0,1.0,20.0,180.0,120.0,2.0,120.0,8.0,True,North,Simmer,Mild,0.125,0.25,0.625,9.6,False,False,False,False,moderate_density
+Gulab Jamun,Dessert,350.0,5.0,55.0,15.0,2.0,35.0,120.0,80.0,5.0,60.0,12.0,True,North,Deep Fry,Mild,0.067,0.2,0.733,0.0,False,False,False,False,high_density
+Rasgulla,Dessert,180.0,4.0,40.0,2.0,0.0,35.0,80.0,60.0,8.0,80.0,2.0,True,East,Boil,Mild,0.087,0.043,0.87,0.0,False,True,False,False,moderate_density
+Jalebi,Dessert,320.0,4.0,60.0,12.0,1.0,45.0,200.0,90.0,3.0,45.0,15.0,True,North,Deep Fry,Mild,0.053,0.158,0.789,0.0,False,False,False,False,moderate_density
+Roti,Bread,270.0,9.0,50.0,4.0,8.0,2.0,380.0,180.0,0.0,25.0,2.0,True,North,Pan Cook,Mild,0.143,0.063,0.794,95.2,False,True,False,False,moderate_density
+Naan,Bread,310.0,10.0,55.0,6.0,3.0,4.0,420.0,200.0,1.0,30.0,3.0,True,North,Tandoor,Mild,0.141,0.085,0.775,67.0,False,False,False,False,moderate_density
+Paratha,Bread,320.0,8.0,42.0,18.0,5.0,3.0,600.0,220.0,2.0,35.0,4.0,True,North,Pan Fry,Mild,0.118,0.265,0.618,59.4,False,False,False,False,moderate_density
+Puri,Bread,340.0,8.0,38.0,20.0,3.0,2.0,450.0,160.0,0.0,20.0,6.0,True,North,Deep Fry,Mild,0.121,0.303,0.576,50.5,False,False,False,False,moderate_density
+Bhatura,Bread,380.0,10.0,42.0,22.0,4.0,3.0,700.0,180.0,1.0,25.0,8.0,True,North,Deep Fry,Mild,0.135,0.297,0.568,55.2,False,False,False,False,high_density
+Upma,Breakfast,180.0,6.0,28.0,8.0,4.0,2.0,350.0,120.0,5.0,25.0,8.0,True,South,Sauté,Mild,0.143,0.19,0.667,63.5,False,True,True,False,moderate_density
+Poha,Breakfast,160.0,4.0,30.0,6.0,3.0,4.0,280.0,100.0,8.0,20.0,6.0,True,West,Sauté,Mild,0.1,0.15,0.75,51.8,False,True,True,False,moderate_density
+Dhokla,Snacks,140.0,8.0,24.0,4.0,2.0,6.0,320.0,140.0,2.0,15.0,4.0,True,West,Steam,Mild,0.222,0.111,0.667,55.2,False,True,True,False,low_density
+Khandvi,Snacks,120.0,10.0,18.0,6.0,2.0,3.0,380.0,160.0,1.0,25.0,5.0,True,West,Steam,Mild,0.294,0.176,0.529,64.4,True,True,True,False,low_density
+Thepla,Bread,280.0,12.0,32.0,16.0,6.0,4.0,520.0,200.0,3.0,45.0,8.0,True,West,Pan Fry,Medium,0.2,0.267,0.533,77.4,False,False,False,True,moderate_density
+Khakhra,Bread,320.0,14.0,48.0,12.0,8.0,2.0,450.0,180.0,2.0,35.0,6.0,True,West,Roast,Mild,0.189,0.162,0.649,100.0,False,False,False,True,moderate_density
+Handvo,Snacks,220.0,12.0,28.0,10.0,5.0,5.0,420.0,160.0,8.0,40.0,12.0,True,West,Bake,Mild,0.24,0.2,0.56,78.4,False,False,False,True,moderate_density
+Muthia,Snacks,180.0,8.0,20.0,12.0,8.0,4.0,380.0,140.0,12.0,30.0,10.0,True,West,Steam,Mild,0.2,0.3,0.5,82.6,True,False,True,False,moderate_density
+Undhiyu,Veg,160.0,5.0,20.0,8.0,6.0,8.0,320.0,180.0,25.0,35.0,15.0,True,West,Steam,Mild,0.152,0.242,0.606,62.8,False,True,True,False,moderate_density
+Kadhi,Veg,120.0,6.0,14.0,6.0,2.0,4.0,280.0,120.0,5.0,80.0,3.0,True,West,Simmer,Mild,0.231,0.231,0.538,52.2,True,True,True,False,low_density
+Shrikhand,Dessert,240.0,8.0,32.0,12.0,0.0,28.0,120.0,100.0,2.0,150.0,4.0,True,West,Chill,Mild,0.154,0.231,0.615,0.0,False,False,False,False,moderate_density
+Basundi,Dessert,260.0,10.0,28.0,14.0,0.0,25.0,140.0,120.0,1.0,180.0,6.0,True,West,Simmer,Mild,0.192,0.269,0.538,4.8,False,False,False,False,moderate_density
+Pav Bhaji,Veg,240.0,8.0,32.0,12.0,6.0,8.0,680.0,220.0,45.0,40.0,12.0,True,West,Sauté,Medium,0.154,0.231,0.615,68.2,False,False,False,False,moderate_density
+Misal Pav,Veg,200.0,12.0,24.0,8.0,8.0,6.0,720.0,280.0,35.0,60.0,18.0,True,West,Curry,Spicy,0.273,0.182,0.545,95.8,False,False,True,True,moderate_density
+Vada Pav,Snacks,280.0,10.0,26.0,18.0,4.0,4.0,650.0,160.0,15.0,35.0,15.0,True,West,Deep Fry,Medium,0.185,0.333,0.481,60.5,False,False,False,False,moderate_density
+Bhel Puri,Snacks,160.0,4.0,28.0,6.0,4.0,12.0,480.0,140.0,20.0,25.0,8.0,True,West,Mix,Mild,0.105,0.158,0.737,41.2,False,False,True,False,moderate_density
+Sev Puri,Snacks,220.0,6.0,24.0,14.0,3.0,8.0,520.0,120.0,18.0,30.0,10.0,True,West,Mix,Medium,0.136,0.318,0.545,41.4,False,False,False,False,moderate_density
+Ragda Patties,Snacks,200.0,8.0,26.0,10.0,6.0,6.0,580.0,160.0,25.0,40.0,12.0,True,West,Sauté,Medium,0.182,0.227,0.591,71.2,False,False,True,False,moderate_density
+Sabudana Khichdi,Breakfast,180.0,4.0,32.0,6.0,2.0,4.0,240.0,80.0,3.0,15.0,4.0,True,West,Sauté,Mild,0.095,0.143,0.762,46.2,False,True,True,False,moderate_density
+Thalipeeth,Bread,260.0,12.0,30.0,14.0,8.0,3.0,420.0,180.0,5.0,45.0,10.0,True,West,Pan Fry,Medium,0.214,0.25,0.536,92.8,False,False,False,True,moderate_density
+Kolambi Bhaat,Non-Veg,220.0,18.0,28.0,8.0,2.0,2.0,520.0,320.0,8.0,35.0,15.0,True,West,Steam,Medium,0.333,0.148,0.519,88.4,False,False,False,True,moderate_density
+Kombdi Vade,Non-Veg,280.0,22.0,24.0,16.0,3.0,1.0,580.0,380.0,12.0,45.0,20.0,True,West,Deep Fry,Spicy,0.355,0.258,0.387,99.6,True,False,False,True,moderate_density
+Malvani Fish,Non-Veg,200.0,24.0,6.0,10.0,1.0,1.0,640.0,420.0,18.0,50.0,25.0,True,West,Curry,Spicy,0.6,0.25,0.15,100.0,True,False,False,True,moderate_density
+Sol Kadhi,Veg,60.0,2.0,8.0,4.0,2.0,6.0,180.0,200.0,15.0,40.0,2.0,True,West,Simmer,Mild,0.143,0.286,0.571,41.2,False,True,True,False,low_density
+Amti,Lentils,110.0,7.0,17.0,3.0,6.0,2.0,320.0,240.0,3.0,30.0,3.0,True,West,Boil,Medium,0.259,0.111,0.63,81.4,True,True,True,False,low_density
+Puran Poli,Bread,300.0,8.0,48.0,12.0,6.0,18.0,280.0,140.0,2.0,25.0,8.0,True,West,Pan Fry,Mild,0.118,0.176,0.706,43.6,False,False,False,False,moderate_density
+Modak,Dessert,280.0,6.0,38.0,14.0,3.0,22.0,160.0,100.0,5.0,35.0,8.0,True,West,Steam,Mild,0.103,0.241,0.655,14.4,False,False,False,False,moderate_density
+Karanji,Dessert,320.0,8.0,40.0,18.0,4.0,25.0,180.0,120.0,8.0,40.0,10.0,True,West,Deep Fry,Mild,0.121,0.273,0.606,15.8,False,False,False,False,moderate_density
+Chirote,Dessert,340.0,6.0,42.0,20.0,2.0,28.0,200.0,90.0,1.0,30.0,12.0,True,West,Deep Fry,Mild,0.088,0.294,0.618,0.0,False,False,False,False,moderate_density
+Appam,Bread,180.0,4.0,32.0,6.0,3.0,4.0,280.0,120.0,1.0,20.0,6.0,True,South,Pan Fry,Mild,0.095,0.143,0.762,50.4,False,True,True,False,moderate_density
+Puttu,Bread,200.0,6.0,30.0,8.0,4.0,2.0,320.0,140.0,2.0,25.0,8.0,True,South,Steam,Mild,0.136,0.182,0.682,63.2,False,True,True,False,moderate_density
+Kappa,Breakfast,160.0,2.0,36.0,4.0,4.0,2.0,240.0,520.0,25.0,30.0,8.0,True,South,Boil,Mild,0.048,0.095,0.857,60.6,False,True,True,False,moderate_density
+Meen Curry,Non-Veg,190.0,23.0,5.0,9.0,1.0,1.0,680.0,440.0,20.0,55.0,28.0,True,South,Curry,Spicy,0.622,0.243,0.135,100.0,True,False,False,True,moderate_density
+Meen Pollichathu,Non-Veg,210.0,25.0,4.0,11.0,1.0,1.0,620.0,460.0,18.0,48.0,22.0,True,South,Wrap,Spicy,0.625,0.275,0.1,100.0,True,False,False,True,moderate_density
+Kozhi Curry,Non-Veg,250.0,28.0,3.0,14.0,0.0,1.0,590.0,410.0,15.0,42.0,20.0,True,South,Curry,Spicy,0.622,0.311,0.067,100.0,True,False,False,True,moderate_density
+Egg Curry,Non-Veg,170.0,14.0,4.0,12.0,1.0,1.0,520.0,280.0,8.0,65.0,18.0,True,South,Curry,Medium,0.467,0.4,0.133,69.4,True,False,False,True,moderate_density
+Avial,Veg,140.0,4.0,12.0,10.0,6.0,4.0,380.0,220.0,35.0,45.0,12.0,True,South,Steam,Mild,0.154,0.385,0.462,67.2,True,True,True,False,low_density
+Kaalan,Veg,120.0,3.0,14.0,8.0,5.0,6.0,340.0,180.0,20.0,55.0,8.0,True,South,Simmer,Mild,0.12,0.32,0.56,54.6,False,True,True,False,low_density
+Thoran,Veg,160.0,6.0,14.0,12.0,8.0,4.0,420.0,240.0,25.0,40.0,15.0,True,South,Sauté,Mild,0.187,0.375,0.437,78.8,True,False,True,False,moderate_density
+Olan,Veg,100.0,2.0,12.0,6.0,4.0,5.0,280.0,160.0,15.0,35.0,6.0,True,South,Simmer,Mild,0.1,0.3,0.6,50.2,True,True,True,False,low_density
+Erissery,Veg,150.0,5.0,14.0,10.0,7.0,3.0,360.0,200.0,30.0,50.0,18.0,True,South,Boil,Mild,0.172,0.345,0.483,76.4,True,True,True,False,moderate_density
+Kootu Curry,Veg,180.0,8.0,16.0,12.0,9.0,4.0,440.0,260.0,40.0,60.0,25.0,True,South,Sauté,Mild,0.222,0.333,0.444,92.6,True,False,True,False,moderate_density
+Inji Curry,Veg,80.0,1.0,10.0,4.0,2.0,8.0,420.0,120.0,8.0,25.0,4.0,True,South,Simmer,Spicy,0.067,0.267,0.667,30.4,False,False,True,False,low_density
+Mango Pickle,Condiment,120.0,1.0,12.0,8.0,4.0,8.0,1800.0,80.0,25.0,15.0,8.0,True,South,Ferment,Spicy,0.048,0.381,0.571,26.0,False,False,True,False,low_density
+Lemon Pickle,Condiment,100.0,1.0,14.0,6.0,3.0,10.0,1600.0,60.0,35.0,12.0,6.0,True,South,Ferment,Spicy,0.048,0.286,0.667,23.0,False,False,True,False,low_density
+Puli Inji,Condiment,90.0,1.0,12.0,5.0,3.0,15.0,1400.0,90.0,20.0,18.0,5.0,True,South,Simmer,Spicy,0.056,0.278,0.667,13.0,False,False,True,False,low_density
+Mutton Curry,Non-Veg,270.0,26.0,4.0,18.0,1.0,2.0,720.0,380.0,12.0,35.0,22.0,True,South,Curry,Spicy,0.542,0.375,0.083,96.2,True,False,False,True,moderate_density
+Mutton Biryani,Non-Veg,330.0,25.0,35.0,20.0,3.0,6.0,850.0,420.0,8.0,55.0,20.0,True,South,Dum,Spicy,0.312,0.25,0.437,91.1,False,False,False,True,moderate_density
+Hyderabadi Biryani,Non-Veg,340.0,27.0,36.0,19.0,2.0,5.0,880.0,440.0,9.0,58.0,22.0,True,South,Dum,Spicy,0.329,0.232,0.439,95.0,False,False,False,True,moderate_density
+Kolkata Biryani,Non-Veg,310.0,24.0,38.0,16.0,4.0,8.0,780.0,380.0,12.0,45.0,18.0,True,East,Dum,Mild,0.308,0.205,0.487,94.6,False,False,False,True,moderate_density
+Lucknowi Biryani,Non-Veg,320.0,26.0,37.0,17.0,3.0,6.0,820.0,400.0,10.0,52.0,19.0,True,North,Dum,Mild,0.325,0.212,0.462,97.8,False,False,False,True,moderate_density
+Keema,Veg,240.0,20.0,8.0,16.0,3.0,4.0,680.0,320.0,6.0,40.0,15.0,True,North,Sauté,Medium,0.455,0.364,0.182,85.4,True,False,False,True,moderate_density
+Seekh Kebab,Non-Veg,260.0,24.0,3.0,18.0,1.0,2.0,750.0,360.0,8.0,38.0,18.0,True,North,Grill,Spicy,0.533,0.4,0.067,89.1,True,False,False,True,moderate_density
+Shami Kebab,Non-Veg,250.0,22.0,6.0,16.0,2.0,3.0,720.0,340.0,10.0,45.0,16.0,True,North,Shallow Fry,Medium,0.5,0.364,0.136,88.8,True,False,False,True,moderate_density
+Galouti Kebab,Non-Veg,280.0,23.0,4.0,22.0,1.0,2.0,780.0,380.0,5.0,35.0,20.0,True,North,Grill,Medium,0.469,0.449,0.082,81.2,True,False,False,True,moderate_density
+Reshmi Kebab,Non-Veg,270.0,26.0,2.0,20.0,0.0,1.0,680.0,420.0,3.0,42.0,22.0,True,North,Grill,Mild,0.542,0.417,0.042,89.8,True,False,False,True,moderate_density
+Chicken Korma,Non-Veg,290.0,28.0,6.0,22.0,2.0,3.0,820.0,360.0,12.0,48.0,25.0,True,North,Simmer,Mild,0.5,0.393,0.107,100.0,True,False,False,True,moderate_density
+Navratan Korma,Veg,200.0,6.0,18.0,16.0,5.0,12.0,480.0,220.0,20.0,65.0,15.0,True,North,Simmer,Mild,0.15,0.4,0.45,42.2,False,False,True,False,moderate_density
+Malai Kofta,Veg,240.0,8.0,20.0,18.0,4.0,8.0,520.0,180.0,15.0,55.0,12.0,True,North,Deep Fry,Mild,0.174,0.391,0.435,47.8,False,False,False,False,moderate_density
+Shahi Paneer,Veg,280.0,14.0,12.0,22.0,3.0,6.0,560.0,240.0,18.0,220.0,18.0,True,North,Simmer,Mild,0.292,0.458,0.25,61.0,False,False,False,True,moderate_density
+Kadai Paneer,Veg,260.0,16.0,10.0,20.0,4.0,5.0,620.0,280.0,25.0,180.0,20.0,True,North,Sauté,Medium,0.348,0.435,0.217,76.8,True,False,False,True,moderate_density
+Matar Paneer,Veg,240.0,15.0,14.0,18.0,5.0,6.0,580.0,260.0,20.0,165.0,16.0,True,North,Simmer,Medium,0.319,0.383,0.298,78.2,False,False,False,True,moderate_density
+Palak Chicken,Non-Veg,260.0,29.0,8.0,16.0,4.0,3.0,640.0,380.0,35.0,55.0,22.0,True,North,Sauté,Medium,0.547,0.302,0.151,100.0,True,False,False,True,moderate_density
+Chicken Chettinad,Non-Veg,280.0,31.0,7.0,18.0,3.0,2.0,980.0,420.0,18.0,45.0,28.0,True,South,Curry,Spicy,0.554,0.321,0.125,100.0,True,False,False,True,moderate_density
+Andhra Chicken,Non-Veg,290.0,30.0,8.0,19.0,2.0,3.0,1050.0,440.0,15.0,42.0,25.0,True,South,Curry,Spicy,0.526,0.333,0.14,100.0,True,False,False,True,moderate_density
+Chicken 65,Non-Veg,300.0,28.0,9.0,20.0,1.0,4.0,920.0,380.0,12.0,38.0,24.0,True,South,Deep Fry,Spicy,0.491,0.351,0.158,94.2,True,False,False,True,moderate_density
+Chili Chicken,Non-Veg,270.0,26.0,12.0,16.0,2.0,8.0,780.0,360.0,45.0,48.0,20.0,True,North,Sauté,Spicy,0.481,0.296,0.222,97.2,False,False,False,True,moderate_density
+Chicken Manchurian,Non-Veg,280.0,25.0,14.0,18.0,3.0,10.0,820.0,340.0,35.0,42.0,22.0,True,North,Deep Fry,Spicy,0.439,0.316,0.246,90.8,False,False,False,True,moderate_density
+Gobi Manchurian,Veg,220.0,6.0,20.0,16.0,5.0,12.0,680.0,180.0,40.0,35.0,15.0,True,North,Deep Fry,Spicy,0.143,0.381,0.476,44.2,False,False,False,False,moderate_density
+Paneer Manchurian,Veg,260.0,16.0,16.0,20.0,4.0,10.0,720.0,220.0,25.0,165.0,18.0,True,North,Deep Fry,Spicy,0.308,0.385,0.308,65.8,False,False,False,True,moderate_density
+Spring Roll,Snacks,200.0,8.0,24.0,12.0,3.0,6.0,580.0,140.0,15.0,25.0,12.0,True,North,Deep Fry,Mild,0.182,0.273,0.545,52.2,False,False,True,False,moderate_density
+Momos,Snacks,180.0,12.0,20.0,8.0,2.0,3.0,520.0,220.0,8.0,35.0,15.0,True,North,Steam,Mild,0.3,0.2,0.5,68.4,True,False,True,True,moderate_density
+Thukpa,Snacks,120.0,8.0,16.0,4.0,2.0,2.0,480.0,180.0,12.0,25.0,8.0,True,North,Simmer,Mild,0.286,0.143,0.571,63.6,True,False,True,False,low_density
+Chowmein,Veg,220.0,8.0,28.0,14.0,4.0,6.0,620.0,160.0,18.0,30.0,12.0,True,North,Sauté,Medium,0.16,0.28,0.56,55.4,False,False,False,False,moderate_density
+Fried Rice,Veg,240.0,10.0,32.0,12.0,3.0,4.0,580.0,140.0,12.0,28.0,14.0,True,North,Sauté,Medium,0.185,0.222,0.593,61.6,False,False,False,False,moderate_density
+Schezwan Rice,Veg,260.0,9.0,30.0,16.0,3.0,8.0,780.0,150.0,25.0,32.0,16.0,True,North,Sauté,Spicy,0.164,0.291,0.545,47.2,False,False,False,False,moderate_density
+Chicken Fried Rice,Non-Veg,280.0,18.0,30.0,14.0,2.0,4.0,650.0,180.0,15.0,35.0,18.0,True,North,Sauté,Medium,0.29,0.226,0.484,78.5,False,False,False,True,moderate_density
+Egg Fried Rice,Non-Veg,250.0,14.0,32.0,12.0,3.0,5.0,600.0,160.0,8.0,38.0,16.0,True,North,Sauté,Medium,0.241,0.207,0.552,70.6,False,False,False,True,moderate_density

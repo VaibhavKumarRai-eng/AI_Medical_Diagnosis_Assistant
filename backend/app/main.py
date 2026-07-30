@@ -26,6 +26,7 @@ from app.api.v1.chatbot import router as chatbot_router
 from app.api.v1.history import router as history_router
 from app.api.v1.profile import router as profile_router
 from app.api.v1.admin import router as admin_router
+from app.api.v1.diet import router as diet_router
 
 logger = get_logger("app.main")
 
@@ -67,6 +68,16 @@ async def lifespan(app: FastAPI):
     # 2. Seed administrative account
     seed_admin_user()
     
+    # 3. Seed diet planner food database
+    db: Session = next(get_db())
+    try:
+        from app.services.diet import diet_service
+        diet_service.seed_food_database(db)
+    except Exception as e:
+        logger.error(f"Lifespan error seeding food database: {e}")
+    finally:
+        db.close()
+        
     yield
     
     logger.info("FastAPI application shutting down...")
@@ -163,3 +174,4 @@ app.include_router(prediction_router, tags=["Prediction"])
 app.include_router(chatbot_router, tags=["Chatbot"])
 app.include_router(history_router, prefix="/history", tags=["History"])
 app.include_router(admin_router, prefix="/admin", tags=["Administration"])
+app.include_router(diet_router, prefix="/diet", tags=["Diet Planner"])

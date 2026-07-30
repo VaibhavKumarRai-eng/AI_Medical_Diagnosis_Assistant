@@ -175,4 +175,31 @@ export const adminAPI = {
   }
 };
 
+export const dietAPI = {
+  calculateBmi: async (weight, height) => {
+    const response = await api.post('/diet/calculate-bmi', { weight_kg: weight, height_cm: height });
+    return response.data;
+  },
+  generatePlan: async (planData) => {
+    const response = await api.post('/diet/generate', planData);
+    return response.data;
+  },
+  getLatestPlan: async () => {
+    const response = await api.get('/diet/latest');
+    return response.data;
+  },
+  logMeal: async (mealData) => {
+    const response = await api.post('/diet/meal-history', mealData);
+    return response.data;
+  },
+  getMealHistory: async () => {
+    const response = await api.get('/diet/meal-history');
+    return response.data;
+  },
+  getBmiHistory: async () => {
+    const response = await api.get('/diet/bmi-history');
+    return response.data;
+  }
+};
+
 export default api;

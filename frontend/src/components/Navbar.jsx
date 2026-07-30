@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Activity, MessageSquare, History, Shield, LogOut, Settings, Bell, Sun, Moon, User } from 'lucide-react';
+import { Menu, X, Activity, MessageSquare, History, Shield, LogOut, Settings, Bell, Sun, Moon, User, Utensils } from 'lucide-react';
 
 const Navbar = () => {
   const { logout, isAuthenticated, isAdmin } = useAuth();
@@ -85,6 +85,15 @@ const Navbar = () => {
                     }`}
                   >
                     Consult Doctors
+                  </Link>
+
+                  <Link 
+                    to="/diet-planner" 
+                    className={`relative px-4 py-2 text-sm font-semibold rounded-xl transition-colors font-inter ${
+                      isActive('/diet-planner') ? 'text-med-primary bg-med-secondary/60' : 'text-med-gray hover:text-med-primary hover:bg-med-secondary/30'
+                    }`}
+                  >
+                    Diet Planner
                   </Link>
 
                   <Link 
@@ -224,6 +233,16 @@ const Navbar = () => {
                     >
                       <User className="h-4.5 w-4.5 text-blue-500" />
                       Consult Doctors
+                    </Link>
+                    <Link
+                      to="/diet-planner"
+                      onClick={() => setIsOpen(false)}
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold font-inter ${
+                        isActive('/diet-planner') ? 'bg-med-secondary text-med-primary' : 'text-med-gray hover:bg-med-secondary/40'
+                      }`}
+                    >
+                      <Utensils className="h-4.5 w-4.5 text-emerald-500" />
+                      Diet Planner
                     </Link>
                     <Link
                       to="/history"
@@ -389,6 +408,20 @@ const Navbar = () => {
                     )}
                   </Link>
   
+                  <Link to="/diet-planner" className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <span className="relative z-10 flex items-center gap-2">
+                      <Utensils className="h-4 w-4 text-emerald-400" />
+                      Diet Planner
+                    </span>
+                    {isActive('/diet-planner') && (
+                      <motion.div
+                        layoutId="nav-active"
+                        className="absolute inset-0 bg-white/[0.04] border border-white/[0.06] rounded-xl"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+
                   <Link to="/history" className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors">
                     <span className="relative z-10 flex items-center gap-2">
                       <History className="h-4 w-4 text-accent" />
@@ -575,6 +608,16 @@ const Navbar = () => {
                     >
                       <User className="h-4 w-4 text-blue-400" />
                       Consult Doctors
+                    </Link>
+                    <Link
+                      to="/diet-planner"
+                      onClick={() => setIsOpen(false)}
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium ${
+                        isActive('/diet-planner') ? 'bg-primary/10 text-white' : 'text-gray-300 hover:bg-white/5'
+                      }`}
+                    >
+                      <Utensils className="h-4 w-4 text-emerald-400" />
+                      Diet Planner
                     </Link>
                     <Link
                       to="/history"

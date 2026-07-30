@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from app.models.prediction import Prediction
     from app.models.conversation import Conversation
     from app.models.history import History
+    from app.models.diet import MealPlan, MealHistory, BMIHistory
 
 
 class User(Base):
@@ -80,6 +81,21 @@ class User(Base):
     )
     history_records: Mapped[List["History"]] = relationship(
         "History", 
+        back_populates="user", 
+        cascade="all, delete-orphan"
+    )
+    meal_plans: Mapped[List["MealPlan"]] = relationship(
+        "MealPlan", 
+        back_populates="user", 
+        cascade="all, delete-orphan"
+    )
+    meal_histories: Mapped[List["MealHistory"]] = relationship(
+        "MealHistory", 
+        back_populates="user", 
+        cascade="all, delete-orphan"
+    )
+    bmi_records: Mapped[List["BMIHistory"]] = relationship(
+        "BMIHistory", 
         back_populates="user", 
         cascade="all, delete-orphan"
     )

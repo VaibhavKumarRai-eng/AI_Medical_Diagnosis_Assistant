@@ -14,7 +14,8 @@ import {
   Brain, 
   FileText, 
   Database,
-  User
+  User,
+  Utensils
 } from 'lucide-react';
 
 const Home = () => {
@@ -227,7 +228,7 @@ const Home = () => {
           <h2 className={`text-2xl font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Platform Modules</h2>
           <p className="text-xs text-gray-500 mt-1 font-inter">Select an active card below to check symptoms, consult doctors, or view consultation stats.</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {/* Card 1: NLP Symptom Checker */}
           <div className={`border p-6 rounded-[24px] text-left flex flex-col justify-between min-h-[220px] transition-all hover:-translate-y-1 hover:shadow-premium-lg duration-300 group cursor-pointer ${
             isLight 
@@ -317,6 +318,29 @@ const Home = () => {
               className="flex items-center gap-2 mt-6 text-xs font-bold text-brand-500 hover:text-brand-600 transition-colors"
             >
               Review Timeline <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          {/* Card 5: AI Diet Planner */}
+          <div className={`border p-6 rounded-[24px] text-left flex flex-col justify-between min-h-[220px] transition-all hover:-translate-y-1 hover:shadow-premium-lg duration-300 group cursor-pointer ${
+            isLight 
+              ? 'bg-[#EEF0FF]/30 border-[#EEF0FF] hover:bg-white hover:border-med-primary/20' 
+              : 'bg-white/5 border-white/[0.04] hover:bg-white/[0.08] hover:border-primary/20'
+          }`}>
+            <div className="space-y-4">
+              <div className="h-10 w-10 bg-white dark:bg-white/5 border border-med-secondary dark:border-white/10 rounded-xl flex items-center justify-center shadow-premium-sm group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+                <Utensils className="h-5 w-5 text-emerald-500 group-hover:text-white" />
+              </div>
+              <h3 className={`text-lg font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>AI Diet Planner</h3>
+              <p className="text-xs text-gray-500 leading-relaxed font-inter">
+                Create personalized meal plans. Calculate BMR/TDEE limits, track macro intakes, and explore diet structures from nutrition databases.
+              </p>
+            </div>
+            <Link
+              to={isAuthenticated ? "/diet-planner" : "/login"}
+              className="flex items-center gap-2 mt-6 text-xs font-bold text-brand-500 hover:text-brand-600 transition-colors"
+            >
+              Start Planning <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>

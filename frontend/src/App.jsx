@@ -72,6 +72,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import AboutProject from './pages/AboutProject';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import DoctorConsultation from './pages/DoctorConsultation';
+import DietPlanner from './pages/DietPlanner';
 
 // Protected Route wrapper component
 const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -159,6 +160,14 @@ const AppContent = () => {
               element={
                 <ProtectedRoute>
                   <DoctorConsultation />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/diet-planner"
+              element={
+                <ProtectedRoute>
+                  <DietPlanner />
                 </ProtectedRoute>
               }
             />
