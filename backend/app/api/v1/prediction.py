@@ -29,17 +29,18 @@ def predict_symptoms(
     """
     user_id = current_user.id if current_user else None
     
-    # Delegate prediction execution to service layer
-    prediction = predictor_service.predict_and_persist(
-        db, 
-        symptom_text=request.symptom_text, 
-        user_id=user_id
-    )
-    
-    if hasattr(prediction, "error") and getattr(prediction, "error"):
+    try:
+        # Delegate prediction execution to service layer
+        prediction = predictor_service.predict_and_persist(
+            db, 
+            symptom_text=request.symptom_text, 
+            user_id=user_id
+        )
+        return prediction
+    except ValueError as val_err:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=prediction.error
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(val_err)
         )
         
     return prediction

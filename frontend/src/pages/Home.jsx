@@ -1,11 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { motion } from 'framer-motion';
-import { Activity, MessageSquare, History, ArrowRight, ShieldAlert, Sparkles, CheckCircle, Brain, Heart, FileText, Database } from 'lucide-react';
+import { 
+  Activity, 
+  MessageSquare, 
+  History, 
+  ArrowRight, 
+  ShieldAlert, 
+  Sparkles, 
+  CheckCircle, 
+  Brain, 
+  FileText, 
+  Database,
+  User
+} from 'lucide-react';
 
 const Home = () => {
-  const { user, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   // Stagger Container animation
   const containerVariants = {
@@ -28,11 +41,20 @@ const Home = () => {
     { value: '10k+', label: 'Consultations', desc: 'Secured Logs Conducted' }
   ];
 
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   return (
-    <div className="relative min-h-screen overflow-hidden py-12 px-4 sm:px-6 lg:px-8 space-y-16 grid-bg">
+    <div className={`relative min-h-screen overflow-hidden py-16 px-4 sm:px-6 lg:px-8 space-y-16 transition-colors duration-300 ${
+      isLight ? 'grid-bg-light bg-white text-med-text font-inter' : 'grid-bg bg-dark-bg text-gray-300 font-sans'
+    }`}>
       {/* Background Glowing Orbs */}
-      <div className="glow-orb top-20 left-[10%] w-96 h-96 bg-primary" />
-      <div className="glow-orb bottom-20 right-[10%] w-96 h-96 bg-secondary" />
+      <div className={`absolute top-20 left-[10%] w-96 h-96 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-med-secondary' : 'bg-primary/10'
+      }`} />
+      <div className={`absolute bottom-20 right-[10%] w-96 h-96 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-[#EEF0FF]' : 'bg-secondary/10'
+      }`} />
 
       {/* Hero Section */}
       <motion.div 
@@ -41,12 +63,14 @@ const Home = () => {
         variants={containerVariants}
         className="relative max-w-7xl mx-auto text-center"
       >
-        <div className="glass-panel rounded-3xl p-8 md:p-16 border border-white/[0.06] shadow-2xl relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/[0.02] to-secondary/[0.02] pointer-events-none" />
+        <div className={`rounded-[28px] p-8 md:p-16 border shadow-premium-lg relative overflow-hidden transition-all duration-300 ${
+          isLight ? 'glass-panel-light bg-white/70 border-med-secondary' : 'glass-panel border-white/5 bg-dark-surface/50'
+        }`}>
+          <div className="absolute inset-0 bg-gradient-to-tr from-med-secondary/10 to-transparent pointer-events-none" />
           
           {/* Floating DNA SVG Illustration */}
           <div className="absolute right-6 top-8 w-24 h-48 opacity-10 animate-float-dna hidden lg:block">
-            <svg viewBox="0 0 100 200" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
+            <svg viewBox="0 0 100 200" fill="none" stroke="currentColor" strokeWidth="2" className={isLight ? 'text-med-primary' : 'text-primary'}>
               <path d="M10,20 Q40,100 90,180" />
               <path d="M90,20 Q60,100 10,180" />
               <line x1="16" y1="30" x2="84" y2="30" />
@@ -62,7 +86,7 @@ const Home = () => {
 
           {/* Floating ECG SVG Illustration */}
           <div className="absolute left-6 bottom-8 w-32 h-16 opacity-10 animate-float-ecg hidden lg:block">
-            <svg viewBox="0 0 200 100" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-white">
+            <svg viewBox="0 0 200 100" fill="none" stroke="currentColor" strokeWidth="2.5" className={isLight ? 'text-med-primary' : 'text-primary'}>
               <path d="M0,50 L40,50 L50,20 L60,80 L70,45 L80,55 L90,50 L130,50 L140,10 L150,90 L160,40 L170,60 L180,50 L200,50" />
             </svg>
           </div>
@@ -71,7 +95,11 @@ const Home = () => {
             {/* Badge */}
             <motion.div 
               variants={itemVariants}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold tracking-wider uppercase shadow-[0_0_15px_rgba(37,99,235,0.1)]"
+              className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-semibold tracking-wider uppercase shadow-premium-sm font-poppins transition-colors duration-300 ${
+                isLight 
+                  ? 'bg-med-secondary border-med-primary/10 text-med-primary' 
+                  : 'bg-primary/10 border-primary/20 text-primary'
+              }`}
             >
               <Sparkles className="h-3.5 w-3.5" />
               <span>Aegis Clinical Inference Engine</span>
@@ -80,16 +108,20 @@ const Home = () => {
             {/* Headline */}
             <motion.h1 
               variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.1] font-sans"
+              className={`text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] font-poppins transition-colors duration-300 ${
+                isLight ? 'text-med-text' : 'text-white'
+              }`}
             >
               Next-Gen AI <br className="sm:hidden" />
-              <span className="text-gradient">Medical Diagnosis</span> Assistant
+              <span className={isLight ? 'text-med-primary' : 'text-gradient bg-clip-text'}>Medical Diagnosis</span> Assistant
             </motion.h1>
 
             {/* Description */}
             <motion.p 
               variants={itemVariants}
-              className="text-gray-400 text-lg md:text-xl font-medium max-w-2xl leading-relaxed"
+              className={`text-base sm:text-lg md:text-xl font-medium max-w-2xl leading-relaxed transition-colors duration-300 ${
+                isLight ? 'text-med-gray' : 'text-gray-400'
+              }`}
             >
               Describe clinical symptoms in simple natural language. Aegis AI evaluates features, tracks negations, and runs real-time classifications.
             </motion.p>
@@ -103,31 +135,39 @@ const Home = () => {
                 <>
                   <Link
                     to="/checker"
-                    className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/95 text-white font-bold px-6 py-3.5 rounded-2xl shadow-xl shadow-primary/20 transition-all hover:-translate-y-0.5"
+                    className="flex-1 flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold px-6 py-3.5 rounded-2xl shadow-premium-md hover:shadow-premium-lg transition-all hover:-translate-y-0.5 font-poppins"
                   >
                     Symptom Checker
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4.5 w-4.5" />
                   </Link>
                   <Link
-                    to="/chatbot"
-                    className="flex-1 flex items-center justify-center gap-2 bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] text-white font-bold px-6 py-3.5 rounded-2xl transition-all hover:-translate-y-0.5"
+                    to="/doctor-consultation"
+                    className={`flex-1 flex items-center justify-center gap-2 border font-bold px-6 py-3.5 rounded-2xl transition-all hover:-translate-y-0.5 shadow-premium-sm font-poppins ${
+                      isLight 
+                        ? 'bg-med-secondary border-med-primary/10 text-med-primary hover:bg-med-secondary/80' 
+                        : 'bg-white/5 border-white/10 text-white hover:bg-white/10'
+                    }`}
                   >
-                    AI Chatbot
-                    <MessageSquare className="h-4 w-4 text-secondary" />
+                    Consult Doctor
+                    <User className="h-4.5 w-4.5 text-brand-500" />
                   </Link>
                 </>
               ) : (
                 <>
                   <Link
                     to="/register"
-                    className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/95 text-white font-bold px-6 py-3.5 rounded-2xl shadow-xl shadow-primary/20 transition-all hover:-translate-y-0.5"
+                    className="flex-1 flex items-center justify-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-bold px-6 py-3.5 rounded-2xl shadow-premium-md hover:shadow-premium-lg transition-all hover:-translate-y-0.5 font-poppins"
                   >
                     Get Started
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4.5 w-4.5" />
                   </Link>
                   <Link
                     to="/login"
-                    className="flex-1 flex items-center justify-center gap-2 bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] text-white font-bold px-6 py-3.5 rounded-2xl transition-all hover:-translate-y-0.5"
+                    className={`flex-1 flex items-center justify-center gap-2 border font-bold px-6 py-3.5 rounded-2xl transition-all hover:-translate-y-0.5 shadow-premium-sm font-poppins ${
+                      isLight 
+                        ? 'bg-med-secondary border-med-primary/10 text-med-primary hover:bg-med-secondary/80' 
+                        : 'bg-white/5 border-white/10 text-white hover:bg-white/10'
+                    }`}
                   >
                     Sign In
                   </Link>
@@ -143,12 +183,14 @@ const Home = () => {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="max-w-7xl mx-auto bg-red-500/[0.03] border border-red-500/15 text-red-200 px-6 py-5 rounded-2xl flex items-start gap-4 shadow-xl"
+        className={`max-w-7xl mx-auto border px-6 py-5 rounded-[24px] flex items-start gap-4 shadow-premium-sm text-left ${
+          isLight ? 'bg-red-50/50 border-red-100 text-red-900' : 'bg-red-950/10 border-red-500/20 text-red-200'
+        }`}
       >
         <ShieldAlert className="h-6 w-6 text-red-500 shrink-0 mt-0.5" />
-        <div className="space-y-1 text-left text-sm">
-          <h4 className="font-bold text-red-400">Important Medical Disclaimer</h4>
-          <p className="text-gray-400 leading-relaxed text-xs">
+        <div className="space-y-1 text-sm font-inter">
+          <h4 className="font-bold text-red-500 font-poppins text-base">Important Medical Disclaimer</h4>
+          <p className={`leading-relaxed text-xs ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
             This platform is built strictly for educational, research, and project demonstration purposes.
             <b> It is not intended to replace professional medical advice, clinical diagnosis, or hospital treatment. </b>
             If you are experiencing severe emergency symptoms like chest pain or acute breathing issues, contact emergency response services immediately.
@@ -165,10 +207,14 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 * idx }}
               key={idx}
-              className="glass-panel p-6 rounded-2xl border border-white/[0.06] text-left shadow-lg"
+              className={`p-6 rounded-[24px] border text-left shadow-premium-sm hover:-translate-y-0.5 transition-all duration-300 ${
+                isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/5'
+              }`}
             >
-              <h4 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">{stat.value}</h4>
-              <p className="text-sm font-semibold text-primary mt-1">{stat.label}</p>
+              <h4 className={`text-3xl md:text-4xl font-extrabold tracking-tight font-poppins ${
+                isLight ? 'text-med-primary' : 'text-primary'
+              }`}>{stat.value}</h4>
+              <p className={`text-sm font-semibold mt-1 ${isLight ? 'text-med-text' : 'text-white'}`}>{stat.label}</p>
               <p className="text-[10px] text-gray-500 mt-0.5">{stat.desc}</p>
             </motion.div>
           ))}
@@ -177,65 +223,100 @@ const Home = () => {
 
       {/* Feature Cards Grid */}
       <div className="max-w-7xl mx-auto space-y-6">
-        <div className="text-left border-b border-white/[0.06] pb-4">
-          <h2 className="text-2xl font-bold text-white">Platform Modules</h2>
-          <p className="text-xs text-gray-400 mt-1">Select an active card below to check symptoms or view consultation stats.</p>
+        <div className={`text-left border-b pb-4 ${isLight ? 'border-med-secondary' : 'border-white/5'}`}>
+          <h2 className={`text-2xl font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Platform Modules</h2>
+          <p className="text-xs text-gray-500 mt-1 font-inter">Select an active card below to check symptoms, consult doctors, or view consultation stats.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Card 1: NLP Symptom Checker */}
-          <div className="glass-card p-6 rounded-2xl text-left flex flex-col justify-between min-h-[220px]">
+          <div className={`border p-6 rounded-[24px] text-left flex flex-col justify-between min-h-[220px] transition-all hover:-translate-y-1 hover:shadow-premium-lg duration-300 group cursor-pointer ${
+            isLight 
+              ? 'bg-[#EEF0FF]/30 border-[#EEF0FF] hover:bg-white hover:border-med-primary/20' 
+              : 'bg-white/5 border-white/[0.04] hover:bg-white/[0.08] hover:border-primary/20'
+          }`}>
             <div className="space-y-4">
-              <div className="h-10 w-10 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
-                <Brain className="h-5 w-5 text-primary" />
+              <div className="h-10 w-10 bg-white dark:bg-white/5 border border-med-secondary dark:border-white/10 rounded-xl flex items-center justify-center shadow-premium-sm group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+                <Brain className="h-5 w-5 text-brand-500 group-hover:text-white" />
               </div>
-              <h3 className="text-lg font-bold text-white">Symptom Checker</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <h3 className={`text-lg font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Symptom Checker</h3>
+              <p className="text-xs text-gray-500 leading-relaxed font-inter">
                 Describe patient symptoms in conversational terms. Aegis parses spelling, performs lemmatization checks, and maps feature vector matrices.
               </p>
             </div>
             <Link
               to={isAuthenticated ? "/checker" : "/login"}
-              className="flex items-center gap-2 mt-6 text-xs font-bold text-primary hover:text-primary/95 transition-colors"
+              className="flex items-center gap-2 mt-6 text-xs font-bold text-brand-500 hover:text-brand-600 transition-colors"
             >
-              Analyze Symptoms <ArrowRight className="h-3.5 w-3.5 animate-pulse" />
+              Analyze Symptoms <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
           {/* Card 2: AI Medical Chatbot */}
-          <div className="glass-card p-6 rounded-2xl text-left flex flex-col justify-between min-h-[220px]">
+          <div className={`border p-6 rounded-[24px] text-left flex flex-col justify-between min-h-[220px] transition-all hover:-translate-y-1 hover:shadow-premium-lg duration-300 group cursor-pointer ${
+            isLight 
+              ? 'bg-[#EEF0FF]/30 border-[#EEF0FF] hover:bg-white hover:border-med-primary/20' 
+              : 'bg-white/5 border-white/[0.04] hover:bg-white/[0.08] hover:border-primary/20'
+          }`}>
             <div className="space-y-4">
-              <div className="h-10 w-10 bg-secondary/10 rounded-xl flex items-center justify-center border border-secondary/20">
-                <MessageSquare className="h-5 w-5 text-secondary" />
+              <div className="h-10 w-10 bg-white dark:bg-white/5 border border-med-secondary dark:border-white/10 rounded-xl flex items-center justify-center shadow-premium-sm group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+                <MessageSquare className="h-5 w-5 text-secondary group-hover:text-white" />
               </div>
-              <h3 className="text-lg font-bold text-white">Clinical Assistant AI</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <h3 className={`text-lg font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Clinical Assistant AI</h3>
+              <p className="text-xs text-gray-500 leading-relaxed font-inter">
                 Engage in an interactive screen session with the clinical chatbot powered by Google Gemini to clarify patient symptom patterns.
               </p>
             </div>
             <Link
               to={isAuthenticated ? "/chatbot" : "/login"}
-              className="flex items-center gap-2 mt-6 text-xs font-bold text-secondary hover:text-secondary/95 transition-colors"
+              className="flex items-center gap-2 mt-6 text-xs font-bold text-brand-500 hover:text-brand-600 transition-colors"
             >
-              Start Session <ArrowRight className="h-3.5 w-3.5 animate-pulse" />
+              Start Session <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          {/* Card 3: Consultation Logs */}
-          <div className="glass-card p-6 rounded-2xl text-left flex flex-col justify-between min-h-[220px]">
+          {/* Card 3: Doctor Consultation */}
+          <div className={`border p-6 rounded-[24px] text-left flex flex-col justify-between min-h-[220px] transition-all hover:-translate-y-1 hover:shadow-premium-lg duration-300 group cursor-pointer ${
+            isLight 
+              ? 'bg-[#EEF0FF]/30 border-[#EEF0FF] hover:bg-white hover:border-med-primary/20' 
+              : 'bg-white/5 border-white/[0.04] hover:bg-white/[0.08] hover:border-primary/20'
+          }`}>
             <div className="space-y-4">
-              <div className="h-10 w-10 bg-accent/10 rounded-xl flex items-center justify-center border border-accent/20">
-                <FileText className="h-5 w-5 text-accent" />
+              <div className="h-10 w-10 bg-white dark:bg-white/5 border border-med-secondary dark:border-white/10 rounded-xl flex items-center justify-center shadow-premium-sm group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+                <User className="h-5 w-5 text-blue-500 group-hover:text-white" />
               </div>
-              <h3 className="text-lg font-bold text-white">Diagnostic Timeline</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <h3 className={`text-lg font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Consult Doctors</h3>
+              <p className="text-xs text-gray-500 leading-relaxed font-inter">
+                Discuss predicted results with real-time physicians. Schedule mock telemedicine video slots for professional clinical validation.
+              </p>
+            </div>
+            <Link
+              to={isAuthenticated ? "/doctor-consultation" : "/login"}
+              className="flex items-center gap-2 mt-6 text-xs font-bold text-brand-500 hover:text-brand-600 transition-colors"
+            >
+              Find Doctors <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          {/* Card 4: Consultation Logs */}
+          <div className={`border p-6 rounded-[24px] text-left flex flex-col justify-between min-h-[220px] transition-all hover:-translate-y-1 hover:shadow-premium-lg duration-300 group cursor-pointer ${
+            isLight 
+              ? 'bg-[#EEF0FF]/30 border-[#EEF0FF] hover:bg-white hover:border-med-primary/20' 
+              : 'bg-white/5 border-white/[0.04] hover:bg-white/[0.08] hover:border-primary/20'
+          }`}>
+            <div className="space-y-4">
+              <div className="h-10 w-10 bg-white dark:bg-white/5 border border-med-secondary dark:border-white/10 rounded-xl flex items-center justify-center shadow-premium-sm group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+                <FileText className="h-5 w-5 text-purple-500 group-hover:text-white" />
+              </div>
+              <h3 className={`text-lg font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Diagnostic Timeline</h3>
+              <p className="text-xs text-gray-500 leading-relaxed font-inter">
                 Check and download reports for preceding diagnosis runs. Aegis outputs printable clinical summary logs in standard A4 PDF format.
               </p>
             </div>
             <Link
               to={isAuthenticated ? "/history" : "/login"}
-              className="flex items-center gap-2 mt-6 text-xs font-bold text-accent hover:text-accent/95 transition-colors"
+              className="flex items-center gap-2 mt-6 text-xs font-bold text-brand-500 hover:text-brand-600 transition-colors"
             >
-              Review Timeline <ArrowRight className="h-3.5 w-3.5 animate-pulse" />
+              Review Timeline <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
@@ -243,46 +324,48 @@ const Home = () => {
 
       {/* How it Works section */}
       <div className="max-w-7xl mx-auto">
-        <div className="glass-panel rounded-3xl p-8 text-left border border-white/[0.06] relative overflow-hidden">
-          <div className="absolute right-0 bottom-0 w-32 h-32 opacity-[0.02] pointer-events-none">
-            <Database className="w-full h-full text-white" />
+        <div className={`rounded-[28px] p-8 text-left border shadow-premium-md relative overflow-hidden transition-all duration-300 ${
+          isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/5 bg-dark-surface/50'
+        }`}>
+          <div className="absolute right-0 bottom-0 w-32 h-32 opacity-5 pointer-events-none text-brand-500">
+            <Database className="w-full h-full" />
           </div>
 
-          <h3 className="text-xl font-bold text-white mb-6">Engine Processing Telemetry</h3>
+          <h3 className={`text-xl font-bold mb-6 font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Engine Processing Telemetry</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="space-y-2">
-              <div className="flex items-center gap-2 font-semibold text-sm text-white">
-                <CheckCircle className="h-4.5 w-4.5 text-primary" />
+              <div className={`flex items-center gap-2 font-semibold text-sm font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>
+                <CheckCircle className="h-4.5 w-4.5 text-brand-500" />
                 <span>1. Normalization</span>
               </div>
-              <p className="text-[11px] text-gray-400 leading-relaxed">
+              <p className="text-[11px] text-gray-500 leading-relaxed font-inter">
                 Expands abbreviations (e.g., "sob" to "shortness of breath") and sanitizes spelling characters.
               </p>
             </div>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 font-semibold text-sm text-white">
-                <CheckCircle className="h-4.5 w-4.5 text-primary" />
+              <div className={`flex items-center gap-2 font-semibold text-sm font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>
+                <CheckCircle className="h-4.5 w-4.5 text-brand-500" />
                 <span>2. Negation Parsing</span>
               </div>
-              <p className="text-[11px] text-gray-400 leading-relaxed">
+              <p className="text-[11px] text-gray-500 leading-relaxed font-inter">
                 Flags statements like "no headache" as negative weights (`not_headache`) so classifiers avoid incorrect positive marks.
               </p>
             </div>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 font-semibold text-sm text-white">
-                <CheckCircle className="h-4.5 w-4.5 text-primary" />
+              <div className={`flex items-center gap-2 font-semibold text-sm font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>
+                <CheckCircle className="h-4.5 w-4.5 text-brand-500" />
                 <span>3. Vector Synthesis</span>
               </div>
-              <p className="text-[11px] text-gray-400 leading-relaxed">
+              <p className="text-[11px] text-gray-500 leading-relaxed font-inter">
                 Computes TF-IDF values matching trained feature matrices (up to 5,000 distinct clinical terms).
               </p>
             </div>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 font-semibold text-sm text-white">
-                <CheckCircle className="h-4.5 w-4.5 text-primary" />
+              <div className={`flex items-center gap-2 font-semibold text-sm font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>
+                <CheckCircle className="h-4.5 w-4.5 text-brand-500" />
                 <span>4. Stratified Prediction</span>
               </div>
-              <p className="text-[11px] text-gray-400 leading-relaxed">
+              <p className="text-[11px] text-gray-500 leading-relaxed font-inter">
                 Runs predictions across Naive Bayes, Random Forest, Support Vector, and XGBoost models, returning top confidence levels.
               </p>
             </div>

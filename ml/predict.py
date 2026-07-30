@@ -113,6 +113,18 @@ class DiseasePredictor:
             # 3. Extract TF-IDF Features
             X_feat = self.vectorizer.transform([cleaned_text])
 
+            if X_feat.nnz == 0:
+                logger.warning(f"No clinical symptoms recognized in input text: '{symptom_text}'")
+                return {
+                    "error": "Sorry, you didn't mention any symptoms. Please try describing specific symptoms (e.g. fever, headache, cough).",
+                    "predicted_disease": "Unknown",
+                    "confidence_score": 0.0,
+                    "top_5_predictions": [],
+                    "probability_scores": {},
+                    "preprocessed_text": cleaned_text,
+                    "latency_ms": 0.0
+                }
+
             # 4. Model Inference Probability Estimation
             if hasattr(self.model, "predict_proba"):
                 probs = self.model.predict_proba(X_feat)[0]

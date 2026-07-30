@@ -911,3 +911,151 @@ WHERE users.email = ?]
 [2026-07-28 20:03:18] [INFO] [app.api.v1.auth:84]: Password reset requested for raivaibhav64@gmail.com. Token generated: 260525
 [2026-07-28 20:03:51] [INFO] [app.services.auth:264]: Password successfully reset via OTP for email: raivaibhav64@gmail.com
 [2026-07-28 20:04:25] [INFO] [app.services.auth:90]: User authenticated successfully: raivaibhav64@gmail.com
+[2026-07-30 11:48:43] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-30 11:48:43] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-30 11:48:59] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-30 11:48:59] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-30 11:48:59] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-30 11:48:59] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-30 11:48:59] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-30 11:48:59] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-30 11:48:59] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-30 11:48:59] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-30 11:48:59] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-30 11:48:59] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-30 11:48:59] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-30 11:48:59] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-30 11:48:59] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-30 11:48:59] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-30 11:48:59] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-30 22:25:26] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-30 22:25:26] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-30 22:25:57] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-30 22:25:57] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-30 22:25:57] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-30 22:25:57] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-30 22:25:57] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-30 22:25:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-30 22:25:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-30 22:25:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-30 22:25:57] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-30 22:25:57] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-30 22:25:57] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-30 22:25:57] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-30 22:25:57] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-30 22:25:57] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-30 22:25:57] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-30 22:26:06] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-30 22:26:06] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-30 22:26:06] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-30 22:26:06] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-30 22:29:02] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-30 22:29:07] [INFO] [ml.predict:85]: [PREDICTION] Input: 'Vomiting, nausea, body pain, fever (moderate severity, lasti...' | Predicted: 'diverticulitis' | Confidence: 0.1583 | Latency: 5343.52ms
+[2026-07-30 22:29:07] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: 8852da83-d51c-47d6-a4e2-40d15d14bb2e
+[2026-07-30 22:29:08] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-30 22:30:21] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: b9f7a9fe-7543-423f-9176-ea8c86119f64
+[2026-07-30 22:30:21] [ERROR] [app.services.chatbot:63]: Gemini API invocation failed: HTTP Error 404: Not Found
+[2026-07-30 22:30:21] [ERROR] [app.services.chatbot:242]: Fallback to rules engine due to LLM error: HTTP Error 404: Not Found
+[2026-07-30 22:30:44] [ERROR] [app.services.chatbot:63]: Gemini API invocation failed: HTTP Error 404: Not Found
+[2026-07-30 22:30:44] [ERROR] [app.services.chatbot:242]: Fallback to rules engine due to LLM error: HTTP Error 404: Not Found
+[2026-07-30 22:30:49] [ERROR] [app.services.chatbot:63]: Gemini API invocation failed: HTTP Error 404: Not Found
+[2026-07-30 22:30:49] [ERROR] [app.services.chatbot:242]: Fallback to rules engine due to LLM error: HTTP Error 404: Not Found
+[2026-07-30 22:31:01] [ERROR] [app.services.chatbot:63]: Gemini API invocation failed: HTTP Error 404: Not Found
+[2026-07-30 22:31:01] [ERROR] [app.services.chatbot:242]: Fallback to rules engine due to LLM error: HTTP Error 404: Not Found
+[2026-07-30 22:31:01] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-30 22:31:01] [INFO] [ml.predict:85]: [PREDICTION] Input: 'I have had a sharp pain in my stomach for two days. 2 days n...' | Predicted: 'cholecystitis' | Confidence: 0.5735 | Latency: 21.68ms
+[2026-07-30 22:31:01] [INFO] [app.services.predictor:76]: Diagnosis prediction persisted. ID: 5e0f2b18-730e-4828-a85b-70fc4f83c637
+[2026-07-30 22:31:01] [INFO] [app.services.predictor:85]: Prediction linked to user history. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-30 22:53:23] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-30 22:53:28] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-30 22:53:28] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-30 22:53:43] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-30 22:53:43] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-30 22:53:43] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-30 22:53:43] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-30 22:53:43] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-30 22:53:43] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-30 22:53:43] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-30 22:53:43] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-30 22:53:43] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-30 22:53:43] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-30 22:53:44] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-30 22:53:44] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-30 22:53:44] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-30 22:53:44] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-30 22:53:44] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-30 22:53:45] [INFO] [app.main:72]: FastAPI application shutting down...
+[2026-07-30 22:53:49] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-30 22:53:49] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-30 22:53:57] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-30 22:53:57] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-30 22:53:57] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-30 22:53:57] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-30 22:53:57] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-30 22:53:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-30 22:53:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-30 22:53:57] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-30 22:53:57] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-30 22:53:57] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-30 22:53:57] [INFO] [app.main:62]: FastAPI application booting up...
+[2026-07-30 22:53:57] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-30 22:53:57] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-30 22:53:57] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-30 22:53:57] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-30 22:54:52] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-30 22:54:52] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-30 22:55:00] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-30 22:55:00] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-30 22:55:00] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-30 22:55:00] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-30 22:55:00] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-30 22:55:00] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-30 22:55:01] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-30 22:55:01] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-30 22:55:01] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-30 22:55:01] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-30 22:55:01] [INFO] [app.main:40]: First administrator account absent. Seeding from configuration...
+[2026-07-30 22:55:01] [INFO] [app.main:50]: Default admin seeded successfully. Credentials: admin@medical-assistant.com
+[2026-07-30 22:55:01] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+[2026-07-30 22:55:01] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/version "HTTP/1.1 200 OK"
+[2026-07-30 22:55:01] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 422 Unprocessable Entity"
+[2026-07-30 22:55:02] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 201 Created"
+[2026-07-30 22:55:02] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 401 Unauthorized"
+[2026-07-30 22:55:03] [INFO] [app.services.auth:90]: User authenticated successfully: patient@example.com
+[2026-07-30 22:55:03] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-07-30 22:55:03] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-30 22:55:03] [INFO] [httpx:1025]: HTTP Request: PUT http://testserver/profile "HTTP/1.1 200 OK"
+[2026-07-30 22:55:03] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: 31425a49-0e29-42d1-a578-4bd15bcbc2f1
+[2026-07-30 22:55:07] [INFO] [ml.predict:85]: [PREDICTION] Input: 'I am experiencing severe chest pain, shortness of breath, pa...' | Predicted: 'ischemic heart disease' | Confidence: 0.2569 | Latency: 4801.45ms
+[2026-07-30 22:55:08] [INFO] [app.services.predictor:77]: Diagnosis prediction persisted. ID: e8f1fc07-e4aa-4000-a316-4f4ea5c2a8e7
+[2026-07-30 22:55:08] [INFO] [app.services.predictor:86]: Prediction linked to user history. User ID: 31425a49-0e29-42d1-a578-4bd15bcbc2f1
+[2026-07-30 22:55:08] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+[2026-07-30 22:55:08] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: d2436def-6c2c-434b-848f-8eba7e8533e7
+[2026-07-30 22:55:08] [WARNING] [app.services.chatbot:109]: Emergency indicator 'chest pain' flagged in user input.
+[2026-07-30 22:55:08] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-30 22:55:08] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: d01bc6c5-4b6c-4ccc-8c45-4eb5c6cd10f7
+[2026-07-30 22:55:08] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-30 22:55:08] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-30 22:55:08] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-30 22:55:08] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: 31425a49-0e29-42d1-a578-4bd15bcbc2f1
+[2026-07-30 22:55:08] [INFO] [ml.predict:85]: [PREDICTION] Input: 'I feel very feverish and have a dry cough It started about 3...' | Predicted: 'pulmonary hypertension' | Confidence: 0.0828 | Latency: 9.95ms
+[2026-07-30 22:55:08] [INFO] [app.services.predictor:77]: Diagnosis prediction persisted. ID: 513e927c-a77c-4154-a339-418295259330
+[2026-07-30 22:55:08] [INFO] [app.services.predictor:86]: Prediction linked to user history. User ID: 31425a49-0e29-42d1-a578-4bd15bcbc2f1
+[2026-07-30 22:55:08] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-07-30 22:55:08] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
+[2026-07-30 22:55:08] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history/b025f4d8-6a96-408c-a690-557e4a8f0298 "HTTP/1.1 200 OK"
+[2026-07-30 22:55:08] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history?q=chest "HTTP/1.1 200 OK"
+[2026-07-30 22:55:09] [INFO] [app.services.auth:90]: User authenticated successfully: admin@medical-assistant.com
+[2026-07-30 22:55:09] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-07-30 22:55:09] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/admin/dashboard "HTTP/1.1 200 OK"
+[2026-07-30 22:55:09] [INFO] [app.services.history:104]: History record b025f4d8-6a96-408c-a690-557e4a8f0298 and related prediction/chat successfully deleted.
+[2026-07-30 22:55:09] [INFO] [httpx:1025]: HTTP Request: DELETE http://testserver/history/b025f4d8-6a96-408c-a690-557e4a8f0298 "HTTP/1.1 200 OK"
+[2026-07-30 22:55:09] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
+[2026-07-30 22:56:34] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-30 22:56:34] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: Anonymous
+[2026-07-30 22:56:39] [WARNING] [ml.predict:117]: No clinical symptoms recognized in input text: 'hi I am Vaibhav Rai and My friend Vansh said there are issue in you (moderate severity, lasting for 3 Days).'
+[2026-07-30 22:56:39] [ERROR] [app.services.predictor:49]: Inference error returned: Sorry, you didn't mention any symptoms. Please try describing specific symptoms (e.g. fever, headache, cough).
+[2026-07-30 22:57:29] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-30 22:57:29] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-30 22:57:30] [INFO] [app.services.auth:157]: Password updated for user: raivaibhav64@gmail.com
+[2026-07-30 23:06:15] [INFO] [app.main:72]: FastAPI application shutting down...

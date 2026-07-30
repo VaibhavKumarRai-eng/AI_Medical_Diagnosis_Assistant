@@ -47,6 +47,7 @@ class PredictorService:
         # Check for model error
         if "error" in inference_result:
             logger.error(f"Inference error returned: {inference_result['error']}")
+            raise ValueError(inference_result["error"])
             
         disease = inference_result.get("predicted_disease", "Unknown").lower()
         confidence = inference_result.get("confidence_score", 0.0)

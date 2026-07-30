@@ -3,7 +3,7 @@ import { predictionAPI } from '../services/api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Activity, AlertTriangle, CheckSquare, RefreshCw, Sparkles, Heart, 
-  ChevronRight, Thermometer, ShieldAlert, Clock, User, Download, Plus 
+  ChevronRight, Thermometer, ShieldAlert, Clock, User, Download, Plus, X
 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell } from 'recharts';
 
@@ -16,6 +16,7 @@ const SymptomChecker = () => {
   const [loadingStep, setLoadingStep] = useState(0);
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
+  const [showErrorModal, setShowErrorModal] = useState(false);
 
   const loadingSteps = [
     "Extracting Symptoms...",
@@ -83,10 +84,11 @@ const SymptomChecker = () => {
       }, 3600);
     } catch (err) {
       console.error(err);
-      setError(
-        err.response?.data?.detail || 
-        'An error occurred during symptom analysis. Please check your connection and try again.'
-      );
+      const errMsg = err.response?.data?.detail || 'An error occurred during symptom analysis. Please check your connection and try again.';
+      setError(errMsg);
+      if (errMsg.includes("didn't mention any symptoms")) {
+        setShowErrorModal(true);
+      }
       setLoading(false);
     }
   };
@@ -463,6 +465,56 @@ const SymptomChecker = () => {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Error Popup Modal */}
+      <AnimatePresence>
+        {showErrorModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowErrorModal(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative max-w-sm w-full bg-[#151e30] border border-red-500/20 rounded-[28px] p-6 shadow-2xl overflow-hidden text-center"
+            >
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-red-500" />
+              
+              <button 
+                onClick={() => setShowErrorModal(false)}
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/5 text-gray-400 hover:text-white"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              <div className="mx-auto h-12 w-12 bg-red-500/10 border border-red-500/20 rounded-full flex items-center justify-center text-red-500 mb-4 animate-pulse">
+                <AlertTriangle className="h-6 w-6" />
+              </div>
+
+              <h3 className="text-base font-bold text-white font-poppins">No Symptoms Detected</h3>
+              <p className="text-xs text-gray-400 mt-2 leading-relaxed">
+                {error}
+              </p>
+
+              <div className="mt-6 flex flex-col gap-2">
+                <button
+                  onClick={() => setShowErrorModal(false)}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-red-500 hover:bg-red-600 transition-all cursor-pointer"
+                >
+                  Understood
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 };

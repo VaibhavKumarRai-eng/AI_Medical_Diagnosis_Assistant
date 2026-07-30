@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { authAPI } from '../services/api';
-import { motion } from 'framer-motion';
-import { User, Lock, Mail, Shield, AlertCircle, CheckCircle, Settings, ShieldCheck } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { User, Lock, Mail, Shield, AlertCircle, CheckCircle, Settings, ShieldCheck, X } from 'lucide-react';
 
 const Profile = () => {
   const { user, refreshUser } = useAuth();
@@ -15,6 +15,7 @@ const Profile = () => {
   const [profileSuccess, setProfileSuccess] = useState('');
   const [passError, setPassError] = useState('');
   const [passSuccess, setPassSuccess] = useState('');
+  const [showPassSuccessModal, setShowPassSuccessModal] = useState(false);
   
   const [profileLoading, setProfileLoading] = useState(false);
   const [passLoading, setPassLoading] = useState(false);
@@ -65,10 +66,11 @@ const Profile = () => {
     setPassLoading(true);
     try {
       await authAPI.changePassword({
-        current_password: currentPassword,
+        old_password: currentPassword,
         new_password: newPassword
       });
       setPassSuccess('Password updated successfully.');
+      setShowPassSuccessModal(true);
       setCurrentPassword('');
       setNewPassword('');
       setConfirmPassword('');
@@ -273,6 +275,56 @@ const Profile = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Password Change Success Modal */}
+      <AnimatePresence>
+        {showPassSuccessModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowPassSuccessModal(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative max-w-sm w-full bg-[#151e30] border border-green-500/20 rounded-[28px] p-6 shadow-2xl overflow-hidden text-center"
+            >
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-green-500" />
+              
+              <button 
+                onClick={() => setShowPassSuccessModal(false)}
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/5 text-gray-400 hover:text-white"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              <div className="mx-auto h-12 w-12 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center text-green-500 mb-4 animate-bounce">
+                <CheckCircle className="h-6 w-6" />
+              </div>
+
+              <h3 className="text-base font-bold text-white font-poppins">Success</h3>
+              <p className="text-xs text-gray-400 mt-2 leading-relaxed font-inter">
+                Your password has been successfully changed!
+              </p>
+
+              <div className="mt-6">
+                <button
+                  onClick={() => setShowPassSuccessModal(false)}
+                  className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-green-500 hover:bg-green-600 transition-all cursor-pointer"
+                >
+                  Great
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 };
