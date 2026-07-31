@@ -207,8 +207,13 @@ class AuthService:
                 body = f"Your 6-digit One-Time Password (OTP) for Aegis AI password reset is: {otp}\n\nThis OTP is valid for 10 minutes."
                 msg.attach(MIMEText(body, 'plain'))
                 
-                server = smtplib.SMTP(smtp_host, int(smtp_port))
-                server.starttls()
+                port = int(smtp_port)
+                if port == 465:
+                    server = smtplib.SMTP_SSL(smtp_host, port)
+                else:
+                    server = smtplib.SMTP(smtp_host, port)
+                    server.starttls()
+                    
                 server.login(smtp_user, smtp_pass)
                 server.sendmail(smtp_user, email, msg.as_string())
                 server.quit()

@@ -6,7 +6,7 @@ Uses pydantic settings or standard environment resolution.
 """
 
 import os
-from typing import List, Union
+from typing import List, Union, Optional
 from pydantic import AnyHttpUrl, field_validator
 from pydantic_settings import BaseSettings
 
@@ -68,6 +68,12 @@ class Settings(BaseSettings):
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
     CLAUDE_API_KEY: str = os.getenv("CLAUDE_API_KEY", "")
+
+    # SMTP Configuration (defaults to None/empty)
+    SMTP_HOST: Optional[str] = os.getenv("SMTP_HOST", None)
+    SMTP_PORT: Optional[int] = int(os.getenv("SMTP_PORT", "587")) if os.getenv("SMTP_PORT") else 587
+    SMTP_USER: Optional[str] = os.getenv("SMTP_USER", None)
+    SMTP_PASS: Optional[str] = os.getenv("SMTP_PASS", None)
 
     # Core System Admins
     FIRST_ADMIN_EMAIL: str = os.getenv("FIRST_ADMIN_EMAIL", "admin@medical-assistant.com")
