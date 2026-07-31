@@ -210,3 +210,8 @@
 [2026-07-30 23:38:27] [INFO] [ml.utils] [PID:16380]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
 [2026-07-30 23:38:27] [INFO] [ml.utils] [PID:16380]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
 [2026-07-30 23:38:27] [INFO] [ml.predict] [PID:16380]: All inference artifacts successfully loaded into memory.
+[2026-07-31 18:47:49] [INFO] [ml.predict] [PID:13336]: Loading production disease diagnosis artifacts...
+[2026-07-31 18:47:49] [INFO] [ml.utils] [PID:13336]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-31 18:47:49] [INFO] [ml.utils] [PID:13336]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-31 18:47:49] [INFO] [ml.utils] [PID:13336]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-31 18:47:49] [INFO] [ml.predict] [PID:13336]: All inference artifacts successfully loaded into memory.

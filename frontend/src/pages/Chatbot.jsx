@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 import { chatbotAPI } from '../services/api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -8,6 +9,9 @@ import {
 } from 'lucide-react';
 
 const Chatbot = () => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+  
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [conversationId, setConversationId] = useState(null);
@@ -149,9 +153,9 @@ const Chatbot = () => {
     }
 
     window.speechSynthesis.cancel();
-    // Strip headers or markdown details before speaking
-    const cleanText = text.replace(/[*#_`]/g, '');
+    const cleanText = text.replace(/[*#_`~]/g, ''); // strip markdown formatting symbols
     const utterance = new SpeechSynthesisUtterance(cleanText);
+    
     utterance.onend = () => setSpeakingMsgId(null);
     utterance.onerror = () => setSpeakingMsgId(null);
     
@@ -166,61 +170,87 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 text-left space-y-6 relative">
-      <div className="border-b border-white/[0.06] pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div className={`max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-left space-y-10 relative transition-colors duration-300 ${
+      isLight ? 'text-med-text' : 'text-gray-300'
+    }`}>
+      {/* Background Glowing Orbs */}
+      <div className={`absolute top-20 left-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-med-secondary' : 'bg-primary/10'
+      }`} />
+      <div className={`absolute bottom-20 right-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-[#EEF0FF]' : 'bg-secondary/10'
+      }`} />
+
+      <div className={`border-b pb-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 ${
+        isLight ? 'border-med-secondary' : 'border-white/[0.06]'
+      }`}>
         <div>
-          <h1 className="text-3xl font-extrabold text-white flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(37,99,235,0.15)]">
-              <MessageSquare className="h-6 w-6 text-primary" />
+          <h1 className={`text-3xl font-extrabold flex items-center gap-3 transition-colors duration-300 ${
+            isLight ? 'text-med-text' : 'text-white'
+          }`}>
+            <div className={`p-2 rounded-xl border shadow-[0_0_15px_rgba(37,99,235,0.15)] ${
+              isLight ? 'bg-med-secondary border-med-primary/10 text-med-primary' : 'bg-primary/10 border-primary/20 text-primary'
+            }`}>
+              <MessageSquare className="h-6 w-6 text-current" />
             </div>
-            AI Virtual Consultant
+            Clinical AI Assistant
           </h1>
-          <p className="text-xs text-gray-400 mt-1.5">
-            Interactive clinical session to screen emergency codes and compile context details for classifier calculations.
+          <p className={`text-xs mt-2 max-w-xl ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
+            Converse with Aegis AI to refine symptom details. The assistant will ask clarifying clinical questions and compile predictions when sufficient detail is reached.
           </p>
         </div>
 
-        {(messages.length > 1 || isDiagnosed) && (
-          <button
-            onClick={handleRestart}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-white/10 text-xs font-bold text-gray-300 hover:bg-white/5 hover:text-white transition-colors cursor-pointer"
-          >
-            <RefreshCw className="h-3 w-3" />
-            New Consultation
-          </button>
-        )}
+        <button
+          onClick={handleRestart}
+          className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
+            isLight 
+              ? 'bg-med-secondary border-med-primary/10 text-med-primary hover:bg-med-primary hover:text-white' 
+              : 'bg-white/5 border-white/10 text-white hover:bg-white/10'
+          }`}
+        >
+          <RefreshCw className="h-3.5 w-3.5" />
+          Restart Consultation
+        </button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-[650px] items-stretch">
         {/* Left Stats/Clinical Info Pane */}
-        <div className="lg:col-span-4 glass-panel p-6 rounded-3xl border border-white/[0.06] flex flex-col justify-between space-y-6 h-full overflow-y-auto shadow-2xl relative">
+        <div className={`p-6 rounded-3xl border flex flex-col justify-between space-y-6 h-full overflow-y-auto shadow-2xl relative transition-all duration-300 ${
+          isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/[0.06]'
+        }`}>
           <div className="space-y-6">
             <div className="space-y-2">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
+              <h3 className={`text-base font-bold flex items-center gap-2 ${isLight ? 'text-med-text' : 'text-white'}`}>
                 <Brain className="h-4 w-4 text-primary" />
                 Session Telemetry
               </h3>
-              <p className="text-[11px] text-gray-400 leading-relaxed">
+              <p className={`text-[11px] leading-relaxed ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
                 As you chat, Aegis checks symptoms and screens severity flags. When details are fully structured, the dialog locks to compile results.
               </p>
             </div>
 
-            <div className="border-t border-white/5 pt-4 space-y-3">
-              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block">Session Flags</span>
+            <div className={`border-t pt-4 space-y-3 ${isLight ? 'border-med-secondary' : 'border-white/5'}`}>
+              <span className={`text-[10px] font-bold uppercase tracking-widest block ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>Session Flags</span>
               <div className="space-y-2">
-                <div className="flex items-center justify-between text-xs bg-white/[0.02] px-3 py-2.5 rounded-xl border border-white/5">
-                  <span className="text-gray-400">Total Dialog Turns</span>
-                  <span className="font-bold text-white">
+                <div className={`flex items-center justify-between text-xs px-3 py-2.5 rounded-xl border ${
+                  isLight ? 'bg-med-secondary/30 border-med-primary/5' : 'bg-white/[0.02] border-white/5'
+                }`}>
+                  <span className={isLight ? 'text-med-gray' : 'text-gray-400'}>Total Dialog Turns</span>
+                  <span className={`font-bold ${isLight ? 'text-med-text' : 'text-white'}`}>
                     {messages.filter(m => m.sender === 'user').length}
                   </span>
                 </div>
-                <div className="flex items-center justify-between text-xs bg-white/[0.02] px-3 py-2.5 rounded-xl border border-white/5">
-                  <span className="text-gray-400">Emergency Screening</span>
+                <div className={`flex items-center justify-between text-xs px-3 py-2.5 rounded-xl border ${
+                  isLight ? 'bg-med-secondary/30 border-med-primary/5' : 'bg-white/[0.02] border-white/5'
+                }`}>
+                  <span className={isLight ? 'text-med-gray' : 'text-gray-400'}>Emergency Screening</span>
                   <span className="font-bold text-accent">Active</span>
                 </div>
-                <div className="flex items-center justify-between text-xs bg-white/[0.02] px-3 py-2.5 rounded-xl border border-white/5">
-                  <span className="text-gray-400">Status</span>
-                  <span className={`font-bold ${isDiagnosed ? 'text-red-400 animate-pulse' : 'text-primary'}`}>
+                <div className={`flex items-center justify-between text-xs px-3 py-2.5 rounded-xl border ${
+                  isLight ? 'bg-med-secondary/30 border-med-primary/5' : 'bg-white/[0.02] border-white/5'
+                }`}>
+                  <span className={isLight ? 'text-med-gray' : 'text-gray-400'}>Status</span>
+                  <span className={`font-bold ${isDiagnosed ? 'text-red-500 animate-pulse' : 'text-primary'}`}>
                     {isDiagnosed ? 'Analysis Ready' : 'Gathering Data'}
                   </span>
                 </div>
@@ -233,15 +263,17 @@ const Chatbot = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="p-4 rounded-2xl bg-primary/5 border border-primary/20 text-xs space-y-3"
+                  className={`p-4 rounded-2xl border text-xs space-y-3 ${
+                    isLight ? 'bg-primary/5 border-primary/20 text-med-text' : 'bg-primary/5 border-primary/20 text-gray-300'
+                  }`}
                 >
                   <div className="space-y-1">
                     <span className="text-[9px] font-bold text-primary uppercase tracking-wider block">diagnosis compiled</span>
-                    <h4 className="font-bold text-white text-lg capitalize leading-tight">{diagnosisInfo.predicted_disease}</h4>
+                    <h4 className={`font-bold text-lg capitalize leading-tight ${isLight ? 'text-med-text' : 'text-white'}`}>{diagnosisInfo.predicted_disease}</h4>
                   </div>
-                  <div className="flex justify-between items-center text-[11px] text-gray-400">
-                    <span>Confidence Match:</span>
-                    <span className="font-bold text-white">{(diagnosisInfo.confidence_score * 100).toFixed(1)}%</span>
+                  <div className="flex justify-between items-center text-[11px]">
+                    <span className={isLight ? 'text-med-gray' : 'text-gray-400'}>Confidence Match:</span>
+                    <span className={`font-bold ${isLight ? 'text-med-text' : 'text-white'}`}>{(diagnosisInfo.confidence_score * 100).toFixed(1)}%</span>
                   </div>
                   <Link
                     to="/history"
@@ -254,16 +286,20 @@ const Chatbot = () => {
             </AnimatePresence>
           </div>
 
-          <div className="bg-yellow-500/[0.03] border border-yellow-500/10 text-yellow-200/80 p-4 rounded-2xl flex items-start gap-2.5 shadow-md">
-            <ShieldAlert className="h-5 w-5 text-yellow-500 shrink-0 mt-0.5" />
-            <div className="text-[10px] text-gray-500 leading-normal">
+          <div className={`border p-4 rounded-2xl flex items-start gap-2.5 shadow-md ${
+            isLight ? 'bg-yellow-50 border-yellow-200 text-yellow-950' : 'bg-yellow-500/[0.03] border-yellow-500/10 text-yellow-200/80'
+          }`}>
+            <ShieldAlert className="h-5 w-5 text-yellow-600 shrink-0 mt-0.5" />
+            <div className={`text-[10px] leading-normal ${isLight ? 'text-yellow-850' : 'text-gray-500'}`}>
               <b>Emergency Warning:</b> If you report severe, crushing chest pain or extreme breathing struggles, the system triggers alerts immediately.
             </div>
           </div>
         </div>
 
         {/* Right Chat Stream Pane */}
-        <div className="lg:col-span-8 glass-panel rounded-3xl border border-white/[0.06] flex flex-col justify-between h-full overflow-hidden shadow-2xl relative">
+        <div className={`rounded-3xl border flex flex-col justify-between h-full overflow-hidden shadow-2xl relative transition-all duration-300 ${
+          isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/[0.06]'
+        }`}>
           
           {/* Empty State suggestions */}
           <div className="flex-1 p-6 overflow-y-auto space-y-6 max-h-[550px] relative">
@@ -275,11 +311,13 @@ const Chatbot = () => {
                   exit={{ opacity: 0, y: -15 }}
                   className="space-y-4 max-w-lg mx-auto mt-10 text-center flex flex-col items-center"
                 >
-                  <div className="h-12 w-12 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-center text-primary shadow-inner mb-2">
+                  <div className={`h-12 w-12 rounded-2xl border flex items-center justify-center text-primary shadow-inner mb-2 ${
+                    isLight ? 'bg-med-secondary border-med-primary/10' : 'bg-white/[0.02] border-white/[0.06]'
+                  }`}>
                     <Activity className="h-6 w-6 animate-pulse" />
                   </div>
-                  <h3 className="text-sm font-bold text-white">Interactive Assessment Chips</h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">
+                  <h3 className={`text-sm font-bold ${isLight ? 'text-med-text' : 'text-white'}`}>Interactive Assessment Chips</h3>
+                  <p className={`text-xs ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                     Select a sample symptom context below to launch the assessment dialog instantly:
                   </p>
                   <div className="space-y-2 w-full pt-2">
@@ -287,7 +325,11 @@ const Chatbot = () => {
                       <button
                         key={idx}
                         onClick={() => handleSend(q)}
-                        className="w-full text-left px-4 py-3 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-primary/5 hover:border-primary/20 text-xs text-gray-300 transition-all cursor-pointer block leading-normal truncate"
+                        className={`w-full text-left px-4 py-3 rounded-xl border text-xs transition-all cursor-pointer block leading-normal truncate ${
+                          isLight 
+                            ? 'bg-med-secondary/30 border-med-primary/10 text-med-text hover:bg-primary/5 hover:border-primary/20 hover:text-med-primary' 
+                            : 'bg-white/[0.02] border border-white/5 text-gray-300 hover:bg-primary/5 hover:border-primary/20 hover:text-white'
+                        }`}
                       >
                         "{q}"
                       </button>
@@ -315,7 +357,9 @@ const Chatbot = () => {
                     <div
                       className={`h-8 w-8 rounded-xl flex items-center justify-center shrink-0 border ${
                         isAssistant
-                          ? 'bg-primary/10 text-primary border-primary/20 shadow-[0_0_10px_rgba(37,99,235,0.1)]'
+                          ? isLight 
+                            ? 'bg-med-secondary text-med-primary border-med-primary/10 shadow-[0_0_10px_rgba(91,76,245,0.05)]' 
+                            : 'bg-primary/10 text-primary border-primary/20 shadow-[0_0_10px_rgba(37,99,235,0.1)]'
                           : 'bg-secondary/10 text-secondary border-secondary/20'
                       }`}
                     >
@@ -327,8 +371,12 @@ const Chatbot = () => {
                         className={`p-4 rounded-2xl text-xs leading-relaxed shadow-lg ${
                           isAssistant
                             ? msg.isEmergency 
-                              ? 'bg-red-500/10 border border-red-500/20 text-red-200'
-                              : 'bg-white/[0.02] border border-white/[0.05] text-gray-300'
+                              ? isLight 
+                                ? 'bg-red-50 border border-red-200 text-red-950' 
+                                : 'bg-red-500/10 border border-red-500/20 text-red-200'
+                              : isLight 
+                                ? 'bg-med-secondary/30 border border-med-primary/5 text-med-text' 
+                                : 'bg-white/[0.02] border border-white/[0.05] text-gray-300'
                             : 'bg-primary text-white rounded-tr-none'
                         }`}
                       >
@@ -336,28 +384,34 @@ const Chatbot = () => {
                       </div>
                       
                       {/* Audio/Copy Actions under assistant messages */}
-                      <div className={`flex items-center gap-2 text-[9px] text-gray-500 px-1.5 ${
+                      <div className={`flex items-center gap-2 text-[9px] px-1.5 ${
+                        isLight ? 'text-med-gray' : 'text-gray-500'
+                      } ${
                         isAssistant ? 'justify-start' : 'justify-end'
                       }`}>
                         <span>{msg.time}</span>
                         {isAssistant && msg.id !== 'welcome' && (
                           <>
-                            <span className="text-gray-700">•</span>
+                            <span className={isLight ? 'text-gray-300' : 'text-gray-700'}>•</span>
                             <button
                               onClick={() => speakText(msg.id, msg.text)}
-                              className="hover:text-white transition-colors cursor-pointer flex items-center gap-0.5"
+                              className={`transition-colors cursor-pointer flex items-center gap-0.5 ${
+                                isLight ? 'hover:text-med-primary' : 'hover:text-white'
+                              }`}
                               title="Read response aloud"
                             >
                               {speakingMsgId === msg.id ? (
-                                <VolumeX className="h-3 w-3 text-red-400" />
+                                <VolumeX className="h-3 w-3 text-red-500" />
                               ) : (
                                 <Volume2 className="h-3 w-3" />
                               )}
                             </button>
-                            <span className="text-gray-700">•</span>
+                            <span className={isLight ? 'text-gray-300' : 'text-gray-700'}>•</span>
                             <button
                               onClick={() => copyToClipboard(msg.id, msg.text)}
-                              className="hover:text-white transition-colors cursor-pointer flex items-center gap-0.5"
+                              className={`transition-colors cursor-pointer flex items-center gap-0.5 ${
+                                isLight ? 'hover:text-med-primary' : 'hover:text-white'
+                              }`}
                               title="Copy text"
                             >
                               {copiedId === msg.id ? (
@@ -376,10 +430,14 @@ const Chatbot = () => {
 
               {loading && (
                 <div className="flex items-start gap-3 mr-auto text-left">
-                  <div className="h-8 w-8 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center shrink-0">
+                  <div className={`h-8 w-8 rounded-xl border flex items-center justify-center shrink-0 ${
+                    isLight ? 'bg-med-secondary border-med-primary/10 text-med-primary' : 'bg-primary/10 border border-primary/20 text-primary'
+                  }`}>
                     <Activity className="h-4 w-4 animate-spin" />
                   </div>
-                  <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] text-xs text-gray-400 flex items-center gap-2 shadow-md">
+                  <div className={`p-4 rounded-2xl border text-xs flex items-center gap-2 shadow-md ${
+                    isLight ? 'bg-med-secondary/30 border-med-primary/5 text-med-gray' : 'bg-white/[0.02] border border-white/[0.05] text-gray-400'
+                  }`}>
                     <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
                     <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
                     <div className="w-1 h-1 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
@@ -393,7 +451,9 @@ const Chatbot = () => {
           </div>
 
           {/* Bottom Chat Input Form */}
-          <div className="p-4 border-t border-white/[0.06] bg-white/[0.01]">
+          <div className={`p-4 border-t ${
+            isLight ? 'border-med-secondary bg-med-secondary/20' : 'border-white/[0.06] bg-white/[0.01]'
+          }`}>
             <form 
               onSubmit={(e) => {
                 e.preventDefault();
@@ -409,7 +469,9 @@ const Chatbot = () => {
                 className={`p-3 border rounded-xl flex items-center justify-center transition-all cursor-pointer disabled:opacity-50 shrink-0 ${
                   isListening 
                     ? 'bg-red-500/10 text-red-400 border-red-500/25 animate-pulse' 
-                    : 'bg-white/[0.02] text-gray-400 border-white/10 hover:text-white hover:bg-white/[0.05]'
+                    : isLight 
+                      ? 'bg-white text-med-gray border-med-secondary hover:text-med-primary hover:bg-med-secondary/50'
+                      : 'bg-white/[0.02] text-gray-400 border-white/10 hover:text-white hover:bg-white/[0.05]'
                 }`}
                 title="Dictate Symptoms (Speech-to-Text)"
               >
@@ -429,7 +491,9 @@ const Chatbot = () => {
                   }
                   className="glass-input flex-1 pl-4 pr-10 py-3 text-xs disabled:opacity-50 disabled:cursor-not-allowed"
                 />
-                <div className="absolute right-3 text-[10px] text-gray-600 flex items-center gap-1 font-semibold pointer-events-none hidden sm:flex">
+                <div className={`absolute right-3 text-[10px] flex items-center gap-1 font-semibold pointer-events-none hidden sm:flex ${
+                  isLight ? 'text-med-gray' : 'text-gray-600'
+                }`}>
                   <span>Enter</span>
                   <CornerDownLeft className="h-3 w-3" />
                 </div>

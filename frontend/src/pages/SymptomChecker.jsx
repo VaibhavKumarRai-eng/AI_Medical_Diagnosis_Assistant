@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTheme } from '../context/ThemeContext';
 import { predictionAPI } from '../services/api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -8,6 +9,8 @@ import {
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell } from 'recharts';
 
 const SymptomChecker = () => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   const [symptomText, setSymptomText] = useState('');
   const [severity, setSeverity] = useState('Moderate');
   const [duration, setDuration] = useState('3 Days');
@@ -122,15 +125,29 @@ const SymptomChecker = () => {
   const colors = ['#2563EB', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe'];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-left space-y-10 relative">
-      <div className="border-b border-white/[0.06] pb-5">
-        <h1 className="text-3xl font-extrabold text-white flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(37,99,235,0.15)]">
-            <Activity className="h-6 w-6 text-primary" />
+    <div className={`max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-left space-y-10 relative transition-colors duration-300 ${
+      isLight ? 'text-med-text' : 'text-gray-300'
+    }`}>
+      {/* Background Glowing Orbs */}
+      <div className={`absolute top-20 left-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-med-secondary' : 'bg-primary/10'
+      }`} />
+      <div className={`absolute bottom-20 right-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-[#EEF0FF]' : 'bg-secondary/10'
+      }`} />
+
+      <div className={`border-b pb-5 ${isLight ? 'border-med-secondary' : 'border-white/[0.06]'}`}>
+        <h1 className={`text-3xl font-extrabold flex items-center gap-3 transition-colors duration-300 ${
+          isLight ? 'text-med-text' : 'text-white'
+        }`}>
+          <div className={`p-2 rounded-xl border shadow-[0_0_15px_rgba(37,99,235,0.15)] ${
+            isLight ? 'bg-med-secondary border-med-primary/10 text-med-primary' : 'bg-primary/10 border-primary/20 text-primary'
+          }`}>
+            <Activity className="h-6 w-6 text-current" />
           </div>
           Symptom Checker
         </h1>
-        <p className="text-xs text-gray-400 mt-2 max-w-xl">
+        <p className={`text-xs mt-2 max-w-xl ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
           Enter patient symptoms, customize parameters, and run natural language processing to predict disease targets with detailed probability analytics.
         </p>
       </div>
@@ -138,10 +155,12 @@ const SymptomChecker = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left input card */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="glass-panel p-6 rounded-3xl border border-white/[0.06] shadow-xl space-y-6 relative overflow-hidden">
+          <div className={`p-6 rounded-3xl border shadow-xl space-y-6 relative overflow-hidden transition-all duration-300 ${
+            isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/[0.06]'
+          }`}>
             <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full pointer-events-none" />
             
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
+            <h3 className={`text-base font-bold flex items-center gap-2 ${isLight ? 'text-med-text' : 'text-white'}`}>
               <Sparkles className="h-4 w-4 text-primary" />
               Symptom Description
             </h3>
@@ -150,9 +169,11 @@ const SymptomChecker = () => {
               <motion.div 
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-red-500/10 border border-red-500/25 text-red-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs"
+                className={`p-3.5 rounded-xl flex items-start gap-2.5 text-xs border ${
+                  isLight ? 'bg-red-50 border-red-200 text-red-800' : 'bg-red-500/10 border-red-500/25 text-red-200'
+                }`}
               >
-                <AlertTriangle className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
+                <AlertTriangle className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
                 <span>{error}</span>
               </motion.div>
             )}
@@ -160,16 +181,20 @@ const SymptomChecker = () => {
             <form onSubmit={handleAnalyze} className="space-y-6">
               {/* Quickchips */}
               <div className="space-y-2">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Quick Symptom Chips</span>
+                <span className={`text-[10px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Quick Symptom Chips</span>
                 <div className="flex flex-wrap gap-1.5">
                   {symptomChips.map((symptom, i) => (
                     <button
                       key={i}
                       type="button"
                       onClick={() => handleChipClick(symptom)}
-                      className="px-2.5 py-1 rounded-lg bg-white/[0.02] border border-white/5 text-[10px] text-gray-300 hover:bg-primary/10 hover:border-primary/30 hover:text-white transition-all cursor-pointer flex items-center gap-1"
+                      className={`px-2.5 py-1 rounded-lg border text-[10px] transition-all cursor-pointer flex items-center gap-1 ${
+                        isLight 
+                          ? 'bg-med-secondary/40 border-med-primary/10 text-med-primary hover:bg-med-primary hover:text-white hover:border-transparent' 
+                          : 'bg-white/[0.02] border border-white/5 text-gray-300 hover:bg-primary/10 hover:border-primary/30 hover:text-white'
+                      }`}
                     >
-                      <Plus className="h-2.5 w-2.5 text-primary" />
+                      <Plus className="h-2.5 w-2.5 text-current" />
                       {symptom}
                     </button>
                   ))}
@@ -178,7 +203,7 @@ const SymptomChecker = () => {
 
               {/* Textarea */}
               <div className="space-y-1.5">
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">conversational description</span>
+                <span className={`text-[10px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>conversational description</span>
                 <textarea
                   value={symptomText}
                   onChange={(e) => setSymptomText(e.target.value)}
@@ -187,7 +212,7 @@ const SymptomChecker = () => {
                   className="glass-input w-full p-4 text-xs leading-relaxed"
                   placeholder="e.g., I have been feeling a mild headache and chest pain since yesterday..."
                 ></textarea>
-                <div className="flex justify-between text-[9px] text-gray-500 px-1">
+                <div className={`flex justify-between text-[9px] px-1 ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                   <span>Minimum 10 characters</span>
                   <span>{symptomText.length}/500 chars</span>
                 </div>
@@ -196,11 +221,11 @@ const SymptomChecker = () => {
               {/* Severity & Duration Selectors */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block flex items-center gap-1">
+                  <span className={`text-[10px] font-bold uppercase tracking-wider block flex items-center gap-1 ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
                     <Thermometer className="h-3.5 w-3.5 text-primary" />
                     Severity
                   </span>
-                  <div className="grid grid-cols-3 gap-1 bg-white/[0.02] border border-white/10 rounded-xl p-1">
+                  <div className={`grid grid-cols-3 gap-1 border rounded-xl p-1 ${isLight ? 'bg-med-secondary border-med-primary/10' : 'bg-white/[0.02] border-white/10'}`}>
                     {['Mild', 'Moderate', 'Severe'].map((lvl) => (
                       <button
                         key={lvl}
@@ -209,7 +234,9 @@ const SymptomChecker = () => {
                         className={`py-1.5 text-[9px] font-bold rounded-lg transition-all cursor-pointer ${
                           severity === lvl 
                             ? 'bg-primary text-white shadow-md' 
-                            : 'text-gray-400 hover:text-white'
+                            : isLight 
+                              ? 'text-med-gray hover:text-med-primary' 
+                              : 'text-gray-400 hover:text-white'
                         }`}
                       >
                         {lvl}
@@ -219,7 +246,7 @@ const SymptomChecker = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block flex items-center gap-1">
+                  <span className={`text-[10px] font-bold uppercase tracking-wider block flex items-center gap-1 ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
                     <Clock className="h-3.5 w-3.5 text-primary" />
                     Duration
                   </span>
@@ -228,10 +255,10 @@ const SymptomChecker = () => {
                     onChange={(e) => setDuration(e.target.value)}
                     className="glass-input w-full px-3 py-1.5 text-[10px] font-medium"
                   >
-                    <option value="1 Day" className="bg-[#0B1120] text-white">1 Day</option>
-                    <option value="3 Days" className="bg-[#0B1120] text-white">3 Days</option>
-                    <option value="1 Week" className="bg-[#0B1120] text-white">1 Week</option>
-                    <option value="Custom" className="bg-[#0B1120] text-white">Custom</option>
+                    <option value="1 Day" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>1 Day</option>
+                    <option value="3 Days" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>3 Days</option>
+                    <option value="1 Week" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>1 Week</option>
+                    <option value="Custom" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Custom</option>
                   </select>
                 </div>
               </div>
@@ -242,7 +269,7 @@ const SymptomChecker = () => {
                   animate={{ opacity: 1, height: 'auto' }}
                   className="space-y-1.5"
                 >
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Custom Duration</span>
+                  <span className={`text-[10px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Custom Duration</span>
                   <input
                     type="text"
                     value={customDuration}
@@ -283,7 +310,9 @@ const SymptomChecker = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                className="glass-panel p-10 rounded-3xl border border-white/[0.06] flex flex-col items-center justify-center text-center space-y-6 h-full min-h-[420px] shadow-2xl relative"
+                className={`p-10 rounded-3xl border flex flex-col items-center justify-center text-center space-y-6 h-full min-h-[420px] shadow-2xl relative transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/[0.06]'
+                }`}
               >
                 <div className="relative flex items-center justify-center h-20 w-20">
                   <Heart className="h-16 w-16 text-primary animate-ping absolute opacity-30" />
@@ -293,14 +322,14 @@ const SymptomChecker = () => {
                 </div>
                 
                 <div className="space-y-1">
-                  <p className="text-gray-200 font-bold text-sm">Processing Neural Diagnostics</p>
-                  <p className="text-[10px] text-gray-500 max-w-xs leading-normal">
+                  <p className={`font-bold text-sm ${isLight ? 'text-med-text' : 'text-gray-200'}`}>Processing Neural Diagnostics</p>
+                  <p className={`text-[10px] max-w-xs leading-normal ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                     Evaluating TF-IDF vectors, checking negations, and computing target classifications.
                   </p>
                 </div>
 
                 {/* Processing steps list */}
-                <div className="w-full max-w-xs space-y-2 border-t border-white/5 pt-4 text-left">
+                <div className={`w-full max-w-xs space-y-2 border-t pt-4 text-left ${isLight ? 'border-med-secondary' : 'border-white/5'}`}>
                   {loadingSteps.map((step, idx) => (
                     <div key={idx} className="flex items-center gap-2.5 text-xs">
                       <div className={`h-2 w-2 rounded-full shrink-0 ${
@@ -308,14 +337,14 @@ const SymptomChecker = () => {
                           ? 'bg-accent' 
                           : idx === loadingStep 
                             ? 'bg-primary animate-ping' 
-                            : 'bg-white/10'
+                            : isLight ? 'bg-gray-200' : 'bg-white/10'
                       }`} />
                       <span className={
                         idx < loadingStep 
-                          ? 'text-gray-300 font-medium line-through decoration-white/20' 
+                          ? `font-medium line-through ${isLight ? 'text-gray-300 decoration-gray-200' : 'text-gray-500 decoration-white/10'}` 
                           : idx === loadingStep 
                             ? 'text-primary font-bold' 
-                            : 'text-gray-600'
+                            : isLight ? 'text-gray-400' : 'text-gray-600'
                       }>
                         {step}
                       </span>
@@ -333,15 +362,20 @@ const SymptomChecker = () => {
                 {/* Primary Diagnosis Header */}
                 {(() => {
                   const style = getSeverityColor(result.confidence_score);
+                  const headerBorder = isLight ? 'border-med-secondary' : style.border;
                   return (
-                    <div className={`glass-panel p-6 rounded-3xl border ${style.border} shadow-2xl relative overflow-hidden space-y-4`}>
-                      <div className="absolute top-0 right-0 p-3 bg-white/[0.03] rounded-bl-2xl text-[9px] uppercase font-bold tracking-wider text-gray-400">
+                    <div className={`p-6 rounded-3xl border shadow-2xl relative overflow-hidden space-y-4 transition-all duration-300 ${
+                      isLight ? 'glass-panel-light bg-white/70' : 'glass-panel bg-dark-surface/50'
+                    } ${headerBorder}`}>
+                      <div className={`absolute top-0 right-0 p-3 rounded-bl-2xl text-[9px] uppercase font-bold tracking-wider ${
+                        isLight ? 'bg-med-secondary text-med-primary' : 'bg-white/[0.03] text-gray-400'
+                      }`}>
                         Primary Diagnostic Target
                       </div>
 
                       <div className="space-y-1">
                         <span className="text-[10px] font-bold text-primary uppercase tracking-widest block">Predicted Diagnosis</span>
-                        <h2 className="text-3xl font-extrabold text-white capitalize leading-none">{result.predicted_disease}</h2>
+                        <h2 className={`text-3xl font-extrabold capitalize leading-none ${isLight ? 'text-med-text' : 'text-white'}`}>{result.predicted_disease}</h2>
                       </div>
 
                       {/* Info pills */}
@@ -349,21 +383,25 @@ const SymptomChecker = () => {
                         <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${style.badge}`}>
                           {style.label}
                         </span>
-                        <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-white/10 bg-white/5 text-gray-300">
+                        <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${
+                          isLight ? 'border-med-secondary bg-med-secondary text-med-primary' : 'border-white/10 bg-white/5 text-gray-300'
+                        }`}>
                           {severity} Severity
                         </span>
-                        <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-white/10 bg-white/5 text-gray-300">
+                        <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${
+                          isLight ? 'border-med-secondary bg-med-secondary text-med-primary' : 'border-white/10 bg-white/5 text-gray-300'
+                        }`}>
                           {duration === 'Custom' ? (customDuration || 'Days') : duration} Duration
                         </span>
                       </div>
 
                       {/* Confidence bar & score */}
-                      <div className="space-y-2 border-t border-white/5 pt-3">
+                      <div className={`space-y-2 border-t pt-3 ${isLight ? 'border-med-secondary' : 'border-white/5'}`}>
                         <div className="flex justify-between items-center text-xs">
-                          <span className="text-gray-400 font-semibold">Classifier Confidence</span>
-                          <span className="font-extrabold text-white">{(result.confidence_score * 100).toFixed(2)}%</span>
+                          <span className={isLight ? 'text-med-gray' : 'text-gray-400'}>Classifier Confidence</span>
+                          <span className={`font-extrabold ${isLight ? 'text-med-text' : 'text-white'}`}>{(result.confidence_score * 100).toFixed(2)}%</span>
                         </div>
-                        <div className="h-2 w-full bg-white/[0.04] rounded-full overflow-hidden border border-white/5">
+                        <div className={`h-2 w-full rounded-full overflow-hidden border ${isLight ? 'bg-gray-100 border-gray-200' : 'bg-white/[0.04] border-white/5'}`}>
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${result.confidence_score * 100}%` }}
@@ -374,8 +412,10 @@ const SymptomChecker = () => {
                       </div>
 
                       {result.explanation && (
-                        <div className="text-xs text-gray-300 leading-relaxed border-t border-white/5 pt-3">
-                          <span className="font-bold text-white block mb-1">Clinical Insight:</span>
+                        <div className={`text-xs leading-relaxed border-t pt-3 ${
+                          isLight ? 'text-med-gray border-med-secondary' : 'text-gray-300 border-white/5'
+                        }`}>
+                          <span className={`font-bold block mb-1 ${isLight ? 'text-med-text' : 'text-white'}`}>Clinical Insight:</span>
                           <p>{result.explanation}</p>
                         </div>
                       )}
@@ -385,8 +425,10 @@ const SymptomChecker = () => {
 
                 {/* Recharts differential bar chart */}
                 {result.top_5_predictions && result.top_5_predictions.length > 1 && (
-                  <div className="glass-panel p-6 rounded-3xl border border-white/[0.06] shadow-xl space-y-4">
-                    <h3 className="text-sm font-bold text-white tracking-tight">Differential Probability Mapping</h3>
+                  <div className={`p-6 rounded-3xl border shadow-xl space-y-4 transition-all duration-300 ${
+                    isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/[0.06]'
+                  }`}>
+                    <h3 className={`text-sm font-bold tracking-tight ${isLight ? 'text-med-text' : 'text-white'}`}>Differential Probability Mapping</h3>
                     <div className="h-56 w-full text-xs">
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart
@@ -394,11 +436,16 @@ const SymptomChecker = () => {
                           layout="vertical"
                           margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
                         >
-                          <XAxis type="number" domain={[0, 100]} stroke="#475569" fontSize={9} />
-                          <YAxis dataKey="name" type="category" stroke="#475569" fontSize={9} width={90} />
+                          <XAxis type="number" domain={[0, 100]} stroke={isLight ? '#666666' : '#9ca3af'} fontSize={9} />
+                          <YAxis dataKey="name" type="category" stroke={isLight ? '#666666' : '#9ca3af'} fontSize={9} width={90} />
                           <Tooltip 
-                            contentStyle={{ backgroundColor: '#111827', borderColor: 'rgba(255,255,255,0.08)', borderRadius: '12px' }}
-                            labelStyle={{ color: '#F8FAFC', fontWeight: 'bold' }}
+                            contentStyle={{ 
+                              backgroundColor: isLight ? '#FFFFFF' : '#111827', 
+                              borderColor: isLight ? 'rgba(91, 76, 245, 0.08)' : 'rgba(255,255,255,0.08)', 
+                              borderRadius: '12px',
+                              color: isLight ? '#1A1A1A' : '#F8FAFC'
+                            }}
+                            labelStyle={{ color: isLight ? '#1A1A1A' : '#F8FAFC', fontWeight: 'bold' }}
                             itemStyle={{ color: '#2563EB' }}
                             formatter={(value) => [`${value}%`, 'Confidence']}
                           />
@@ -414,14 +461,20 @@ const SymptomChecker = () => {
                 )}
 
                 {/* Recommended precautions */}
-                <div className="glass-panel p-6 rounded-3xl border border-white/[0.06] shadow-xl space-y-4">
-                  <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                <div className={`p-6 rounded-3xl border shadow-xl space-y-4 transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/[0.06]'
+                }`}>
+                  <h3 className={`text-sm font-bold flex items-center gap-2 ${isLight ? 'text-med-text' : 'text-white'}`}>
                     <CheckSquare className="h-4.5 w-4.5 text-secondary" />
                     Clinical Guideline & Precautions
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     {getPrecautionsList(result.predicted_disease).map((prec, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-gray-300 bg-white/[0.02] border border-white/[0.04] p-3.5 rounded-xl hover:bg-white/[0.04] transition-colors">
+                      <div key={idx} className={`flex items-start gap-2.5 text-xs border p-3.5 rounded-xl transition-colors ${
+                        isLight 
+                          ? 'bg-med-secondary/30 border-med-primary/5 text-med-text hover:bg-med-secondary/60' 
+                          : 'bg-white/[0.02] border-white/[0.04] text-gray-300 hover:bg-white/[0.04]'
+                      }`}>
                         <span className="h-5 w-5 bg-secondary/10 text-secondary border border-secondary/20 rounded-full flex items-center justify-center shrink-0 font-bold text-[9px] mt-0.5">
                           ✓
                         </span>
@@ -433,11 +486,13 @@ const SymptomChecker = () => {
 
                 {/* Emergency Card Indicator if Chest Pain exists */}
                 {symptomText.toLowerCase().includes('chest pain') && (
-                  <div className="bg-red-500/[0.04] border border-red-500/20 p-5 rounded-2xl flex items-start gap-3.5 text-xs text-red-200 shadow-lg">
+                  <div className={`border p-5 rounded-2xl flex items-start gap-3.5 text-xs shadow-lg ${
+                    isLight ? 'bg-red-50 border-red-200 text-red-950' : 'bg-red-500/[0.04] border-red-500/20 text-red-200'
+                  }`}>
                     <ShieldAlert className="h-5 w-5 text-red-500 shrink-0 mt-0.5 animate-pulse" />
                     <div className="space-y-1 text-left">
-                      <p className="font-bold text-red-400">Emergency Caution Required</p>
-                      <p className="text-gray-400 leading-normal text-[11px]">
+                      <p className="font-bold text-red-600 dark:text-red-400">Emergency Caution Required</p>
+                      <p className={`leading-normal text-[11px] ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
                         Chest tightness or pain has been identified in your symptom description. If these symptoms are accompanied by breath shortness or dizziness, please contact local emergency services immediately.
                       </p>
                     </div>
@@ -449,14 +504,18 @@ const SymptomChecker = () => {
                 key="empty"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="glass-panel p-10 rounded-3xl border border-white/[0.06] flex flex-col items-center justify-center text-center space-y-4 h-full min-h-[420px] shadow-lg text-gray-400"
+                className={`p-10 rounded-3xl border flex flex-col items-center justify-center text-center space-y-4 h-full min-h-[420px] shadow-lg transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/[0.06]'
+                }`}
               >
-                <div className="h-16 w-16 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-center shadow-inner">
-                  <Activity className="h-7 w-7 text-gray-600 animate-pulse" />
+                <div className={`h-16 w-16 rounded-2xl border flex items-center justify-center shadow-inner ${
+                  isLight ? 'bg-med-secondary border-med-primary/10' : 'bg-white/[0.02] border-white/[0.06]'
+                }`}>
+                  <Activity className={`h-7 w-7 animate-pulse ${isLight ? 'text-med-primary' : 'text-gray-600'}`} />
                 </div>
                 <div className="space-y-1 max-w-sm">
-                  <p className="text-gray-300 font-bold text-sm">Diagnostic Telemetry Ready</p>
-                  <p className="text-xs text-gray-500 leading-normal">
+                  <p className={`font-bold text-sm ${isLight ? 'text-med-text' : 'text-gray-300'}`}>Diagnostic Telemetry Ready</p>
+                  <p className={`text-xs leading-normal ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                     Submit symptom configurations on the left to activate classification algorithms, view probability charts, and access guidelines.
                   </p>
                 </div>
@@ -482,13 +541,15 @@ const SymptomChecker = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative max-w-sm w-full bg-[#151e30] border border-red-500/20 rounded-[28px] p-6 shadow-2xl overflow-hidden text-center"
+              className={`relative max-w-sm w-full border rounded-[28px] p-6 shadow-2xl overflow-hidden text-center transition-all duration-300 ${
+                isLight ? 'bg-white border-red-200' : 'bg-[#151e30] border-red-500/20'
+              }`}
             >
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-red-500" />
               
               <button 
                 onClick={() => setShowErrorModal(false)}
-                className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/5 text-gray-400 hover:text-white"
+                className={`absolute top-4 right-4 p-2 rounded-full hover:bg-white/5 ${isLight ? 'text-med-gray' : 'text-gray-400'}`}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -497,8 +558,8 @@ const SymptomChecker = () => {
                 <AlertTriangle className="h-6 w-6" />
               </div>
 
-              <h3 className="text-base font-bold text-white font-poppins">No Symptoms Detected</h3>
-              <p className="text-xs text-gray-400 mt-2 leading-relaxed">
+              <h3 className={`text-base font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>No Symptoms Detected</h3>
+              <p className={`text-xs mt-2 leading-relaxed ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
                 {error}
               </p>
 

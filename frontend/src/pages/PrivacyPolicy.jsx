@@ -44,21 +44,29 @@ const PrivacyPolicy = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-left space-y-10 relative">
+    <div className={`max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-left space-y-10 relative transition-colors duration-300 ${
+      isLight ? 'text-med-text' : 'text-gray-300'
+    }`}>
+      {/* Background Glowing Orbs */}
+      <div className={`absolute top-20 left-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-med-secondary' : 'bg-primary/10'
+      }`} />
       
       {/* Page Title */}
-      <div className={`border-b ${isLight ? 'border-gray-200' : 'border-white/[0.06]'} pb-5`}>
+      <div className={`border-b pb-5 ${isLight ? 'border-gray-200' : 'border-white/[0.06]'}`}>
         <motion.h1 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`text-3xl font-extrabold flex items-center gap-3 ${isLight ? 'text-[#1A1A1A]' : 'text-white'}`}
+          className={`text-3xl font-extrabold flex items-center gap-3 ${isLight ? 'text-med-text' : 'text-white'}`}
         >
-          <div className="p-2.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 shadow-premium-sm">
-            <UserCheck className="h-6 w-6 text-emerald-500" />
+          <div className={`p-2.5 rounded-2xl border shadow-premium-sm ${
+            isLight ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500' : 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500'
+          }`}>
+            <UserCheck className="h-6 w-6 text-current" />
           </div>
           Privacy Policy & Security
         </motion.h1>
-        <p className={`text-xs ${isLight ? 'text-gray-600' : 'text-gray-400'} mt-2.5 max-w-xl leading-relaxed`}>
+        <p className={`text-xs mt-2.5 max-w-xl leading-relaxed ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
           Detailed security parameters, user confidentiality declarations, and educational disclaimers regarding the Aegis AI project.
         </p>
       </div>
@@ -68,7 +76,9 @@ const PrivacyPolicy = () => {
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
-        className="bg-amber-500/[0.05] border border-amber-500/30 text-amber-900 dark:text-amber-200 p-6 rounded-3xl flex items-start gap-4 shadow-premium-sm"
+        className={`border p-6 rounded-3xl flex items-start gap-4 shadow-premium-sm ${
+          isLight ? 'bg-amber-50 border-amber-200 text-amber-950' : 'bg-amber-500/[0.05] border border-amber-500/30 text-amber-200'
+        }`}
       >
         <ShieldAlert className="h-7 w-7 text-amber-500 shrink-0 mt-0.5" />
         <div className="space-y-1.5 text-xs text-left">
@@ -87,18 +97,20 @@ const PrivacyPolicy = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.05 * idx }}
             key={idx}
-            className="glass-panel p-6 rounded-3xl flex flex-col gap-3 justify-between hover:shadow-premium-sm hover:-translate-y-0.5 transition-all duration-300"
+            className={`p-6 rounded-3xl flex flex-col gap-3 justify-between hover:shadow-premium-md transition-all duration-300 border ${
+              isLight ? 'glass-panel-light border-med-secondary bg-white/70 hover:-translate-y-0.5' : 'glass-panel border-white/[0.06] bg-dark-surface/50 hover:-translate-y-0.5'
+            }`}
           >
             <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <div className={`p-1.5 rounded-lg ${isLight ? 'bg-gray-100' : 'bg-white/5'}`}>
+              <div className="flex items-center gap-2 text-left">
+                <div className={`p-1.5 rounded-lg ${isLight ? 'bg-med-secondary text-med-primary' : 'bg-white/5 text-white'}`}>
                   {section.icon}
                 </div>
-                <h3 className={`text-sm font-bold ${isLight ? 'text-[#1A1A1A]' : 'text-white'} font-poppins`}>
+                <h3 className={`text-sm font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>
                   {section.title}
                 </h3>
               </div>
-              <p className={`text-xs ${isLight ? 'text-gray-600' : 'text-gray-400'} leading-relaxed font-inter`}>
+              <p className={`text-xs leading-relaxed font-inter ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
                 {section.content}
               </p>
             </div>
@@ -107,7 +119,7 @@ const PrivacyPolicy = () => {
       </div>
 
       {/* Footer support details */}
-      <div className={`text-center pt-8 border-t ${isLight ? 'border-gray-200' : 'border-white/5'} text-[11px] text-gray-500`}>
+      <div className={`text-center pt-8 border-t text-[11px] ${isLight ? 'border-gray-200 text-med-gray' : 'border-white/5 text-gray-500'}`}>
         <HelpCircle className="inline h-4 w-4 mr-1 text-gray-400" />
         Have questions regarding the dataset or model files? Review our code repository or contact the project advisory team at your college.
       </div>

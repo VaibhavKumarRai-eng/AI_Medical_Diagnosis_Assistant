@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Activity, Award, ChevronRight, Calculator, Plus, X, Heart, ShieldAlert,
-  TrendingUp, Utensils, Award as Trophy, Compass, PlusCircle, CheckCircle,
-  Thermometer, Coffee, Moon, Sun, Clipboard, ShoppingBag, Droplet
+  Calculator, X, Heart, ShieldAlert,
+  Utensils, Clipboard, Coffee, Moon, Sun, Droplet, PlusCircle
 } from 'lucide-react';
 import { 
   ResponsiveContainer, PieChart, Pie, Cell, Tooltip, 
@@ -12,6 +12,9 @@ import {
 import { dietAPI } from '../services/api';
 
 const DietPlanner = () => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   // Input states
   const [weight, setWeight] = useState('70');
   const [height, setHeight] = useState('175');
@@ -188,18 +191,33 @@ const DietPlanner = () => {
   const COLORS = ['#2563EB', '#10B981', '#F59E0B'];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 space-y-8 text-left relative grid-bg">
+    <div className={`max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 space-y-8 text-left relative transition-colors duration-300 ${
+      isLight ? 'text-med-text' : 'text-gray-300'
+    }`}>
+      {/* Background Glowing Orbs */}
+      <div className={`absolute top-20 left-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-med-secondary' : 'bg-primary/10'
+      }`} />
+      <div className={`absolute bottom-20 right-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-[#EEF0FF]' : 'bg-secondary/10'
+      }`} />
       
       {/* Header Banner */}
-      <div className="border-b border-white/[0.06] pb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className={`border-b pb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 ${
+        isLight ? 'border-med-secondary' : 'border-white/[0.06]'
+      }`}>
         <div>
-          <h1 className="text-3xl font-extrabold text-white flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(37,99,235,0.15)]">
-              <Calculator className="h-6 w-6 text-primary" />
+          <h1 className={`text-3xl font-extrabold flex items-center gap-3 transition-colors duration-300 ${
+            isLight ? 'text-med-text' : 'text-white'
+          }`}>
+            <div className={`p-2 rounded-xl border shadow-[0_0_15px_rgba(37,99,235,0.15)] ${
+              isLight ? 'bg-med-secondary border-med-primary/10 text-med-primary' : 'bg-primary/10 border-primary/20 text-primary'
+            }`}>
+              <Calculator className="h-6 w-6 text-current" />
             </div>
             AI Diet Recommendation & Planner
           </h1>
-          <p className="text-xs text-gray-400 mt-1.5">
+          <p className={`text-xs mt-1.5 ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
             Personalized macro targets and dynamic meal suggestions driven by clinical nutrition datasets.
           </p>
         </div>
@@ -221,11 +239,13 @@ const DietPlanner = () => {
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:col-span-5 glass-panel p-6 rounded-3xl border border-white/[0.06] shadow-xl relative overflow-hidden"
+          className={`lg:col-span-5 p-6 rounded-3xl border shadow-xl relative overflow-hidden transition-all duration-300 ${
+            isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+          }`}
         >
           <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full pointer-events-none" />
           
-          <h3 className="text-base font-bold text-white mb-5 flex items-center gap-2">
+          <h3 className={`text-base font-bold mb-5 flex items-center gap-2 ${isLight ? 'text-med-text' : 'text-white'}`}>
             <Clipboard className="h-4.5 w-4.5 text-primary" />
             User Health Demographics
           </h3>
@@ -235,7 +255,7 @@ const DietPlanner = () => {
             {/* Weight & Height */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Weight (kg)</label>
+                <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Weight (kg)</label>
                 <input
                   type="number"
                   required
@@ -246,7 +266,7 @@ const DietPlanner = () => {
                 />
               </div>
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Height (cm)</label>
+                <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Height (cm)</label>
                 <input
                   type="number"
                   required
@@ -261,7 +281,7 @@ const DietPlanner = () => {
             {/* Age & Gender */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Age (Years)</label>
+                <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Age (Years)</label>
                 <input
                   type="number"
                   required
@@ -272,15 +292,21 @@ const DietPlanner = () => {
                 />
               </div>
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Gender</label>
-                <div className="grid grid-cols-2 gap-1 bg-white/[0.02] border border-white/10 rounded-xl p-1">
+                <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Gender</label>
+                <div className={`grid grid-cols-2 gap-1 border rounded-xl p-1 ${
+                  isLight ? 'bg-med-secondary border-med-primary/10' : 'bg-white/[0.02] border-white/10'
+                }`}>
                   {['male', 'female'].map((g) => (
                     <button
                       key={g}
                       type="button"
                       onClick={() => setGender(g)}
                       className={`py-1 text-[9px] font-bold rounded-lg transition-all cursor-pointer capitalize ${
-                        gender === g ? 'bg-primary text-white shadow-md' : 'text-gray-400 hover:text-white'
+                        gender === g 
+                          ? 'bg-primary text-white shadow-md' 
+                          : isLight 
+                            ? 'text-med-gray hover:text-med-primary' 
+                            : 'text-gray-400 hover:text-white'
                       }`}
                     >
                       {g}
@@ -292,47 +318,53 @@ const DietPlanner = () => {
 
             {/* Goal Selector */}
             <div className="space-y-1.5">
-              <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider font-inter">Fitness Goal</label>
+              <label className={`block text-[10px] font-bold uppercase tracking-wider font-inter ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Fitness Goal</label>
               <select
                 value={goal}
                 onChange={(e) => setGoal(e.target.value)}
                 className="glass-input w-full px-3 py-2 text-xs"
               >
-                <option value="weight_loss" className="bg-[#0B1120] text-white">Weight Loss (Cut)</option>
-                <option value="fat_loss" className="bg-[#0B1120] text-white">Targeted Fat Loss</option>
-                <option value="maintain_weight" className="bg-[#0B1120] text-white">Maintain Calorie Balance</option>
-                <option value="muscle_gain" className="bg-[#0B1120] text-white">Lean Muscle Gain</option>
-                <option value="weight_gain" className="bg-[#0B1120] text-white">Weight Gain (Bulk)</option>
+                <option value="weight_loss" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Weight Loss (Cut)</option>
+                <option value="fat_loss" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Targeted Fat Loss</option>
+                <option value="maintain_weight" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Maintain Calorie Balance</option>
+                <option value="muscle_gain" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Lean Muscle Gain</option>
+                <option value="weight_gain" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Weight Gain (Bulk)</option>
               </select>
             </div>
 
             {/* Activity Level */}
             <div className="space-y-1.5">
-              <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Activity Factor</label>
+              <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Activity Factor</label>
               <select
                 value={activity}
                 onChange={(e) => setActivity(e.target.value)}
                 className="glass-input w-full px-3 py-2 text-xs"
               >
-                <option value="sedentary" className="bg-[#0B1120] text-white">Sedentary (No Exercise)</option>
-                <option value="light" className="bg-[#0B1120] text-white">Lightly Active (1-3 days/week)</option>
-                <option value="moderate" className="bg-[#0B1120] text-white">Moderately Active (3-5 days/week)</option>
-                <option value="active" className="bg-[#0B1120] text-white">Highly Active (6-7 days/week)</option>
-                <option value="extra_active" className="bg-[#0B1120] text-white">Athlete / Heavy Physical Labor</option>
+                <option value="sedentary" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Sedentary (No Exercise)</option>
+                <option value="light" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Lightly Active (1-3 days/week)</option>
+                <option value="moderate" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Moderately Active (3-5 days/week)</option>
+                <option value="active" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Highly Active (6-7 days/week)</option>
+                <option value="extra_active" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Athlete / Heavy Physical Labor</option>
               </select>
             </div>
 
             {/* Preference */}
             <div className="space-y-1.5">
-              <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Food Preference</label>
-              <div className="grid grid-cols-2 gap-1 bg-white/[0.02] border border-white/10 rounded-xl p-1">
+              <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Food Preference</label>
+              <div className={`grid grid-cols-2 gap-1 border rounded-xl p-1 ${
+                isLight ? 'bg-med-secondary border-med-primary/10' : 'bg-white/[0.02] border-white/10'
+              }`}>
                 {['Veg', 'Non-Veg'].map((pref) => (
                   <button
                     key={pref}
                     type="button"
                     onClick={() => setPreference(pref)}
                     className={`py-1.5 text-[10px] font-bold rounded-lg transition-all cursor-pointer ${
-                      preference === pref ? 'bg-primary text-white shadow-md' : 'text-gray-400 hover:text-white'
+                      preference === pref 
+                        ? 'bg-primary text-white shadow-md' 
+                        : isLight 
+                          ? 'text-med-gray hover:text-med-primary' 
+                          : 'text-gray-400 hover:text-white'
                     }`}
                   >
                     {pref}
@@ -343,7 +375,7 @@ const DietPlanner = () => {
 
             {/* Dynamic Allergies Tags */}
             <div className="space-y-1.5">
-              <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Allergies (Peanuts, Milk, Gluten, etc.)</label>
+              <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Allergies (Peanuts, Milk, Gluten, etc.)</label>
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -355,7 +387,11 @@ const DietPlanner = () => {
                 <button
                   type="button"
                   onClick={handleAddAllergy}
-                  className="px-3 bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white rounded-xl text-xs transition-all"
+                  className={`px-3 border rounded-xl text-xs transition-all cursor-pointer ${
+                    isLight 
+                      ? 'bg-med-secondary border-med-primary/10 text-med-primary hover:bg-med-primary hover:text-white' 
+                      : 'bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white'
+                  }`}
                 >
                   Add
                 </button>
@@ -363,9 +399,11 @@ const DietPlanner = () => {
               {allergies.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-1.5">
                   {allergies.map((a, idx) => (
-                    <span key={idx} className="bg-red-500/10 border border-red-500/20 px-2 py-0.5 rounded-lg text-[9px] text-red-200 flex items-center gap-1 font-bold">
+                    <span key={idx} className={`px-2 py-0.5 rounded-lg text-[9px] flex items-center gap-1 font-bold border ${
+                      isLight ? 'bg-red-50 border-red-200 text-red-950' : 'bg-red-500/10 border-red-500/20 text-red-200'
+                    }`}>
                       {a}
-                      <X className="h-2.5 w-2.5 cursor-pointer text-red-400" onClick={() => setAllergies(allergies.filter(item => item !== a))} />
+                      <X className="h-2.5 w-2.5 cursor-pointer text-red-500" onClick={() => setAllergies(allergies.filter(item => item !== a))} />
                     </span>
                   ))}
                 </div>
@@ -374,7 +412,7 @@ const DietPlanner = () => {
 
             {/* Dynamic Medical Conditions Tags */}
             <div className="space-y-1.5">
-              <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Medical Conditions (Diabetes, Hypertension, etc.)</label>
+              <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Medical Conditions (Diabetes, Hypertension, etc.)</label>
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -386,7 +424,11 @@ const DietPlanner = () => {
                 <button
                   type="button"
                   onClick={handleAddMed}
-                  className="px-3 bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white rounded-xl text-xs transition-all"
+                  className={`px-3 border rounded-xl text-xs transition-all cursor-pointer ${
+                    isLight 
+                      ? 'bg-med-secondary border-med-primary/10 text-med-primary hover:bg-med-primary hover:text-white' 
+                      : 'bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white'
+                  }`}
                 >
                   Add
                 </button>
@@ -394,7 +436,11 @@ const DietPlanner = () => {
               {medicalConditions.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-1.5">
                   {medicalConditions.map((m, idx) => (
-                    <span key={idx} className="bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-lg text-[9px] text-primary flex items-center gap-1 font-bold">
+                    <span key={idx} className={`px-2 py-0.5 rounded-lg text-[9px] flex items-center gap-1 font-bold border ${
+                      isLight 
+                        ? 'bg-med-secondary border-med-primary/15 text-med-primary' 
+                        : 'bg-primary/10 border-primary/20 text-primary'
+                    }`}>
                       {m}
                       <X className="h-2.5 w-2.5 cursor-pointer text-primary" onClick={() => setMedicalConditions(medicalConditions.filter(item => item !== m))} />
                     </span>
@@ -403,15 +449,15 @@ const DietPlanner = () => {
               )}
             </div>
 
-            {error && <p className="text-[10px] text-red-400 font-bold mt-2">{error}</p>}
+            {error && <p className="text-[10px] text-red-500 font-bold mt-2">{error}</p>}
 
             <div className="pt-2">
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 bg-primary hover:bg-primary/95 text-white text-xs font-bold rounded-xl shadow-lg transition-all cursor-pointer disabled:opacity-50"
+                className="w-full py-2.5 bg-primary hover:bg-primary/95 text-white text-xs font-bold rounded-xl shadow-lg transition-all cursor-pointer disabled:opacity-50 font-poppins"
               >
-                {loading ? 'Analyzing Datasets & ML Engine...' : 'Generate Personalized Plan'}
+                {loading ? 'Analyzing Datasets & ML Engine...' : 'Generate Plan'}
               </button>
             </div>
           </form>
@@ -430,51 +476,61 @@ const DietPlanner = () => {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 
                 {/* Calories Progress */}
-                <div className="glass-panel p-4 rounded-2xl border border-white/[0.06] text-center space-y-1 relative overflow-hidden">
+                <div className={`p-4 rounded-2xl border text-center space-y-1 relative overflow-hidden transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                }`}>
                   <div className="absolute top-0 left-0 bottom-0 bg-primary/5 transition-all" style={{ width: `${calPercent}%` }} />
-                  <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Calories Target</p>
-                  <p className="text-base font-extrabold text-white">{Math.round(totalsConsumed.calories)} / {Math.round(latestPlan.target_calories)}</p>
+                  <p className={`text-[9px] font-bold uppercase tracking-widest ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Calories Target</p>
+                  <p className={`text-base font-extrabold ${isLight ? 'text-med-text' : 'text-white'}`}>{Math.round(totalsConsumed.calories)} / {Math.round(latestPlan.target_calories)}</p>
                   <p className="text-[9px] text-primary font-bold">kcal ({Math.round(calPercent)}%)</p>
                 </div>
 
                 {/* Protein Progress */}
-                <div className="glass-panel p-4 rounded-2xl border border-white/[0.06] text-center space-y-1 relative overflow-hidden">
+                <div className={`p-4 rounded-2xl border text-center space-y-1 relative overflow-hidden transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                }`}>
                   <div className="absolute top-0 left-0 bottom-0 bg-emerald-500/5 transition-all" style={{ width: `${protPercent}%` }} />
-                  <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Protein</p>
-                  <p className="text-base font-extrabold text-white">{Math.round(totalsConsumed.protein)}g / {Math.round(latestPlan.target_protein)}g</p>
-                  <p className="text-[9px] text-emerald-400 font-bold">({Math.round(protPercent)}%)</p>
+                  <p className={`text-[9px] font-bold uppercase tracking-widest ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Protein</p>
+                  <p className={`text-base font-extrabold ${isLight ? 'text-med-text' : 'text-white'}`}>{Math.round(totalsConsumed.protein)}g / {Math.round(latestPlan.target_protein)}g</p>
+                  <p className="text-[9px] text-emerald-500 dark:text-emerald-450 font-bold">({Math.round(protPercent)}%)</p>
                 </div>
 
                 {/* Carbs Progress */}
-                <div className="glass-panel p-4 rounded-2xl border border-white/[0.06] text-center space-y-1 relative overflow-hidden">
+                <div className={`p-4 rounded-2xl border text-center space-y-1 relative overflow-hidden transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                }`}>
                   <div className="absolute top-0 left-0 bottom-0 bg-amber-500/5 transition-all" style={{ width: `${carbsPercent}%` }} />
-                  <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Carbohydrates</p>
-                  <p className="text-base font-extrabold text-white">{Math.round(totalsConsumed.carbs)}g / {Math.round(latestPlan.target_carbs)}g</p>
-                  <p className="text-[9px] text-amber-400 font-bold">({Math.round(carbsPercent)}%)</p>
+                  <p className={`text-[9px] font-bold uppercase tracking-widest ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Carbohydrates</p>
+                  <p className={`text-base font-extrabold ${isLight ? 'text-med-text' : 'text-white'}`}>{Math.round(totalsConsumed.carbs)}g / {Math.round(latestPlan.target_carbs)}g</p>
+                  <p className="text-[9px] text-amber-500 dark:text-amber-450 font-bold">({Math.round(carbsPercent)}%)</p>
                 </div>
 
                 {/* Fats Progress */}
-                <div className="glass-panel p-4 rounded-2xl border border-white/[0.06] text-center space-y-1 relative overflow-hidden">
+                <div className={`p-4 rounded-2xl border text-center space-y-1 relative overflow-hidden transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                }`}>
                   <div className="absolute top-0 left-0 bottom-0 bg-pink-500/5 transition-all" style={{ width: `${fatPercent}%` }} />
-                  <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Fats Target</p>
-                  <p className="text-base font-extrabold text-white">{Math.round(totalsConsumed.fat)}g / {Math.round(latestPlan.target_fat)}g</p>
-                  <p className="text-[9px] text-pink-400 font-bold">({Math.round(fatPercent)}%)</p>
+                  <p className={`text-[9px] font-bold uppercase tracking-widest ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Fats Target</p>
+                  <p className={`text-base font-extrabold ${isLight ? 'text-med-text' : 'text-white'}`}>{Math.round(totalsConsumed.fat)}g / {Math.round(latestPlan.target_fat)}g</p>
+                  <p className="text-[9px] text-pink-500 dark:text-pink-450 font-bold">({Math.round(fatPercent)}%)</p>
                 </div>
               </div>
 
               {/* Water logging widget */}
-              <div className="glass-panel p-5 rounded-2xl border border-white/[0.06] flex items-center justify-between gap-4">
+              <div className={`p-5 rounded-2xl border flex items-center justify-between gap-4 transition-all duration-300 ${
+                isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+              }`}>
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-500 animate-pulse">
                     <Droplet className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-white uppercase tracking-wider">Daily Hydration Goal</h4>
-                    <p className="text-[10px] text-gray-400">Target: <b>{latestPlan.target_water_ml} ml</b></p>
+                    <h4 className={`text-xs font-bold uppercase tracking-wider ${isLight ? 'text-med-text' : 'text-white'}`}>Daily Hydration Goal</h4>
+                    <p className={`text-[10px] ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Target: <b>{latestPlan.target_water_ml} ml</b></p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-extrabold text-white">{waterCount * 250} ml / {latestPlan.target_water_ml} ml</span>
+                  <span className={`text-xs font-extrabold ${isLight ? 'text-med-text' : 'text-white'}`}>{waterCount * 250} ml / {latestPlan.target_water_ml} ml</span>
                   <button
                     onClick={() => setWaterCount(waterCount + 1)}
                     className="px-3 py-1.5 rounded-lg bg-blue-500 hover:bg-blue-600 text-white text-[10px] font-bold transition-all cursor-pointer"
@@ -486,30 +542,38 @@ const DietPlanner = () => {
 
               {/* Recommended Meal Options */}
               <div className="space-y-4">
-                <h3 className="text-xs font-bold text-white uppercase tracking-widest flex items-center gap-2">
-                  <Utensils className="h-4 w-4 text-primary" />
+                <h3 className={`text-xs font-bold uppercase tracking-widest flex items-center gap-2 ${isLight ? 'text-med-text' : 'text-white'}`}>
+                  <Utensils className="h-4 w-4 text-primary animate-pulse" />
                   Today's Recommended Meals (Powered by ML Recommendation)
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   
                   {/* Breakfast */}
-                  <div className="glass-panel p-4.5 rounded-2xl border border-white/[0.06] space-y-3 relative overflow-hidden">
+                  <div className={`p-4.5 rounded-2xl border space-y-3 relative overflow-hidden transition-all duration-300 ${
+                    isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                  }`}>
                     <div className="absolute top-0 right-0 w-16 h-16 bg-primary/5 rounded-bl-full pointer-events-none" />
-                    <div className="flex items-center gap-2 text-xs font-bold text-white">
+                    <div className={`flex items-center gap-2 text-xs font-bold ${isLight ? 'text-med-text' : 'text-white'}`}>
                       <Coffee className="h-4 w-4 text-primary" />
                       Breakfast Recommendations
                     </div>
                     <div className="space-y-2">
                       {latestPlan.recommended_meals.breakfast?.map((food, idx) => (
-                        <div key={idx} className="flex justify-between items-center text-[10px] border-b border-white/[0.03] pb-1.5">
+                        <div key={idx} className={`flex justify-between items-center text-[10px] pb-1.5 border-b ${
+                          isLight ? 'border-med-secondary' : 'border-white/[0.03]'
+                        }`}>
                           <div>
-                            <p className="text-gray-200 font-semibold">{food.food_name}</p>
-                            <p className="text-[8px] text-gray-400">{food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F: {food.fat}g</p>
+                            <p className={`font-semibold ${isLight ? 'text-med-text' : 'text-gray-200'}`}>{food.food_name}</p>
+                            <p className={`text-[8px] ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>{food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F: {food.fat}g</p>
                           </div>
                           <button
                             onClick={() => handleLogRecommendedFood(food, 'Breakfast')}
-                            className="p-1 rounded-md bg-white/[0.03] border border-white/10 hover:bg-primary/20 hover:border-primary/40 text-primary text-[8px] font-bold cursor-pointer"
+                            className={`p-1 rounded-md border text-[8px] font-bold cursor-pointer transition-colors ${
+                              isLight 
+                                ? 'bg-med-secondary border-med-primary/10 hover:bg-med-primary hover:text-white hover:border-transparent text-med-primary' 
+                                : 'bg-white/[0.03] border border-white/10 hover:bg-primary/20 hover:border-primary/40 text-primary'
+                            }`}
                           >
                             Log Item
                           </button>
@@ -519,22 +583,30 @@ const DietPlanner = () => {
                   </div>
 
                   {/* Lunch */}
-                  <div className="glass-panel p-4.5 rounded-2xl border border-white/[0.06] space-y-3 relative overflow-hidden">
+                  <div className={`p-4.5 rounded-2xl border space-y-3 relative overflow-hidden transition-all duration-300 ${
+                    isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                  }`}>
                     <div className="absolute top-0 right-0 w-16 h-16 bg-primary/5 rounded-bl-full pointer-events-none" />
-                    <div className="flex items-center gap-2 text-xs font-bold text-white">
+                    <div className={`flex items-center gap-2 text-xs font-bold ${isLight ? 'text-med-text' : 'text-white'}`}>
                       <Sun className="h-4 w-4 text-amber-500" />
                       Lunch Recommendations
                     </div>
                     <div className="space-y-2">
                       {latestPlan.recommended_meals.lunch?.map((food, idx) => (
-                        <div key={idx} className="flex justify-between items-center text-[10px] border-b border-white/[0.03] pb-1.5">
+                        <div key={idx} className={`flex justify-between items-center text-[10px] pb-1.5 border-b ${
+                          isLight ? 'border-med-secondary' : 'border-white/[0.03]'
+                        }`}>
                           <div>
-                            <p className="text-gray-200 font-semibold">{food.food_name}</p>
-                            <p className="text-[8px] text-gray-400">{food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F: {food.fat}g</p>
+                            <p className={`font-semibold ${isLight ? 'text-med-text' : 'text-gray-200'}`}>{food.food_name}</p>
+                            <p className={`text-[8px] ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>{food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F: {food.fat}g</p>
                           </div>
                           <button
                             onClick={() => handleLogRecommendedFood(food, 'Lunch')}
-                            className="p-1 rounded-md bg-white/[0.03] border border-white/10 hover:bg-primary/20 hover:border-primary/40 text-primary text-[8px] font-bold cursor-pointer"
+                            className={`p-1 rounded-md border text-[8px] font-bold cursor-pointer transition-colors ${
+                              isLight 
+                                ? 'bg-med-secondary border-med-primary/10 hover:bg-med-primary hover:text-white hover:border-transparent text-med-primary' 
+                                : 'bg-white/[0.03] border border-white/10 hover:bg-primary/20 hover:border-primary/40 text-primary'
+                            }`}
                           >
                             Log Item
                           </button>
@@ -544,22 +616,30 @@ const DietPlanner = () => {
                   </div>
 
                   {/* Dinner */}
-                  <div className="glass-panel p-4.5 rounded-2xl border border-white/[0.06] space-y-3 relative overflow-hidden">
+                  <div className={`p-4.5 rounded-2xl border space-y-3 relative overflow-hidden transition-all duration-300 ${
+                    isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                  }`}>
                     <div className="absolute top-0 right-0 w-16 h-16 bg-primary/5 rounded-bl-full pointer-events-none" />
-                    <div className="flex items-center gap-2 text-xs font-bold text-white">
-                      <Moon className="h-4 w-4 text-indigo-400" />
+                    <div className={`flex items-center gap-2 text-xs font-bold ${isLight ? 'text-med-text' : 'text-white'}`}>
+                      <Moon className="h-4 w-4 text-indigo-400 animate-pulse" />
                       Dinner Recommendations
                     </div>
                     <div className="space-y-2">
                       {latestPlan.recommended_meals.dinner?.map((food, idx) => (
-                        <div key={idx} className="flex justify-between items-center text-[10px] border-b border-white/[0.03] pb-1.5">
+                        <div key={idx} className={`flex justify-between items-center text-[10px] pb-1.5 border-b ${
+                          isLight ? 'border-med-secondary' : 'border-white/[0.03]'
+                        }`}>
                           <div>
-                            <p className="text-gray-200 font-semibold">{food.food_name}</p>
-                            <p className="text-[8px] text-gray-400">{food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F: {food.fat}g</p>
+                            <p className={`font-semibold ${isLight ? 'text-med-text' : 'text-gray-200'}`}>{food.food_name}</p>
+                            <p className={`text-[8px] ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>{food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F: {food.fat}g</p>
                           </div>
                           <button
                             onClick={() => handleLogRecommendedFood(food, 'Dinner')}
-                            className="p-1 rounded-md bg-white/[0.03] border border-white/10 hover:bg-primary/20 hover:border-primary/40 text-primary text-[8px] font-bold cursor-pointer"
+                            className={`p-1 rounded-md border text-[8px] font-bold cursor-pointer transition-colors ${
+                              isLight 
+                                ? 'bg-med-secondary border-med-primary/10 hover:bg-med-primary hover:text-white hover:border-transparent text-med-primary' 
+                                : 'bg-white/[0.03] border border-white/10 hover:bg-primary/20 hover:border-primary/40 text-primary'
+                            }`}
                           >
                             Log Item
                           </button>
@@ -569,22 +649,30 @@ const DietPlanner = () => {
                   </div>
 
                   {/* Snacks */}
-                  <div className="glass-panel p-4.5 rounded-2xl border border-white/[0.06] space-y-3 relative overflow-hidden">
+                  <div className={`p-4.5 rounded-2xl border space-y-3 relative overflow-hidden transition-all duration-300 ${
+                    isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                  }`}>
                     <div className="absolute top-0 right-0 w-16 h-16 bg-primary/5 rounded-bl-full pointer-events-none" />
-                    <div className="flex items-center gap-2 text-xs font-bold text-white">
-                      <Utensils className="h-4 w-4 text-emerald-400" />
+                    <div className={`flex items-center gap-2 text-xs font-bold ${isLight ? 'text-med-text' : 'text-white'}`}>
+                      <Utensils className="h-4 w-4 text-emerald-450" />
                       Snacks Recommendations
                     </div>
                     <div className="space-y-2">
                       {latestPlan.recommended_meals.snacks?.map((food, idx) => (
-                        <div key={idx} className="flex justify-between items-center text-[10px] border-b border-white/[0.03] pb-1.5">
+                        <div key={idx} className={`flex justify-between items-center text-[10px] pb-1.5 border-b ${
+                          isLight ? 'border-med-secondary' : 'border-white/[0.03]'
+                        }`}>
                           <div>
-                            <p className="text-gray-200 font-semibold">{food.food_name}</p>
-                            <p className="text-[8px] text-gray-400">{food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F: {food.fat}g</p>
+                            <p className={`font-semibold ${isLight ? 'text-med-text' : 'text-gray-200'}`}>{food.food_name}</p>
+                            <p className={`text-[8px] ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>{food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F: {food.fat}g</p>
                           </div>
                           <button
                             onClick={() => handleLogRecommendedFood(food, 'Snack')}
-                            className="p-1 rounded-md bg-white/[0.03] border border-white/10 hover:bg-primary/20 hover:border-primary/40 text-primary text-[8px] font-bold cursor-pointer"
+                            className={`p-1 rounded-md border text-[8px] font-bold cursor-pointer transition-colors ${
+                              isLight 
+                                ? 'bg-med-secondary border-med-primary/10 hover:bg-med-primary hover:text-white hover:border-transparent text-med-primary' 
+                                : 'bg-white/[0.03] border border-white/10 hover:bg-primary/20 hover:border-primary/40 text-primary'
+                            }`}
                           >
                             Log Item
                           </button>
@@ -600,8 +688,10 @@ const DietPlanner = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 
                 {/* Macros Breakdown Chart */}
-                <div className="glass-panel p-5 rounded-2xl border border-white/[0.06] text-center space-y-2 flex flex-col items-center">
-                  <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-wider align-left w-full text-left">Macros Target Breakdown</h4>
+                <div className={`p-5 rounded-2xl border text-center space-y-2 flex flex-col items-center transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                }`}>
+                  <h4 className={`text-[10px] font-bold uppercase tracking-wider w-full text-left ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Macros Target Breakdown</h4>
                   <div className="h-44 w-full">
                     <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
@@ -618,11 +708,15 @@ const DietPlanner = () => {
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                           ))}
                         </Pie>
-                        <Tooltip contentStyle={{ background: '#0B1120', border: '1px solid rgba(255,255,255,0.1)' }} />
+                        <Tooltip contentStyle={{ 
+                          background: isLight ? '#FFFFFF' : '#0B1120', 
+                          border: isLight ? '1px solid rgba(91, 76, 245, 0.1)' : '1px solid rgba(255,255,255,0.1)',
+                          color: isLight ? '#1A1A1A' : '#F8FAFC'
+                        }} />
                       </PieChart>
                     </ResponsiveContainer>
                   </div>
-                  <div className="flex gap-4 text-[9px] text-gray-300">
+                  <div className={`flex gap-4 text-[9px] ${isLight ? 'text-med-text' : 'text-gray-300'}`}>
                     <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-blue-500 inline-block"/>Protein</span>
                     <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-emerald-500 inline-block"/>Carbs</span>
                     <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-amber-500 inline-block"/>Fats</span>
@@ -630,16 +724,22 @@ const DietPlanner = () => {
                 </div>
 
                 {/* Historical Weight Trend Chart */}
-                <div className="glass-panel p-5 rounded-2xl border border-white/[0.06] text-center space-y-2">
-                  <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-wider text-left">Weight Log Trends</h4>
+                <div className={`p-5 rounded-2xl border text-center space-y-2 transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                }`}>
+                  <h4 className={`text-[10px] font-bold uppercase tracking-wider text-left ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Weight Log Trends</h4>
                   {bmiHistory.length > 0 ? (
                     <div className="h-44 w-full">
                       <ResponsiveContainer width="100%" height="100%">
                         <LineChart data={bmiHistory}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" />
-                          <XAxis dataKey="recorded_at" tickFormatter={(str) => new Date(str).toLocaleDateString([], {month: 'short', day: 'numeric'})} stroke="rgba(255,255,255,0.3)" style={{ fontSize: 9 }} />
-                          <YAxis stroke="rgba(255,255,255,0.3)" style={{ fontSize: 9 }} />
-                          <Tooltip contentStyle={{ background: '#0B1120', border: '1px solid rgba(255,255,255,0.1)' }} />
+                          <CartesianGrid strokeDasharray="3 3" stroke={isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.03)'} />
+                          <XAxis dataKey="recorded_at" tickFormatter={(str) => new Date(str).toLocaleDateString([], {month: 'short', day: 'numeric'})} stroke={isLight ? '#666666' : 'rgba(255,255,255,0.3)'} style={{ fontSize: 9 }} />
+                          <YAxis stroke={isLight ? '#666666' : 'rgba(255,255,255,0.3)'} style={{ fontSize: 9 }} />
+                          <Tooltip contentStyle={{ 
+                            background: isLight ? '#FFFFFF' : '#0B1120', 
+                            border: isLight ? '1px solid rgba(91, 76, 245, 0.1)' : '1px solid rgba(255,255,255,0.1)',
+                            color: isLight ? '#1A1A1A' : '#F8FAFC'
+                          }} />
                           <Line type="monotone" dataKey="weight_kg" stroke="#10B981" strokeWidth={2} dot={{ fill: '#10B981', r: 2 }} />
                         </LineChart>
                       </ResponsiveContainer>
@@ -653,13 +753,17 @@ const DietPlanner = () => {
 
             </motion.div>
           ) : (
-            <div className="glass-panel p-10 rounded-3xl border border-white/[0.06] flex flex-col items-center justify-center text-center space-y-4 h-full min-h-[460px] shadow-lg text-gray-400">
-              <div className="h-16 w-16 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-center shadow-inner">
-                <Utensils className="h-7 w-7 text-gray-600 animate-pulse" />
+            <div className={`p-10 rounded-3xl border flex flex-col items-center justify-center text-center space-y-4 h-full min-h-[460px] shadow-lg transition-all duration-300 ${
+              isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+            }`}>
+              <div className={`h-16 w-16 rounded-2xl border flex items-center justify-center shadow-inner ${
+                isLight ? 'bg-med-secondary border-med-primary/10' : 'bg-white/[0.02] border-white/[0.06]'
+              }`}>
+                <Utensils className={`h-7 w-7 animate-pulse ${isLight ? 'text-med-primary' : 'text-gray-600'}`} />
               </div>
               <div className="space-y-1 max-w-sm">
-                <p className="text-gray-300 font-bold text-sm">Meal Recommendations Idle</p>
-                <p className="text-xs text-gray-500 leading-normal">
+                <p className={`font-bold text-sm ${isLight ? 'text-med-text' : 'text-gray-300'}`}>Meal Recommendations Idle</p>
+                <p className={`text-xs leading-normal ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                   Submit your age, weight, and goals parameters on the left to trigger the ML recommendation classifier, map calories, and display customized plans.
                 </p>
               </div>
@@ -685,22 +789,24 @@ const DietPlanner = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative max-w-sm w-full bg-[#151e30] border border-white/10 rounded-[28px] p-6 shadow-2xl overflow-hidden"
+              className={`relative max-w-sm w-full border rounded-[28px] p-6 shadow-2xl overflow-hidden transition-all duration-300 ${
+                isLight ? 'bg-white border-med-primary/15' : 'bg-[#151e30] border-white/10'
+              }`}
             >
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-primary" />
               
               <button 
                 onClick={() => setLogModalOpen(false)}
-                className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/5 text-gray-400 hover:text-white cursor-pointer"
+                className={`absolute top-4 right-4 p-2 rounded-full hover:bg-white/5 cursor-pointer ${isLight ? 'text-med-gray' : 'text-gray-400'}`}
               >
                 <X className="h-4 w-4" />
               </button>
 
-              <h3 className="text-sm font-bold text-white font-poppins mb-4">Log Daily Meal Consumed</h3>
+              <h3 className={`text-sm font-bold font-poppins mb-4 ${isLight ? 'text-med-text' : 'text-white'}`}>Log Daily Meal Consumed</h3>
 
-              <form onSubmit={handleCustomLog} className="space-y-3.5">
+              <form onSubmit={handleCustomLog} className="space-y-3.5 text-left">
                 <div className="space-y-1">
-                  <label className="block text-[9px] font-bold text-gray-400 uppercase">Food Name</label>
+                  <label className={`block text-[9px] font-bold uppercase ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Food Name</label>
                   <input
                     type="text"
                     required
@@ -713,20 +819,20 @@ const DietPlanner = () => {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="block text-[9px] font-bold text-gray-400 uppercase">Meal Time</label>
+                    <label className={`block text-[9px] font-bold uppercase ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Meal Time</label>
                     <select
                       value={logMealType}
                       onChange={(e) => setLogMealType(e.target.value)}
                       className="glass-input w-full px-3 py-1.5 text-xs"
                     >
-                      <option value="Breakfast" className="bg-[#0B1120]">Breakfast</option>
-                      <option value="Lunch" className="bg-[#0B1120]">Lunch</option>
-                      <option value="Dinner" className="bg-[#0B1120]">Dinner</option>
-                      <option value="Snack" className="bg-[#0B1120]">Snack</option>
+                      <option value="Breakfast" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Breakfast</option>
+                      <option value="Lunch" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Lunch</option>
+                      <option value="Dinner" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Dinner</option>
+                      <option value="Snack" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Snack</option>
                     </select>
                   </div>
                   <div className="space-y-1">
-                    <label className="block text-[9px] font-bold text-gray-400 uppercase">Calories (kcal)</label>
+                    <label className={`block text-[9px] font-bold uppercase ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Calories (kcal)</label>
                     <input
                       type="number"
                       value={logCalories}
@@ -738,7 +844,7 @@ const DietPlanner = () => {
 
                 <div className="grid grid-cols-3 gap-2">
                   <div className="space-y-1">
-                    <label className="block text-[8px] font-bold text-gray-400 uppercase">Protein (g)</label>
+                    <label className={`block text-[8px] font-bold uppercase ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Protein (g)</label>
                     <input
                       type="number"
                       value={logProtein}
@@ -747,7 +853,7 @@ const DietPlanner = () => {
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="block text-[8px] font-bold text-gray-400 uppercase">Carbs (g)</label>
+                    <label className={`block text-[8px] font-bold uppercase ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Carbs (g)</label>
                     <input
                       type="number"
                       value={logCarbs}
@@ -756,7 +862,7 @@ const DietPlanner = () => {
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="block text-[8px] font-bold text-gray-400 uppercase">Fat (g)</label>
+                    <label className={`block text-[8px] font-bold uppercase ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Fat (g)</label>
                     <input
                       type="number"
                       value={logFat}
@@ -770,9 +876,9 @@ const DietPlanner = () => {
                   <button
                     type="submit"
                     disabled={logLoading}
-                    className="w-full py-2 bg-primary hover:bg-primary/95 text-white text-xs font-bold rounded-xl transition-all cursor-pointer"
+                    className="w-full py-2 bg-primary hover:bg-primary/95 text-white text-xs font-bold rounded-xl transition-all cursor-pointer font-poppins"
                   >
-                    {logLoading ? 'Saving...' : 'Add to Consumption Logs'}
+                    {logLoading ? 'Saving...' : 'Add to Logs'}
                   </button>
                 </div>
               </form>

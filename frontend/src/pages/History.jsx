@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { historyAPI } from '../services/api';
+import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  History, Search, Trash2, Calendar, FileText, ArrowRight, 
-  Download, Activity, AlertCircle, X, SlidersHorizontal, ArrowUpDown, CheckSquare 
+  History, Search, Trash2, Calendar, FileText, 
+  Download, Activity, AlertCircle, SlidersHorizontal, ArrowUpDown
 } from 'lucide-react';
 
 const ConsultationHistory = () => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   const [historyList, setHistoryList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
@@ -104,23 +108,39 @@ const ConsultationHistory = () => {
   const processedList = getProcessedList();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-left space-y-8 relative">
+    <div className={`max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-left space-y-8 relative transition-colors duration-300 ${
+      isLight ? 'text-med-text' : 'text-gray-300'
+    }`}>
+      {/* Background Glowing Orbs */}
+      <div className={`absolute top-20 left-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-med-secondary' : 'bg-primary/10'
+      }`} />
+      <div className={`absolute bottom-20 right-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-[#EEF0FF]' : 'bg-secondary/10'
+      }`} />
+
       {/* Printable Area Wrapper for Reports */}
-      <div className="print:hidden border-b border-white/[0.06] pb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div className={`print:hidden border-b pb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 ${
+        isLight ? 'border-med-secondary' : 'border-white/[0.06]'
+      }`}>
         <div>
-          <h1 className="text-3xl font-extrabold text-white flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(37,99,235,0.15)]">
-              <History className="h-6 w-6 text-primary" />
+          <h1 className={`text-3xl font-extrabold flex items-center gap-3 transition-colors duration-300 ${
+            isLight ? 'text-med-text' : 'text-white'
+          }`}>
+            <div className={`p-2 rounded-xl border shadow-[0_0_15px_rgba(37,99,235,0.15)] ${
+              isLight ? 'bg-med-secondary border-med-primary/10 text-med-primary' : 'bg-primary/10 border-primary/20 text-primary'
+            }`}>
+              <History className="h-6 w-6 text-current" />
             </div>
             Diagnostic Consultations
           </h1>
-          <p className="text-xs text-gray-400 mt-1.5">
+          <p className={`text-xs mt-1.5 ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
             Review timeline logs, filter past diagnostic results, and print PDF-formatted medical summaries.
           </p>
         </div>
 
         {/* Search bar */}
-        <form onSubmit={handleSearchSubmit} className="flex gap-2 w-full md:w-auto">
+        <form onSubmit={handleSearchSubmit} className="flex gap-2 w-full md:w-auto animate-fade-in">
           <div className="relative flex-grow">
             <input
               type="text"
@@ -129,11 +149,11 @@ const ConsultationHistory = () => {
               placeholder="Search symptoms / diseases..."
               className="glass-input pl-9 pr-4 py-2.5 text-xs w-full md:w-64"
             />
-            <Search className="absolute left-3 top-3 h-3.5 w-3.5 text-gray-500" />
+            <Search className="absolute left-3 top-3.5 h-3.5 w-3.5 text-gray-500" />
           </div>
           <button
             type="submit"
-            className="px-4.5 py-2.5 bg-primary hover:bg-primary/95 text-white text-xs font-bold rounded-xl cursor-pointer shadow-lg shadow-primary/10 shrink-0"
+            className="px-4.5 py-2.5 bg-primary hover:bg-primary/95 text-white text-xs font-bold rounded-xl cursor-pointer shadow-lg shadow-primary/10 shrink-0 font-poppins"
           >
             Search
           </button>
@@ -141,17 +161,21 @@ const ConsultationHistory = () => {
       </div>
 
       {error && (
-        <div className="print:hidden bg-red-500/10 border border-red-500/25 text-red-200 p-4 rounded-xl flex items-start gap-2.5 text-xs">
-          <AlertCircle className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
+        <div className={`print:hidden border p-4 rounded-xl flex items-start gap-2.5 text-xs ${
+          isLight ? 'bg-red-50 border-red-200 text-red-950' : 'bg-red-500/10 border-red-500/25 text-red-200'
+        }`}>
+          <AlertCircle className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
           <span>{error}</span>
         </div>
       )}
 
       {/* Sorting & Filter Controls */}
-      <div className="print:hidden flex flex-wrap items-center justify-between gap-4 bg-white/[0.01] border border-white/[0.04] p-3 rounded-2xl">
+      <div className={`print:hidden flex flex-wrap items-center justify-between gap-4 p-3 rounded-2xl border transition-all duration-300 ${
+        isLight ? 'bg-med-secondary/30 border-med-secondary' : 'bg-white/[0.01] border-white/[0.04]'
+      }`}>
         <div className="flex flex-wrap items-center gap-3 text-xs">
-          <div className="flex items-center gap-1.5 text-gray-400">
-            <SlidersHorizontal className="h-3.5 w-3.5" />
+          <div className={`flex items-center gap-1.5 ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
+            <SlidersHorizontal className="h-3.5 w-3.5 text-primary" />
             <span>Filter Risk:</span>
           </div>
           <div className="flex gap-1.5">
@@ -161,8 +185,10 @@ const ConsultationHistory = () => {
                 onClick={() => setFilterRisk(risk)}
                 className={`px-3 py-1 rounded-lg border text-[10px] uppercase font-bold tracking-wider cursor-pointer transition-all ${
                   filterRisk === risk 
-                    ? 'bg-primary border-primary text-white' 
-                    : 'bg-white/[0.02] border-white/5 text-gray-400 hover:text-white'
+                    ? 'bg-primary border-primary text-white shadow-sm' 
+                    : isLight 
+                      ? 'bg-white border-med-secondary text-med-text hover:bg-med-secondary' 
+                      : 'bg-white/[0.02] border-white/5 text-gray-400 hover:text-white'
                 }`}
               >
                 {risk}
@@ -172,17 +198,17 @@ const ConsultationHistory = () => {
         </div>
 
         <div className="flex items-center gap-2 text-xs">
-          <ArrowUpDown className="h-3.5 w-3.5 text-gray-400" />
-          <span className="text-gray-400">Sort:</span>
+          <ArrowUpDown className="h-3.5 w-3.5 text-primary" />
+          <span className={isLight ? 'text-med-gray' : 'text-gray-400'}>Sort:</span>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
             className="glass-input px-2.5 py-1 text-[10px] font-bold"
           >
-            <option value="newest" className="bg-[#0B1120] text-white">Newest First</option>
-            <option value="oldest" className="bg-[#0B1120] text-white">Oldest First</option>
-            <option value="confidence_high" className="bg-[#0B1120] text-white">Highest Match</option>
-            <option value="confidence_low" className="bg-[#0B1120] text-white">Lowest Match</option>
+            <option value="newest" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Newest First</option>
+            <option value="oldest" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Oldest First</option>
+            <option value="confidence_high" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Highest Match</option>
+            <option value="confidence_low" className={isLight ? 'bg-white text-med-text' : 'bg-[#0B1120] text-white'}>Lowest Match</option>
           </select>
         </div>
       </div>
@@ -197,20 +223,22 @@ const ConsultationHistory = () => {
               <span className="text-xs">Fetching consultations archive...</span>
             </div>
           ) : processedList.length === 0 ? (
-            <div className="glass-panel p-12 rounded-3xl border border-white/[0.06] text-center text-gray-400 shadow-md">
-              <FileText className="h-10 w-10 mx-auto mb-3 text-gray-600" />
-              <p className="text-xs font-semibold text-gray-300">No consultation records match the filters.</p>
+            <div className={`p-12 rounded-3xl border text-center shadow-md transition-all duration-300 ${
+              isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+            }`}>
+              <FileText className="h-10 w-10 mx-auto mb-3 text-gray-455 dark:text-gray-600" />
+              <p className={`text-xs font-semibold ${isLight ? 'text-med-gray' : 'text-gray-300'}`}>No consultation records match the filters.</p>
               {searchQuery && (
                 <button 
                   onClick={() => { setSearchQuery(''); fetchHistory(''); }} 
-                  className="text-primary underline text-xs mt-2.5 cursor-pointer font-bold block mx-auto"
+                  className="text-primary underline text-xs mt-2.5 cursor-pointer font-bold block mx-auto hover:text-primary/80 transition-colors"
                 >
                   Clear search query
                 </button>
               )}
             </div>
           ) : (
-            <div className="relative border-l border-white/5 pl-4 ml-2 space-y-5">
+            <div className={`relative border-l ml-2 space-y-5 ${isLight ? 'border-med-secondary' : 'border-white/5'}`}>
               {processedList.map((item, idx) => {
                 const isSelected = selectedRecord?.id === item.id;
                 const score = item.prediction?.confidence_score || 0;
@@ -227,21 +255,25 @@ const ConsultationHistory = () => {
                     className={`relative p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex justify-between items-center group ${
                       isSelected 
                         ? 'border-primary bg-primary/[0.04] shadow-[0_0_15px_rgba(37,99,235,0.05)]' 
-                        : 'border-white/[0.05] bg-white/[0.01] hover:border-primary/30 hover:bg-white/[0.02]'
+                        : isLight 
+                          ? 'border-med-secondary bg-white/70 hover:border-primary/30 hover:bg-white hover:shadow-premium-md' 
+                          : 'border-white/[0.05] bg-white/[0.01] hover:border-primary/30 hover:bg-white/[0.02]'
                     }`}
                   >
                     {/* Timeline Node dot */}
-                    <div className={`absolute -left-[21px] top-7 h-2.5 w-2.5 rounded-full border ring-4 ring-[#0B1120] transition-colors ${
-                      isSelected ? 'bg-primary border-primary ring-primary/10' : 'bg-gray-700 border-white/10'
+                    <div className={`absolute -left-[21px] top-7 h-2.5 w-2.5 rounded-full border transition-colors ${
+                      isLight ? 'ring-white' : 'ring-[#0B1120]'
+                    } ${
+                      isSelected ? 'bg-primary border-primary ring-4 ring-primary/10' : 'bg-gray-450 dark:bg-gray-700 border-med-primary/20 dark:border-white/10 ring-4'
                     }`} />
 
                     <div className="space-y-2 max-w-[80%]">
-                      <div className="flex items-center gap-2 text-[9px] text-gray-500 font-bold uppercase tracking-wider">
-                        <Calendar className="h-3 w-3 text-primary" />
+                      <div className={`flex items-center gap-2 text-[9px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
+                        <Calendar className="h-3 w-3 text-primary animate-pulse" />
                         <span>{formatDate(item.created_at)}</span>
                       </div>
-                      <h3 className="font-bold text-white capitalize leading-tight truncate">{disease}</h3>
-                      <p className="text-xs text-gray-400 truncate leading-relaxed">
+                      <h3 className={`font-bold capitalize leading-tight truncate ${isLight ? 'text-med-text' : 'text-white'}`}>{disease}</h3>
+                      <p className={`text-xs truncate leading-relaxed ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
                         "{symptoms}"
                       </p>
                     </div>
@@ -252,7 +284,7 @@ const ConsultationHistory = () => {
                       </span>
                       <button
                         onClick={(e) => handleDelete(item.id, e)}
-                        className="p-2 text-gray-600 hover:text-red-400 hover:bg-red-500/5 rounded-xl transition-all cursor-pointer border border-transparent hover:border-red-500/10"
+                        className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-500/5 rounded-xl transition-all cursor-pointer border border-transparent hover:border-red-500/10"
                         title="Delete log permanently"
                       >
                         <Trash2 className="h-4.5 w-4.5" />
@@ -274,17 +306,19 @@ const ConsultationHistory = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 key={selectedRecord.id}
-                className="glass-panel p-6 rounded-3xl border border-white/[0.06] shadow-2xl space-y-6 relative overflow-hidden text-left"
+                className={`p-6 rounded-3xl border shadow-2xl space-y-6 relative overflow-hidden text-left transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                }`}
               >
                 <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full pointer-events-none" />
 
-                <div className="flex justify-between items-start border-b border-white/[0.06] pb-4">
+                <div className={`flex justify-between items-start border-b pb-4 ${isLight ? 'border-med-secondary' : 'border-white/[0.06]'}`}>
                   <div className="space-y-1 text-left">
                     <span className="text-[10px] font-bold text-primary uppercase tracking-widest block">Consultation record details</span>
-                    <h3 className="text-2xl font-extrabold text-white capitalize leading-tight">
+                    <h3 className={`text-2xl font-extrabold capitalize leading-tight ${isLight ? 'text-med-text' : 'text-white'}`}>
                       {selectedRecord.prediction?.predicted_disease || 'Unknown'}
                     </h3>
-                    <div className="flex items-center gap-1.5 text-xs text-gray-400 font-medium">
+                    <div className={`flex items-center gap-1.5 text-xs font-medium ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
                       <Calendar className="h-3.5 w-3.5 text-primary" />
                       <span>{formatDate(selectedRecord.created_at)}</span>
                     </div>
@@ -300,31 +334,39 @@ const ConsultationHistory = () => {
                 </div>
 
                 {/* Details sections */}
-                <div className="space-y-5 text-xs text-gray-300">
-                  <div className="space-y-2 bg-white/[0.01] p-4.5 rounded-2xl border border-white/[0.05]">
-                    <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider block">Submitted Symptom Text</span>
-                    <p className="leading-relaxed text-white font-medium italic">
+                <div className="space-y-5 text-xs">
+                  <div className={`space-y-2 p-4.5 rounded-2xl border transition-colors ${
+                    isLight ? 'bg-med-secondary/30 border-med-primary/5 text-med-text' : 'bg-white/[0.01] border-white/[0.05] text-gray-300'
+                  }`}>
+                    <span className={`text-[9px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>Submitted Symptom Text</span>
+                    <p className={`leading-relaxed font-medium italic ${isLight ? 'text-med-text font-semibold' : 'text-white'}`}>
                       "{selectedRecord.prediction?.symptom_text || 'No details'}"
                     </p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/[0.01] p-4 rounded-2xl border border-white/[0.05]">
-                      <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider block">Statistical Match</span>
+                    <div className={`p-4 rounded-2xl border transition-colors ${
+                      isLight ? 'bg-med-secondary/30 border-med-primary/5 text-med-text' : 'bg-white/[0.01] border-white/[0.05] text-gray-300'
+                    }`}>
+                      <span className={`text-[9px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>Statistical Match</span>
                       <span className="text-xl font-extrabold text-gradient">
                         {((selectedRecord.prediction?.confidence_score || 0) * 100).toFixed(2)}%
                       </span>
                     </div>
-                    <div className="bg-white/[0.01] p-4 rounded-2xl border border-white/[0.05]">
-                      <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider block">Log Status</span>
+                    <div className={`p-4 rounded-2xl border transition-colors ${
+                      isLight ? 'bg-med-secondary/30 border-med-primary/5 text-med-text' : 'bg-white/[0.01] border-white/[0.05] text-gray-300'
+                    }`}>
+                      <span className={`text-[9px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>Log Status</span>
                       <span className="text-xl font-extrabold text-accent">Secured & Archived</span>
                     </div>
                   </div>
 
                   {selectedRecord.prediction?.explanation && (
-                    <div className="space-y-2 bg-white/[0.01] p-4.5 rounded-2xl border border-white/[0.05]">
-                      <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider block">Clinical Assessment Inference</span>
-                      <p className="leading-relaxed text-gray-300 font-medium whitespace-pre-line">
+                    <div className={`space-y-2 p-4.5 rounded-2xl border transition-colors ${
+                      isLight ? 'bg-med-secondary/30 border-med-primary/5 text-med-text' : 'bg-white/[0.01] border-white/[0.05] text-gray-300'
+                    }`}>
+                      <span className={`text-[9px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>Clinical Assessment Inference</span>
+                      <p className={`leading-relaxed font-medium whitespace-pre-line ${isLight ? 'text-med-text' : 'text-gray-350'}`}>
                         {selectedRecord.prediction.explanation}
                       </p>
                     </div>
@@ -333,10 +375,12 @@ const ConsultationHistory = () => {
                   {/* Precautions */}
                   {selectedRecord.prediction?.precautions && selectedRecord.prediction.precautions.length > 0 && (
                     <div className="space-y-3">
-                      <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider block">Precautions Logged</span>
+                      <span className={`text-[9px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>Precautions Logged</span>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                         {selectedRecord.prediction.precautions.map((prec, idx) => (
-                          <div key={idx} className="flex items-start gap-2 bg-white/[0.02] border border-white/5 p-3 rounded-xl">
+                          <div key={idx} className={`flex items-start gap-2 border p-3 rounded-xl transition-colors ${
+                            isLight ? 'bg-med-secondary/30 border-med-primary/5 text-med-text font-medium' : 'bg-white/[0.02] border-white/5 text-gray-300'
+                          }`}>
                             <span className="text-accent text-xs font-bold mr-1">✓</span>
                             <span>{prec}</span>
                           </div>
@@ -347,16 +391,18 @@ const ConsultationHistory = () => {
 
                   {/* Differential Diagnosis (Disease Percentage list) */}
                   {selectedRecord.prediction?.top_5_predictions && selectedRecord.prediction.top_5_predictions.length > 0 && (
-                    <div className="space-y-3 border-t border-white/5 pt-4">
-                      <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider block">Differential Probability List</span>
+                    <div className={`space-y-3 border-t pt-4 ${isLight ? 'border-med-secondary' : 'border-white/5'}`}>
+                      <span className={`text-[9px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>Differential Probability List</span>
                       <div className="space-y-2">
                         {selectedRecord.prediction.top_5_predictions.map((pred, idx) => (
                           <div key={idx} className="space-y-1">
                             <div className="flex justify-between text-[11px]">
-                              <span className="capitalize font-semibold text-gray-300">{pred.disease}</span>
-                              <span className="font-bold text-white">{(pred.probability * 100).toFixed(1)}%</span>
+                              <span className={`capitalize font-semibold ${isLight ? 'text-med-gray' : 'text-gray-300'}`}>{pred.disease}</span>
+                              <span className={`font-bold ${isLight ? 'text-med-text' : 'text-white'}`}>{(pred.probability * 100).toFixed(1)}%</span>
                             </div>
-                            <div className="h-1.5 w-full bg-white/[0.03] rounded-full overflow-hidden border border-white/5">
+                            <div className={`h-1.5 w-full rounded-full overflow-hidden border ${
+                              isLight ? 'bg-gray-100 border-gray-200' : 'bg-white/[0.03] border-white/5'
+                            }`}>
                               <div
                                 className="h-full bg-primary"
                                 style={{ width: `${pred.probability * 100}%` }}
@@ -373,12 +419,16 @@ const ConsultationHistory = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="glass-panel p-12 rounded-3xl border border-white/[0.06] text-center text-gray-400 h-full min-h-[380px] flex flex-col items-center justify-center space-y-4 shadow-xl"
+                className={`p-12 rounded-3xl border text-center h-full min-h-[380px] flex flex-col items-center justify-center space-y-4 shadow-xl transition-all duration-300 ${
+                  isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+                }`}
               >
-                <div className="h-14 w-14 rounded-2xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-center text-gray-600 shadow-inner">
+                <div className={`h-14 w-14 rounded-2xl border flex items-center justify-center shadow-inner ${
+                  isLight ? 'bg-med-secondary border-med-primary/10 text-med-primary' : 'bg-white/[0.02] border-white/[0.06] text-gray-600'
+                }`}>
                   <FileText className="h-6 w-6 animate-pulse" />
                 </div>
-                <p className="text-xs text-gray-500 max-w-xs leading-normal">
+                <p className={`text-xs max-w-xs leading-normal ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                   Select a consultation record on the left to examine detailed diagnostic insights, confidence matches, and clinical precaution details.
                 </p>
               </motion.div>

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { authAPI } from '../services/api';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Lock, Mail, Shield, AlertCircle, CheckCircle, Settings, ShieldCheck, X } from 'lucide-react';
+import { User, Lock, Mail, AlertCircle, CheckCircle, Settings, ShieldCheck, X } from 'lucide-react';
 
 const Profile = () => {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   const { user, refreshUser } = useAuth();
   const [fullName, setFullName] = useState(user?.full_name || '');
   const [currentPassword, setCurrentPassword] = useState('');
@@ -83,15 +87,29 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 space-y-8 text-left relative grid-bg">
-      <div className="border-b border-white/[0.06] pb-4">
-        <h1 className="text-3xl font-extrabold text-white flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(37,99,235,0.15)]">
-            <Settings className="h-6 w-6 text-primary" />
+    <div className={`max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 space-y-8 text-left relative transition-colors duration-300 ${
+      isLight ? 'text-med-text' : 'text-gray-300'
+    }`}>
+      {/* Background Glowing Orbs */}
+      <div className={`absolute top-20 left-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-med-secondary' : 'bg-primary/10'
+      }`} />
+      <div className={`absolute bottom-20 right-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-[#EEF0FF]' : 'bg-secondary/10'
+      }`} />
+
+      <div className={`border-b pb-4 ${isLight ? 'border-med-secondary' : 'border-white/[0.06]'}`}>
+        <h1 className={`text-3xl font-extrabold flex items-center gap-3 transition-colors duration-300 ${
+          isLight ? 'text-med-text' : 'text-white'
+        }`}>
+          <div className={`p-2 rounded-xl border shadow-[0_0_15px_rgba(37,99,235,0.15)] ${
+            isLight ? 'bg-med-secondary border-med-primary/10 text-med-primary' : 'bg-primary/10 border-primary/20 text-primary'
+          }`}>
+            <Settings className="h-6 w-6 text-current" />
           </div>
           Account Settings
         </h1>
-        <p className="text-xs text-gray-400 mt-1.5">Manage patient profile details, contact emails, and security credentials.</p>
+        <p className={`text-xs mt-1.5 ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Manage patient profile details, contact emails, and security credentials.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -99,7 +117,9 @@ const Profile = () => {
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:col-span-4 glass-panel p-6 rounded-3xl border border-white/[0.06] h-fit text-center space-y-5 shadow-xl relative overflow-hidden"
+          className={`lg:col-span-4 p-6 rounded-3xl border h-fit text-center space-y-5 shadow-xl relative overflow-hidden transition-all duration-300 ${
+            isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/[0.06]'
+          }`}
         >
           <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-bl-full pointer-events-none" />
           
@@ -107,17 +127,25 @@ const Profile = () => {
             <User className="h-9 w-9 text-primary animate-pulse" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white leading-tight">{user?.full_name}</h3>
-            <p className="text-[10px] font-bold text-primary uppercase tracking-widest mt-1.5 bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-md inline-block">
+            <h3 className={`text-lg font-bold leading-tight ${isLight ? 'text-med-text' : 'text-white'}`}>{user?.full_name}</h3>
+            <p className={`text-[10px] font-bold uppercase tracking-widest mt-1.5 px-2 py-0.5 rounded-md inline-block ${
+              isLight 
+                ? 'bg-med-secondary border border-med-primary/10 text-med-primary' 
+                : 'bg-primary/10 border border-primary/20 text-primary'
+            }`}>
               {user?.role} Account
             </p>
           </div>
-          <div className="border-t border-white/5 pt-4 text-left space-y-3.5 text-xs text-gray-300">
-            <div className="flex items-center gap-2.5 bg-white/[0.01] p-3 rounded-xl border border-white/5">
+          <div className={`border-t pt-4 text-left space-y-3.5 text-xs ${isLight ? 'border-med-secondary text-med-text' : 'border-white/5 text-gray-300'}`}>
+            <div className={`flex items-center gap-2.5 p-3 rounded-xl border ${
+              isLight ? 'bg-med-secondary/30 border-med-primary/5' : 'bg-white/[0.01] border-white/5'
+            }`}>
               <Mail className="h-4 w-4 text-primary shrink-0" />
               <span className="truncate">{user?.email}</span>
             </div>
-            <div className="flex items-center gap-2.5 bg-white/[0.01] p-3 rounded-xl border border-white/5">
+            <div className={`flex items-center gap-2.5 p-3 rounded-xl border ${
+              isLight ? 'bg-med-secondary/30 border-med-primary/5' : 'bg-white/[0.01] border-white/5'
+            }`}>
               <ShieldCheck className="h-4 w-4 text-accent shrink-0" />
               <span>Status: <b className="text-accent font-extrabold">Active</b></span>
             </div>
@@ -131,22 +159,28 @@ const Profile = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="glass-panel p-6 rounded-3xl border border-white/[0.06] shadow-xl"
+            className={`p-6 rounded-3xl border shadow-xl transition-all duration-300 ${
+              isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/[0.06]'
+            }`}
           >
-            <h3 className="text-sm font-bold text-white mb-5 flex items-center gap-2">
+            <h3 className={`text-sm font-bold mb-5 flex items-center gap-2 ${isLight ? 'text-med-text' : 'text-white'}`}>
               <User className="h-4.5 w-4.5 text-primary" />
               Personal Information
             </h3>
             
             {profileError && (
-              <div className="bg-red-500/10 border border-red-500/25 text-red-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4">
-                <AlertCircle className="h-4.5 w-4.5 text-red-400 shrink-0 mt-0.5" />
+              <div className={`p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4 border ${
+                isLight ? 'bg-red-50 border-red-200 text-red-950' : 'bg-red-500/10 border-red-500/25 text-red-200'
+              }`}>
+                <AlertCircle className="h-4.5 w-4.5 text-red-500 shrink-0 mt-0.5" />
                 <span>{profileError}</span>
               </div>
             )}
             
             {profileSuccess && (
-              <div className="bg-green-500/10 border border-green-500/25 text-green-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4">
+              <div className={`p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4 border ${
+                isLight ? 'bg-green-50 border-green-200 text-green-950' : 'bg-green-500/10 border-green-500/25 text-green-200'
+              }`}>
                 <CheckCircle className="h-4.5 w-4.5 text-accent shrink-0 mt-0.5" />
                 <span>{profileSuccess}</span>
               </div>
@@ -154,7 +188,7 @@ const Profile = () => {
 
             <form onSubmit={handleUpdateProfile} className="space-y-4">
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                   Full Name
                 </label>
                 <input
@@ -168,7 +202,7 @@ const Profile = () => {
               </div>
 
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                   Email Address
                 </label>
                 <input
@@ -177,7 +211,7 @@ const Profile = () => {
                   value={user?.email || ''}
                   className="glass-input w-full px-4 py-2.5 text-xs opacity-50 cursor-not-allowed"
                 />
-                <p className="text-[9px] text-gray-500 mt-1">To change registered email, contact administrator.</p>
+                <p className={`text-[9px] mt-1 ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>To change registered email, contact administrator.</p>
               </div>
 
               <div className="pt-2">
@@ -197,22 +231,28 @@ const Profile = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass-panel p-6 rounded-3xl border border-white/[0.06] shadow-xl"
+            className={`p-6 rounded-3xl border shadow-xl transition-all duration-300 ${
+              isLight ? 'glass-panel-light border-med-secondary' : 'glass-panel border-white/[0.06]'
+            }`}
           >
-            <h3 className="text-sm font-bold text-white mb-5 flex items-center gap-2">
+            <h3 className={`text-sm font-bold mb-5 flex items-center gap-2 ${isLight ? 'text-med-text' : 'text-white'}`}>
               <Lock className="h-4.5 w-4.5 text-primary" />
               Credentials Security
             </h3>
 
             {passError && (
-              <div className="bg-red-500/10 border border-red-500/25 text-red-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4">
-                <AlertCircle className="h-4.5 w-4.5 text-red-400 shrink-0 mt-0.5" />
+              <div className={`p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4 border ${
+                isLight ? 'bg-red-50 border-red-200 text-red-950' : 'bg-red-500/10 border-red-500/25 text-red-200'
+              }`}>
+                <AlertCircle className="h-4.5 w-4.5 text-red-500 shrink-0 mt-0.5" />
                 <span>{passError}</span>
               </div>
             )}
 
             {passSuccess && (
-              <div className="bg-green-500/10 border border-green-500/25 text-green-200 p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4">
+              <div className={`p-3.5 rounded-xl flex items-start gap-2.5 text-xs mb-4 border ${
+                isLight ? 'bg-green-50 border-green-200 text-green-950' : 'bg-green-500/10 border-green-500/25 text-green-200'
+              }`}>
                 <CheckCircle className="h-4.5 w-4.5 text-accent shrink-0 mt-0.5" />
                 <span>{passSuccess}</span>
               </div>
@@ -220,7 +260,7 @@ const Profile = () => {
 
             <form onSubmit={handleChangePassword} className="space-y-4">
               <div className="space-y-1.5">
-                <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                   Current Password
                 </label>
                 <input
@@ -235,7 +275,7 @@ const Profile = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                  <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                     New Password
                   </label>
                   <input
@@ -248,7 +288,7 @@ const Profile = () => {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                  <label className={`block text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                     Confirm Password
                   </label>
                   <input
@@ -292,13 +332,15 @@ const Profile = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative max-w-sm w-full bg-[#151e30] border border-green-500/20 rounded-[28px] p-6 shadow-2xl overflow-hidden text-center"
+              className={`relative max-w-sm w-full border rounded-[28px] p-6 shadow-2xl overflow-hidden text-center transition-all duration-300 ${
+                isLight ? 'bg-white border-green-200' : 'bg-[#151e30] border-green-500/20'
+              }`}
             >
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-green-500" />
               
               <button 
                 onClick={() => setShowPassSuccessModal(false)}
-                className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/5 text-gray-400 hover:text-white"
+                className={`absolute top-4 right-4 p-2 rounded-full hover:bg-white/5 ${isLight ? 'text-med-gray' : 'text-gray-400'}`}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -307,8 +349,8 @@ const Profile = () => {
                 <CheckCircle className="h-6 w-6" />
               </div>
 
-              <h3 className="text-base font-bold text-white font-poppins">Success</h3>
-              <p className="text-xs text-gray-400 mt-2 leading-relaxed font-inter">
+              <h3 className={`text-base font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Success</h3>
+              <p className={`text-xs mt-2 leading-relaxed font-inter ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
                 Your password has been successfully changed!
               </p>
 

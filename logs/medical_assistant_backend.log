@@ -1186,3 +1186,26 @@ WHERE users.email = ?]
 [2026-07-30 23:40:18] [INFO] [app.services.diet:192]: Generating meal recommendations. User ID: a813a8d9-fc77-4220-9948-b11ef913744c
 [2026-07-30 23:40:19] [INFO] [app.services.diet:386]: Meal plan recommendation generated and saved. ID: bb2dc68c-f8ea-4ac0-b714-e0e6348d98a5
 [2026-07-30 23:42:41] [INFO] [app.main:83]: FastAPI application shutting down...
+[2026-07-31 18:47:34] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-07-31 18:47:34] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-07-31 18:47:49] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-07-31 18:47:49] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-07-31 18:47:49] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-07-31 18:47:49] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-07-31 18:47:49] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-07-31 18:47:49] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-07-31 18:47:49] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-07-31 18:47:49] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-07-31 18:47:49] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-07-31 18:47:49] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-07-31 18:47:51] [INFO] [app.services.diet:42]: Loaded diet classification model. Algorithm: Gradient Boosting
+[2026-07-31 18:47:51] [INFO] [app.main:63]: FastAPI application booting up...
+[2026-07-31 18:47:51] [INFO] [app.core.database:77]: Initializing database tables...
+[2026-07-31 18:47:51] [INFO] [app.core.database:79]: Database tables initialized successfully.
+[2026-07-31 18:47:51] [INFO] [app.core.database:52]: Inspecting database schema for OTP column presence...
+[2026-07-31 18:47:51] [INFO] [app.core.database:67]: Database schema check completed.
+[2026-07-31 18:47:55] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-31 18:47:55] [WARNING] [app.core.security:126]: Failed to decode token (is_refresh=False): Signature has expired.
+[2026-07-31 18:47:55] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-31 18:47:55] [INFO] [app.services.auth:121]: Tokens re-issued for user ID: a813a8d9-fc77-4220-9948-b11ef913744c
+[2026-07-31 18:49:14] [INFO] [app.main:83]: FastAPI application shutting down...

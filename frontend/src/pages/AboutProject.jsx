@@ -64,21 +64,32 @@ const AboutProject = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-left space-y-12 relative">
+    <div className={`max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-left space-y-12 relative transition-colors duration-300 ${
+      isLight ? 'text-med-text' : 'text-gray-300'
+    }`}>
+      {/* Background Glowing Orbs */}
+      <div className={`absolute top-20 left-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-med-secondary' : 'bg-primary/10'
+      }`} />
+      <div className={`absolute bottom-20 right-[10%] w-80 h-80 rounded-full blur-[100px] pointer-events-none -z-10 opacity-70 ${
+        isLight ? 'bg-[#EEF0FF]' : 'bg-secondary/10'
+      }`} />
       
       {/* Header section */}
-      <div className={`border-b ${isLight ? 'border-gray-200' : 'border-white/[0.06]'} pb-5`}>
+      <div className={`border-b pb-5 ${isLight ? 'border-gray-200' : 'border-white/[0.06]'}`}>
         <motion.h1 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className={`text-4xl font-extrabold flex items-center gap-3 ${isLight ? 'text-[#1A1A1A]' : 'text-white'}`}
+          className={`text-4xl font-extrabold flex items-center gap-3 ${isLight ? 'text-med-text' : 'text-white'}`}
         >
-          <div className="p-2.5 rounded-2xl bg-med-primary/10 border border-med-primary/20 shadow-premium-sm">
-            <BookOpen className="h-7 w-7 text-med-primary" />
+          <div className={`p-2.5 rounded-2xl border shadow-premium-sm ${
+            isLight ? 'bg-med-secondary border-med-primary/10 text-med-primary' : 'bg-primary/10 border-primary/20 text-primary'
+          }`}>
+            <BookOpen className="h-7 w-7 text-current" />
           </div>
           About Project
         </motion.h1>
-        <p className={`text-xs ${isLight ? 'text-gray-600' : 'text-gray-400'} mt-2.5 max-w-2xl leading-relaxed`}>
+        <p className={`text-xs mt-2.5 max-w-2xl leading-relaxed ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
           Aegis AI is an academic clinical NLP inference platform that synthesizes client health symptoms in natural language, resolves clinical negations, and runs multi-classifier predictions.
         </p>
       </div>
@@ -90,13 +101,15 @@ const AboutProject = () => {
         animate="visible"
         className="grid grid-cols-1 md:grid-cols-3 gap-6"
       >
-        <motion.div variants={itemVariants} className="glass-panel p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+        <motion.div variants={itemVariants} className={`p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between min-h-[220px] border transition-all duration-300 ${
+          isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+        }`}>
           <div className="space-y-3">
             <div className="h-10 w-10 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-blue-500">
               <Cpu className="h-5 w-5" />
             </div>
-            <h3 className={`text-base font-bold ${isLight ? 'text-[#1A1A1A]' : 'text-white'} font-poppins`}>The ML Engine</h3>
-            <p className={`text-xs ${isLight ? 'text-gray-600' : 'text-gray-400'} leading-relaxed font-inter`}>
+            <h3 className={`text-base font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>The ML Engine</h3>
+            <p className={`text-xs leading-relaxed font-inter ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
               Trained on a curated clinical database mapping over 250 disease profiles. Runs Random Forest, Support Vector Machines, and XGBoost Classifiers concurrently.
             </p>
           </div>
@@ -105,13 +118,15 @@ const AboutProject = () => {
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="glass-panel p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+        <motion.div variants={itemVariants} className={`p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between min-h-[220px] border transition-all duration-300 ${
+          isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+        }`}>
           <div className="space-y-3">
             <div className="h-10 w-10 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-500">
               <Brain className="h-5 w-5" />
             </div>
-            <h3 className={`text-base font-bold ${isLight ? 'text-[#1A1A1A]' : 'text-white'} font-poppins`}>Negation Processing</h3>
-            <p className={`text-xs ${isLight ? 'text-gray-600' : 'text-gray-400'} leading-relaxed font-inter`}>
+            <h3 className={`text-base font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Negation Processing</h3>
+            <p className={`text-xs leading-relaxed font-inter ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
               Processes negative statements (e.g. "no fatigue") during inference using custom regex and token expansion, stopping false-positive classifications.
             </p>
           </div>
@@ -120,13 +135,15 @@ const AboutProject = () => {
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="glass-panel p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+        <motion.div variants={itemVariants} className={`p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between min-h-[220px] border transition-all duration-300 ${
+          isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+        }`}>
           <div className="space-y-3">
             <div className="h-10 w-10 bg-purple-500/10 border border-purple-500/20 rounded-xl flex items-center justify-center text-purple-500">
               <Activity className="h-5 w-5" />
             </div>
-            <h3 className={`text-base font-bold ${isLight ? 'text-[#1A1A1A]' : 'text-white'} font-poppins`}>Academic Objective</h3>
-            <p className={`text-xs ${isLight ? 'text-gray-600' : 'text-gray-400'} leading-relaxed font-inter`}>
+            <h3 className={`text-base font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Academic Objective</h3>
+            <p className={`text-xs leading-relaxed font-inter ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
               Developed as a collegiate capstone project to demonstrate client-side React frameworks operating in absolute synchrony with FastAPI model prediction microservices.
             </p>
           </div>
@@ -137,19 +154,21 @@ const AboutProject = () => {
       </motion.div>
 
       {/* Visualizations Section */}
-      <div className="space-y-8">
-        <div className="text-left border-b border-white/[0.04] pb-2">
-          <h2 className={`text-xl font-bold ${isLight ? 'text-[#1A1A1A]' : 'text-white'} font-poppins`}>Project Telemetry & Analytics</h2>
-          <p className={`text-xs ${isLight ? 'text-gray-500' : 'text-gray-400'} mt-1 font-inter`}>Evaluating diagnostic model accuracy, loss-rate decay, and cohort classification distribution.</p>
+      <div className="space-y-8 text-left">
+        <div className={`border-b pb-2 ${isLight ? 'border-gray-200' : 'border-white/[0.04]'}`}>
+          <h2 className={`text-xl font-bold font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>Project Telemetry & Analytics</h2>
+          <p className={`text-xs mt-1 font-inter ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Evaluating diagnostic model accuracy, loss-rate decay, and cohort classification distribution.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* Chart 1: Model Accuracy Comparison */}
-          <div className="glass-panel p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between">
+          <div className={`p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between border transition-all duration-300 ${
+            isLight ? 'glass-panel-light border-med-secondary bg-white/70 hover:shadow-premium-md' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+          }`}>
             <div>
-              <h3 className={`text-sm font-bold ${isLight ? 'text-[#1A1A1A]' : 'text-white'} flex items-center gap-2 mb-4 font-poppins`}>
-                <BarChart3 className="h-4 w-4 text-med-primary" />
+              <h3 className={`text-sm font-bold flex items-center gap-2 mb-4 font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>
+                <BarChart3 className="h-4 w-4 text-med-primary animate-pulse" />
                 Algorithm Performance Evaluation (Accuracy %)
               </h3>
               <div className="h-[250px] w-full mt-2">
@@ -178,16 +197,18 @@ const AboutProject = () => {
                 </ResponsiveContainer>
               </div>
             </div>
-            <p className={`text-[10px] ${isLight ? 'text-gray-500' : 'text-gray-500'} italic mt-4 text-center`}>
+            <p className={`text-[10px] italic mt-4 text-center ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
               * Evaluated across 1,500 test clinical reports with stratified 5-fold cross-validation.
             </p>
           </div>
 
           {/* Chart 2: Loss Rate decay */}
-          <div className="glass-panel p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between">
+          <div className={`p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between border transition-all duration-300 ${
+            isLight ? 'glass-panel-light border-med-secondary bg-white/70 hover:shadow-premium-md' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+          }`}>
             <div>
-              <h3 className={`text-sm font-bold ${isLight ? 'text-[#1A1A1A]' : 'text-white'} flex items-center gap-2 mb-4 font-poppins`}>
-                <LineChart className="inline-block h-4 w-4 text-emerald-500" />
+              <h3 className={`text-sm font-bold flex items-center gap-2 mb-4 font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>
+                <LineChart className="inline-block h-4 w-4 text-emerald-500 animate-pulse" />
                 Ensemble Model Training Convergence (Loss vs Epoch)
               </h3>
               <div className="h-[250px] w-full mt-2">
@@ -212,7 +233,7 @@ const AboutProject = () => {
                 </ResponsiveContainer>
               </div>
             </div>
-            <p className={`text-[10px] ${isLight ? 'text-gray-500' : 'text-gray-500'} italic mt-4 text-center`}>
+            <p className={`text-[10px] italic mt-4 text-center ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
               * System reaches stable convergence validation loss of ~0.09 near epoch 25.
             </p>
           </div>
@@ -220,21 +241,23 @@ const AboutProject = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Chart 3: Disease Distribution (Pie) */}
-          <div className="glass-panel p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between lg:col-span-2">
+          <div className={`p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between lg:col-span-2 border transition-all duration-300 ${
+            isLight ? 'glass-panel-light border-med-secondary bg-white/70 hover:shadow-premium-md' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+          }`}>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
               <div>
-                <h3 className={`text-sm font-bold ${isLight ? 'text-[#1A1A1A]' : 'text-white'} flex items-center gap-2 mb-2 font-poppins`}>
+                <h3 className={`text-sm font-bold flex items-center gap-2 mb-2 font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>
                   <Database className="h-4 w-4 text-purple-500" />
                   Dataset Diagnostic Cohorts
                 </h3>
-                <p className={`text-xs ${isLight ? 'text-gray-500' : 'text-gray-400'} leading-relaxed font-inter mb-4`}>
+                <p className={`text-xs leading-relaxed font-inter mb-4 ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
                   Overview of disease classes mapped inside our training dataset. High density of tropical pathogens (Malaria, Dengue) and metabolic anomalies (Diabetes).
                 </p>
                 <div className="grid grid-cols-2 gap-2">
                   {distributionData.map((d, index) => (
                     <div key={index} className="flex items-center gap-2 text-xs">
                       <span className="h-2.5 w-2.5 rounded-full shrink-0" style={{ backgroundColor: d.color }} />
-                      <span className={`${isLight ? 'text-gray-700' : 'text-gray-300'} font-medium`}>{d.name} ({Math.round(d.value / 7.5)}%)</span>
+                      <span className={`${isLight ? 'text-med-text' : 'text-gray-300'} font-medium`}>{d.name} ({Math.round(d.value / 7.5)}%)</span>
                     </div>
                   ))}
                 </div>
@@ -271,36 +294,38 @@ const AboutProject = () => {
           </div>
 
           {/* Project Details Panel */}
-          <div className="glass-panel p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between">
+          <div className={`p-6 rounded-3xl relative overflow-hidden flex flex-col justify-between border transition-all duration-300 ${
+            isLight ? 'glass-panel-light border-med-secondary bg-white/70 hover:shadow-premium-md' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+          }`}>
             <div className="space-y-4">
-              <h3 className={`text-sm font-bold ${isLight ? 'text-[#1A1A1A]' : 'text-white'} flex items-center gap-2 font-poppins`}>
-                <Code className="h-4 w-4 text-[#EEF0FF]" style={{ color: isLight ? '#5B4CF5' : '#fff' }} />
+              <h3 className={`text-sm font-bold flex items-center gap-2 font-poppins ${isLight ? 'text-med-text' : 'text-white'}`}>
+                <Code className="h-4 w-4" style={{ color: isLight ? '#5B4CF5' : '#fff' }} />
                 Tech Stack Synthesis
               </h3>
               <ul className="space-y-3 text-xs text-left">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
-                  <span className={isLight ? 'text-gray-700' : 'text-gray-300'}><b>Backend:</b> FastAPI (Python 3.10)</span>
+                  <span className={isLight ? 'text-med-text' : 'text-gray-300'}><b>Backend:</b> FastAPI (Python 3.10)</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
-                  <span className={isLight ? 'text-gray-700' : 'text-gray-300'}><b>Frontend:</b> React 19 + Vite + Tailwind 4</span>
+                  <span className={isLight ? 'text-med-text' : 'text-gray-300'}><b>Frontend:</b> React 19 + Vite + Tailwind 4</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
-                  <span className={isLight ? 'text-gray-700' : 'text-gray-300'}><b>ML Stack:</b> Scikit-Learn + XGBoost</span>
+                  <span className={isLight ? 'text-med-text' : 'text-gray-300'}><b>ML Stack:</b> Scikit-Learn + XGBoost</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
-                  <span className={isLight ? 'text-gray-700' : 'text-gray-300'}><b>Database:</b> SQLite (SQLAlchemy ORM)</span>
+                  <span className={isLight ? 'text-med-text' : 'text-gray-300'}><b>Database:</b> SQLite (SQLAlchemy ORM)</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
-                  <span className={isLight ? 'text-gray-700' : 'text-gray-300'}><b>NLP Utilities:</b> Regex + Negation Synthesizers</span>
+                  <span className={isLight ? 'text-med-text' : 'text-gray-300'}><b>NLP Utilities:</b> Regex + Negation Synthesizers</span>
                 </li>
               </ul>
             </div>
-            <div className={`mt-6 pt-4 border-t ${isLight ? 'border-gray-100' : 'border-white/5'} text-[10px] text-gray-500`}>
+            <div className={`mt-6 pt-4 border-t text-[10px] text-gray-500 ${isLight ? 'border-gray-150' : 'border-white/5'}`}>
               Version: v1.0.0-Academic-Release
             </div>
           </div>
