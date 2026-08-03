@@ -27,7 +27,8 @@ class UserRepository(BaseRepository[User]):
         Returns:
             User | None: The user model if found.
         """
-        query = select(self.model).where(self.model.email == email)
+        email_clean = email.strip().lower() if email else ""
+        query = select(self.model).where(self.model.email == email_clean)
         return db.scalar(query)
 
 

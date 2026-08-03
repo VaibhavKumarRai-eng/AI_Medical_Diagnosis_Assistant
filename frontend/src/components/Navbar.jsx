@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Activity, MessageSquare, History, Shield, LogOut, Settings, Bell, Sun, Moon, User, Utensils } from 'lucide-react';
+import AegisLogo from './AegisLogo';
 
 const Navbar = () => {
   const { logout, isAuthenticated, isAdmin } = useAuth();
@@ -29,12 +30,15 @@ const Navbar = () => {
             {/* Logo / Brand */}
             <div className="flex items-center">
               <Link to="/" className="flex items-center gap-3 text-med-text font-extrabold text-xl tracking-tight hover:opacity-95 transition-opacity font-poppins">
-                <div className="relative flex items-center justify-center h-10 w-10 rounded-2xl bg-med-secondary text-med-primary border border-med-secondary shadow-premium-sm">
-                  <Activity className="h-5 w-5 text-med-primary animate-pulse" />
+                <AegisLogo className="h-10 w-10 shrink-0" theme="light" />
+                <div className="flex flex-col text-left">
+                  <span className="font-bold tracking-tight text-[#1A1A1A] leading-tight">
+                    Aegis <span className="text-med-primary">AI</span>
+                  </span>
+                  <span className="text-[9px] font-medium tracking-normal text-med-gray leading-none mt-0.5 font-sans">
+                    by STVS by Vaibhav Kumar Rai
+                  </span>
                 </div>
-                <span className="font-bold tracking-tight text-[#1A1A1A]">
-                  AI Medical <span className="text-med-primary">Diagnosis</span>
-                </span>
               </Link>
             </div>
 
@@ -331,11 +335,16 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo / Brand */}
             <div className="flex items-center">
-              <Link to="/" className="flex items-center gap-2.5 text-white font-extrabold text-lg tracking-tight hover:opacity-90 transition-opacity">
-                <div className="relative flex items-center justify-center h-9 w-9 rounded-xl bg-primary/10 border border-primary/20 shadow-[0_0_15px_rgba(37,99,235,0.15)]">
-                  <Activity className="h-5 w-5 text-primary animate-pulse" />
+              <Link to="/" className="flex items-center gap-2.5 text-white font-extrabold text-lg tracking-tight hover:opacity-90 transition-opacity font-poppins">
+                <AegisLogo className="h-9 w-9 shrink-0" theme="dark" />
+                <div className="flex flex-col text-left">
+                  <span className="text-gradient font-sans font-bold bg-clip-text leading-tight">
+                    Aegis AI
+                  </span>
+                  <span className="text-[8px] font-medium tracking-normal text-gray-400 leading-none mt-0.5 font-sans">
+                    by STVS by Vaibhav Kumar Rai
+                  </span>
                 </div>
-                <span className="text-gradient font-sans font-bold bg-clip-text">Aegis AI</span>
               </Link>
             </div>
   

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, Link, useLocation } f
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { Activity } from 'lucide-react';
+import AegisLogo from './components/AegisLogo';
 
 const socialLinks = [
   {
@@ -196,10 +197,13 @@ const AppContent = () => {
               {/* Brand Col */}
               <div className="space-y-4">
                 <div className="flex items-center gap-2.5 text-med-text font-extrabold text-lg tracking-tight font-poppins">
-                  <div className="flex items-center justify-center h-9 w-9 rounded-xl bg-med-secondary text-med-primary border border-med-secondary">
-                    <Activity className="h-5 w-5 text-med-primary animate-pulse" />
+                  <AegisLogo className="h-9 w-9 shrink-0" theme="light" />
+                  <div className="flex flex-col text-left">
+                    <span className="font-bold leading-tight">Aegis AI</span>
+                    <span className="text-[8px] font-medium tracking-normal text-med-gray leading-none mt-0.5 font-sans">
+                      by STVS by Vaibhav Kumar Rai
+                    </span>
                   </div>
-                  <span>AI Medical Diagnosis</span>
                 </div>
                 <p className="text-sm text-med-gray leading-relaxed max-w-xs font-inter">
                   Leading the digital transformation of healthcare. We combine professional doctors with advanced AI technologies to deliver trusted, instant diagnosis options.
@@ -264,7 +268,7 @@ const AppContent = () => {
             </div>
 
             <div className="mt-8 text-center text-xs text-med-gray border-t border-med-secondary/50 pt-6">
-              <span>&copy; {new Date().getFullYear()} AI Medical Diagnosis Platform. All rights reserved.</span>
+              <span>&copy; {new Date().getFullYear()} Aegis AI. All rights reserved.</span>
             </div>
           </div>
         </footer>
@@ -274,9 +278,14 @@ const AppContent = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-left">
               <div className="space-y-3">
-                <div className="flex items-center gap-2 text-white font-bold">
-                  <Activity className="h-5 w-5 text-primary" />
-                  <span>Aegis AI</span>
+                <div className="flex items-center gap-2.5 text-white font-bold">
+                  <AegisLogo className="h-9 w-9 shrink-0" theme="dark" />
+                  <div className="flex flex-col text-left">
+                    <span className="leading-tight">Aegis AI</span>
+                    <span className="text-[8px] font-medium tracking-normal text-gray-400 leading-none mt-0.5 font-sans">
+                      by STVS by Vaibhav Kumar Rai
+                    </span>
+                  </div>
                 </div>
                 <p className="text-xs text-gray-400 leading-relaxed">
                   Futuristic machine learning and natural language inference platform for clinical prediction and patient symptom checks.

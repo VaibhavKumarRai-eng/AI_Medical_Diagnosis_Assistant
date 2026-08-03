@@ -181,7 +181,7 @@ const ForgotPassword = () => {
           <div className={`p-3 rounded-xl flex flex-col gap-1 text-[11px] border ${
             isLight ? 'bg-primary/5 border-primary/20 text-med-text' : 'bg-primary/[0.04] border border-primary/20 text-primary'
           }`}>
-            <span className={`font-bold uppercase tracking-wider text-[9px] ${isLight ? 'text-med-gray' : 'text-gray-505'}`}>Developer Testing Help</span>
+            <span className={`font-bold uppercase tracking-wider text-[9px] ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Developer Testing Help</span>
             <span>FastAPI returned demo OTP: <b className={`select-all font-mono text-sm px-1.5 py-0.5 rounded border ml-1 ${
               isLight ? 'bg-med-secondary border-med-primary/10 text-med-primary' : 'bg-white/5 border border-white/10 text-white'
             }`}>{devToken}</b></span>
@@ -211,7 +211,7 @@ const ForgotPassword = () => {
                     type="email"
                     required
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value.trim())}
                     className="glass-input pl-10.5 w-full px-4 py-2.5 text-xs"
                     placeholder="name@domain.com"
                     autoComplete="email"
@@ -256,7 +256,7 @@ const ForgotPassword = () => {
                     required
                     maxLength={6}
                     value={otp}
-                    onChange={(e) => setOtp(e.target.value)}
+                    onChange={(e) => setOtp(e.target.value.trim())}
                     className={`glass-input pl-10.5 w-full px-4 py-2.5 text-xs tracking-[0.25em] font-mono text-center font-bold ${
                       isLight ? 'text-med-text' : 'text-white'
                     }`}

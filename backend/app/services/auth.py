@@ -180,7 +180,7 @@ class AuthService:
         
         # Generate 6-digit numeric OTP
         otp = f"{random.randint(100000, 999999)}"
-        expiry = datetime.now(timezone.utc) + timedelta(minutes=10)
+        expiry = datetime.now(timezone.utc).replace(tzinfo=None) + timedelta(minutes=10)
         
         # Update user record
         user_repository.update(db, db_obj=user, obj_in={
@@ -245,17 +245,19 @@ class AuthService:
             return False
 
         # Validate OTP
-        if not user.otp_code or user.otp_code != otp:
+        otp_clean = otp.strip() if otp else ""
+        if not user.otp_code or user.otp_code.strip() != otp_clean:
             logger.warning(f"Reset password failed: incorrect OTP for email {email}")
             return False
 
         # Verify expiration
-        # Ensure user.otp_expires_at is timezone-aware
         expires_at = user.otp_expires_at
         if expires_at:
-            if expires_at.tzinfo is None:
-                expires_at = expires_at.replace(tzinfo=timezone.utc)
-            if datetime.now(timezone.utc) > expires_at:
+            if expires_at.tzinfo is not None:
+                expires_at = expires_at.astimezone(timezone.utc).replace(tzinfo=None)
+            
+            now_utc = datetime.now(timezone.utc).replace(tzinfo=None)
+            if now_utc > expires_at:
                 logger.warning(f"Reset password failed: expired OTP for email {email}")
                 return False
 
