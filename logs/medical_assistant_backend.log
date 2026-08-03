@@ -1259,3 +1259,28 @@ WHERE users.email = ?]
 [2026-07-31 18:57:15] [INFO] [app.services.history:104]: History record d0e54551-dac2-4cda-8d5d-c17d95d63927 and related prediction/chat successfully deleted.
 [2026-07-31 18:57:15] [INFO] [httpx:1025]: HTTP Request: DELETE http://testserver/history/d0e54551-dac2-4cda-8d5d-c17d95d63927 "HTTP/1.1 200 OK"
 [2026-07-31 18:57:15] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
+[2026-08-03 23:25:26] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-08-03 23:25:26] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-08-03 23:26:44] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-08-03 23:26:44] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-08-03 23:27:09] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-08-03 23:27:09] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-08-03 23:27:19] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-08-03 23:27:19] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-08-03 23:27:19] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-08-03 23:27:19] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-08-03 23:27:19] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-08-03 23:27:19] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-08-03 23:27:19] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-08-03 23:27:19] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-08-03 23:27:19] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-08-03 23:27:19] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-08-03 23:27:22] [INFO] [app.services.diet:42]: Loaded diet classification model. Algorithm: Gradient Boosting
+[2026-08-03 23:27:23] [INFO] [app.services.auth:190]: OTP saved in database for user: test@example.com
+[2026-08-03 23:27:23] [INFO] [app.services.auth:193]: 
+========================================
+[OTP DEV LOG] Generated OTP for email: test@example.com is [382195]
+========================================
+
+[2026-08-03 23:27:23] [WARNING] [app.services.auth:224]: SMTP settings missing from env. Falling back to terminal OTP log.
+[2026-08-03 23:27:23] [INFO] [app.services.auth:269]: Password successfully reset via OTP for email: test@example.com
