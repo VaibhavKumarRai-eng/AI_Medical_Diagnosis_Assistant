@@ -21,6 +21,7 @@ const Chatbot = () => {
   
   // Voice & Narration states
   const [isListening, setIsListening] = useState(false);
+  const [speechLang, setSpeechLang] = useState('en-IN');
   const [speakingMsgId, setSpeakingMsgId] = useState(null);
   const [copiedId, setCopiedId] = useState(null);
 
@@ -130,7 +131,7 @@ const Chatbot = () => {
 
     const recognition = new SpeechRecognition();
     recognition.continuous = false;
-    recognition.lang = 'en-US';
+    recognition.lang = speechLang;
     recognition.interimResults = false;
 
     recognition.onstart = () => setIsListening(true);
@@ -461,6 +462,24 @@ const Chatbot = () => {
               }} 
               className="flex gap-2"
             >
+              {/* Dictation Language Selector */}
+              <div className="flex flex-col justify-center shrink-0">
+                <select
+                  value={speechLang}
+                  onChange={(e) => setSpeechLang(e.target.value)}
+                  disabled={loading || isDiagnosed}
+                  className={`text-[9px] font-bold border rounded-xl px-2.5 py-1.5 cursor-pointer outline-none transition-colors h-11 disabled:opacity-50 ${
+                    isLight 
+                      ? 'bg-white border-med-secondary text-med-text hover:border-med-primary/40' 
+                      : 'bg-[#0B1120] border-white/10 text-gray-300 hover:border-primary/40'
+                  }`}
+                  title="Speech Recognition Language"
+                >
+                  <option value="en-IN">EN (IN)</option>
+                  <option value="hi-IN">HI (हिंदी)</option>
+                </select>
+              </div>
+
               {/* Dictation Trigger */}
               <button
                 type="button"

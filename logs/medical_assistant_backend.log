@@ -1355,3 +1355,53 @@ WHERE users.email = ?]
 [2026-08-03 23:38:08] [INFO] [app.services.history:104]: History record ad98bfbe-2260-44a0-b717-c3cdc2065ba3 and related prediction/chat successfully deleted.
 [2026-08-03 23:38:08] [INFO] [httpx:1025]: HTTP Request: DELETE http://testserver/history/ad98bfbe-2260-44a0-b717-c3cdc2065ba3 "HTTP/1.1 200 OK"
 [2026-08-03 23:38:08] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
+[2026-08-03 23:46:41] [INFO] [app.core.logger:60]: Structured logging framework initialized.
+[2026-08-03 23:46:41] [INFO] [app.core.database:29]: SQLAlchemy database engine initialized successfully.
+[2026-08-03 23:46:44] [INFO] [ml.preprocessing:48]: NLTK successfully initialized.
+[2026-08-03 23:46:44] [INFO] [app.ml.adapter:25]: Successfully imported DiseasePredictor from root ML module.
+[2026-08-03 23:46:44] [INFO] [app.ml.adapter:40]: Initializing ML model inference adapter...
+[2026-08-03 23:46:44] [INFO] [ml.preprocessing:180]: Initialized MedicalTextPreprocessor (lemmatize=True, use_stemming=False, nltk_active=True)
+[2026-08-03 23:46:44] [INFO] [ml.predict:64]: Loading production disease diagnosis artifacts...
+[2026-08-03 23:46:44] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Trained Model | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\model.pkl'
+[2026-08-03 23:46:44] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: TF-IDF Vectorizer | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\vectorizer.pkl'
+[2026-08-03 23:46:44] [INFO] [ml.utils:117]: [ARTIFACT] Action: LOAD | Item: Label Encoder | Path: 'C:\Users\raiva\OneDrive\Desktop\AI_Medical_Diagnosis_Assistant\models\label_encoder.pkl'
+[2026-08-03 23:46:44] [INFO] [ml.predict:68]: All inference artifacts successfully loaded into memory.
+[2026-08-03 23:46:44] [INFO] [app.ml.adapter:47]: ML model inference adapter successfully loaded.
+[2026-08-03 23:46:45] [INFO] [app.services.diet:42]: Loaded diet classification model. Algorithm: Gradient Boosting
+[2026-08-03 23:46:45] [INFO] [app.main:41]: First administrator account absent. Seeding from configuration...
+[2026-08-03 23:46:45] [INFO] [app.main:51]: Default admin seeded successfully. Credentials: admin@medical-assistant.com
+[2026-08-03 23:46:45] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/health "HTTP/1.1 200 OK"
+[2026-08-03 23:46:45] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/version "HTTP/1.1 200 OK"
+[2026-08-03 23:46:45] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 422 Unprocessable Entity"
+[2026-08-03 23:46:46] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/register "HTTP/1.1 201 Created"
+[2026-08-03 23:46:46] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 401 Unauthorized"
+[2026-08-03 23:46:46] [INFO] [app.services.auth:90]: User authenticated successfully: patient@example.com
+[2026-08-03 23:46:46] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-08-03 23:46:46] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/profile "HTTP/1.1 200 OK"
+[2026-08-03 23:46:46] [INFO] [httpx:1025]: HTTP Request: PUT http://testserver/profile "HTTP/1.1 200 OK"
+[2026-08-03 23:46:46] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: d3664f5a-145e-4db5-b3bf-591bb87c6a3a
+[2026-08-03 23:46:50] [INFO] [ml.predict:85]: [PREDICTION] Input: 'I am experiencing severe chest pain, shortness of breath, pa...' | Predicted: 'ischemic heart disease' | Confidence: 0.2569 | Latency: 3332.18ms
+[2026-08-03 23:46:50] [INFO] [app.services.predictor:77]: Diagnosis prediction persisted. ID: 0995b665-d07e-4c39-a0bb-82a20143fab1
+[2026-08-03 23:46:50] [INFO] [app.services.predictor:86]: Prediction linked to user history. User ID: d3664f5a-145e-4db5-b3bf-591bb87c6a3a
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/predict "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: 9798866e-7460-4605-aec8-9bfe65b59a79
+[2026-08-03 23:46:50] [WARNING] [app.services.chatbot:109]: Emergency indicator 'chest pain' flagged in user input.
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [app.services.chatbot:183]: Initialized new chatbot session. ID: eb26c565-afa3-4088-abed-2002f8ad7def
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [app.services.predictor:42]: Received symptom prediction request. User ID: d3664f5a-145e-4db5-b3bf-591bb87c6a3a
+[2026-08-03 23:46:50] [INFO] [ml.predict:85]: [PREDICTION] Input: 'I feel very feverish and have a dry cough It started about 3...' | Predicted: 'pulmonary hypertension' | Confidence: 0.0828 | Latency: 9.26ms
+[2026-08-03 23:46:50] [INFO] [app.services.predictor:77]: Diagnosis prediction persisted. ID: 2b179350-461d-4dcf-9ce1-807bc5b42c20
+[2026-08-03 23:46:50] [INFO] [app.services.predictor:86]: Prediction linked to user history. User ID: d3664f5a-145e-4db5-b3bf-591bb87c6a3a
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/chat "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history/4c0a90f8-6ee0-4801-b7de-e7715969c5f3 "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history?q=chest "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [app.services.auth:90]: User authenticated successfully: admin@medical-assistant.com
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: POST http://testserver/login "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/admin/dashboard "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [app.services.history:104]: History record 4c0a90f8-6ee0-4801-b7de-e7715969c5f3 and related prediction/chat successfully deleted.
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: DELETE http://testserver/history/4c0a90f8-6ee0-4801-b7de-e7715969c5f3 "HTTP/1.1 200 OK"
+[2026-08-03 23:46:50] [INFO] [httpx:1025]: HTTP Request: GET http://testserver/history "HTTP/1.1 200 OK"

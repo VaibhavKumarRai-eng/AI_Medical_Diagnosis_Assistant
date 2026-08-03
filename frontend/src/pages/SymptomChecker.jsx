@@ -4,7 +4,8 @@ import { predictionAPI } from '../services/api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Activity, AlertTriangle, CheckSquare, RefreshCw, Sparkles, Heart, 
-  ChevronRight, Thermometer, ShieldAlert, Clock, User, Download, Plus, X
+  ChevronRight, Thermometer, ShieldAlert, Clock, User, Download, Plus, X,
+  Mic, Volume2, VolumeX
 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell } from 'recharts';
 
@@ -20,6 +21,65 @@ const SymptomChecker = () => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
   const [showErrorModal, setShowErrorModal] = useState(false);
+  
+  const [isListening, setIsListening] = useState(false);
+  const [speechLang, setSpeechLang] = useState('en-IN');
+  const [speaking, setSpeaking] = useState(false);
+
+  // Cleanup voice synthesis on unmount or result change
+  useEffect(() => {
+    return () => {
+      window.speechSynthesis?.cancel();
+    };
+  }, [result]);
+
+  const startSpeechRecognition = () => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Voice input is not supported in this browser. Please use Google Chrome or Microsoft Edge.");
+      return;
+    }
+
+    if (isListening) {
+      setIsListening(false);
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = speechLang;
+    recognition.interimResults = false;
+
+    recognition.onstart = () => setIsListening(true);
+    recognition.onend = () => setIsListening(false);
+    recognition.onerror = () => setIsListening(false);
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      setSymptomText((prev) => prev ? `${prev} ${transcript}` : transcript);
+    };
+
+    recognition.start();
+  };
+
+  const handleSpeakReport = () => {
+    if (speaking) {
+      window.speechSynthesis?.cancel();
+      setSpeaking(false);
+      return;
+    }
+
+    if (!result) return;
+
+    const textToSpeak = `Primary predicted diagnosis is ${result.predicted_disease}. Confidence match is ${(result.confidence_score * 100).toFixed(1)} percent. ${result.explanation ? result.explanation : ''}. Precautions to take: ${result.precautions ? result.precautions.join('. ') : ''}`;
+
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    utterance.lang = 'en-US';
+    utterance.onend = () => setSpeaking(false);
+    utterance.onerror = () => setSpeaking(false);
+
+    setSpeaking(true);
+    window.speechSynthesis?.speak(utterance);
+  };
 
   const loadingSteps = [
     "Extracting Symptoms...",
@@ -203,15 +263,48 @@ const SymptomChecker = () => {
 
               {/* Textarea */}
               <div className="space-y-1.5">
-                <span className={`text-[10px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>conversational description</span>
-                <textarea
-                  value={symptomText}
-                  onChange={(e) => setSymptomText(e.target.value)}
-                  rows="5"
-                  maxLength="500"
-                  className="glass-input w-full p-4 text-xs leading-relaxed"
-                  placeholder="e.g., I have been feeling a mild headache and chest pain since yesterday..."
-                ></textarea>
+                <div className="flex justify-between items-center">
+                  <span className={`text-[10px] font-bold uppercase tracking-wider block ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>conversational description</span>
+                  <div className="flex items-center gap-1">
+                    <span className={`text-[8px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>Language:</span>
+                    <select
+                      value={speechLang}
+                      onChange={(e) => setSpeechLang(e.target.value)}
+                      className={`text-[9px] font-bold border rounded px-1 py-0.5 cursor-pointer outline-none transition-colors ${
+                        isLight 
+                          ? 'bg-white border-med-secondary text-med-text hover:border-med-primary/40' 
+                          : 'bg-[#0B1120] border-white/10 text-gray-300 hover:border-primary/40'
+                      }`}
+                    >
+                      <option value="en-IN">EN (IN)</option>
+                      <option value="hi-IN">HI (हिंदी)</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="relative">
+                  <textarea
+                    value={symptomText}
+                    onChange={(e) => setSymptomText(e.target.value)}
+                    rows="5"
+                    maxLength="500"
+                    className="glass-input w-full p-4 pr-12 text-xs leading-relaxed"
+                    placeholder="e.g., I have been feeling a mild headache and chest pain since yesterday..."
+                  ></textarea>
+                  <button
+                    type="button"
+                    onClick={startSpeechRecognition}
+                    className={`absolute right-3.5 bottom-4 p-2.5 rounded-xl transition-all cursor-pointer ${
+                      isListening 
+                        ? 'bg-red-500 text-white animate-pulse' 
+                        : isLight 
+                          ? 'bg-med-secondary text-med-primary hover:bg-med-primary hover:text-white' 
+                          : 'bg-white/5 text-gray-300 hover:bg-primary/20 hover:text-white'
+                    }`}
+                    title={isListening ? "Listening... Speak now" : "Speak (Voice input)"}
+                  >
+                    <Mic className="h-4.5 w-4.5" />
+                  </button>
+                </div>
                 <div className={`flex justify-between text-[9px] px-1 ${isLight ? 'text-med-gray' : 'text-gray-500'}`}>
                   <span>Minimum 10 characters</span>
                   <span>{symptomText.length}/500 chars</span>
@@ -373,9 +466,26 @@ const SymptomChecker = () => {
                         Primary Diagnostic Target
                       </div>
 
-                      <div className="space-y-1">
-                        <span className="text-[10px] font-bold text-primary uppercase tracking-widest block">Predicted Diagnosis</span>
-                        <h2 className={`text-3xl font-extrabold capitalize leading-none ${isLight ? 'text-med-text' : 'text-white'}`}>{result.predicted_disease}</h2>
+                      <div className="flex justify-between items-start gap-4 pt-2">
+                        <div className="space-y-1">
+                          <span className="text-[10px] font-bold text-primary uppercase tracking-widest block">Predicted Diagnosis</span>
+                          <h2 className={`text-3xl font-extrabold capitalize leading-none ${isLight ? 'text-med-text' : 'text-white'}`}>{result.predicted_disease}</h2>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={handleSpeakReport}
+                          className={`p-2.5 rounded-xl border transition-all cursor-pointer flex items-center gap-1.5 text-[10px] font-bold shrink-0 ${
+                            speaking 
+                              ? 'bg-red-500 text-white animate-pulse border-transparent' 
+                              : isLight 
+                                ? 'bg-med-secondary/40 border-med-primary/10 text-med-primary hover:bg-med-primary hover:text-white' 
+                                : 'bg-white/5 border-white/10 text-gray-300 hover:bg-primary/20 hover:text-white'
+                          }`}
+                          title={speaking ? "Stop Read Aloud" : "Read Report Aloud (Voice)"}
+                        >
+                          {speaking ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5" />}
+                          <span>{speaking ? "Stop" : "Listen"}</span>
+                        </button>
                       </div>
 
                       {/* Info pills */}
