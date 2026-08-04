@@ -231,6 +231,72 @@ def run_tests() -> None:
     assert len(res.json()) == len(histories) - 1
     print(" + Cascade verification: history list decremented correctly.")
 
+    # ----------------------------------------------------
+    # Test 10: Diet Planner Endpoints & Log Deletion
+    # ----------------------------------------------------
+    print("\n[Test 10] Verifying Diet Planner API & Meal Logging Deletion...")
+    
+    # 1. Test BMI Calculator
+    res = client.post("/diet/calculate-bmi", json={"weight_kg": 70.0, "height_cm": 175.0})
+    assert res.status_code == 200, f"BMI Calculation failed: {res.text}"
+    bmi_res = res.json()
+    assert bmi_res["bmi"] == 22.86
+    assert bmi_res["classification"] == "Normal"
+    print(" + BMI Calculation verified.")
+
+    # 2. Test Recommendation Generation
+    diet_payload = {
+        "weight_kg": 70.0,
+        "height_cm": 175.0,
+        "age": 25,
+        "gender": "male",
+        "goal": "muscle_gain",
+        "activity_level": "moderate",
+        "food_preference": "Veg",
+        "allergies": [],
+        "medical_conditions": []
+    }
+    res = client.post("/diet/generate", json=diet_payload, headers=headers)
+    assert res.status_code == 201, f"Diet Generation failed: {res.text}"
+    plan_res = res.json()
+    assert plan_res["target_calories"] > 0
+    assert "recommended_meals" in plan_res
+    print(" + Diet recommendation generation verified.")
+
+    # 3. Test Meal Logging
+    meal_payload = {
+        "food_name": "Test Healthy Oatmeal",
+        "meal_type": "Breakfast",
+        "serving_count": 1.0,
+        "calories": 250.0,
+        "protein": 15.0,
+        "carbs": 30.0,
+        "fat": 5.0
+    }
+    res = client.post("/diet/meal-history", json=meal_payload, headers=headers)
+    assert res.status_code == 201, f"Meal logging failed: {res.text}"
+    logged_meal = res.json()
+    logged_meal_id = logged_meal["id"]
+    print(" + Meal history logging verified.")
+
+    # 4. Verify Log Retrieval
+    res = client.get("/diet/meal-history", headers=headers)
+    assert res.status_code == 200, f"Meal history retrieval failed: {res.text}"
+    history_logs = res.json()
+    assert any(log["id"] == logged_meal_id for log in history_logs)
+    print(" + Meal history retrieval verified.")
+
+    # 5. Delete Meal Log
+    res = client.delete(f"/diet/meal-history/{logged_meal_id}", headers=headers)
+    assert res.status_code == 200, f"Meal log deletion failed: {res.text}"
+    print(" + Meal log deletion execution verified.")
+
+    # 6. Verify Deletion Persisted
+    res = client.get("/diet/meal-history", headers=headers)
+    assert res.status_code == 200
+    assert not any(log["id"] == logged_meal_id for log in res.json())
+    print(" + Meal log deletion verification complete.")
+
     print("\n" + "="*70)
     print("ALL TEST SCENARIOS PASSED SUCCESSFULLY! BACKEND STACK IS PRODUCTION-READY.")
     print("="*70 + "\n")

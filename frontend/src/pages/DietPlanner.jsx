@@ -32,7 +32,15 @@ const DietPlanner = () => {
   const [latestPlan, setLatestPlan] = useState(null);
   const [mealLogs, setMealLogs] = useState([]);
   const [bmiHistory, setBmiHistory] = useState([]);
-  const [waterCount, setWaterCount] = useState(0);
+  const [waterCount, setWaterCount] = useState(() => {
+    const saved = localStorage.getItem('waterCount');
+    const savedDate = localStorage.getItem('waterCountDate');
+    const today = new Date().toDateString();
+    if (saved && savedDate === today) {
+      return parseInt(saved, 10);
+    }
+    return 0;
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [logModalOpen, setLogModalOpen] = useState(false);
@@ -49,6 +57,11 @@ const DietPlanner = () => {
   useEffect(() => {
     fetchInitialData();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('waterCount', waterCount);
+    localStorage.setItem('waterCountDate', new Date().toDateString());
+  }, [waterCount]);
 
   const fetchInitialData = async () => {
     try {
@@ -163,13 +176,29 @@ const DietPlanner = () => {
     }
   };
 
-  // Compute total values consumed today
+  // Delete Meal Log
+  const handleDeleteMealLog = async (logId) => {
+    try {
+      await dietAPI.deleteMealLog(logId);
+      const logs = await dietAPI.getMealHistory();
+      setMealLogs(logs);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete meal log.");
+    }
+  };
+
+  // Compute total values consumed today (filtering by local today's date)
   const totalsConsumed = mealLogs.reduce(
     (acc, curr) => {
-      acc.calories += curr.calories;
-      acc.protein += curr.protein;
-      acc.carbs += curr.carbs;
-      acc.fat += curr.fat;
+      const logDate = new Date(curr.log_date);
+      const today = new Date();
+      if (logDate.toDateString() === today.toDateString()) {
+        acc.calories += curr.calories;
+        acc.protein += curr.protein;
+        acc.carbs += curr.carbs;
+        acc.fat += curr.fat;
+      }
       return acc;
     },
     { calories: 0, protein: 0, carbs: 0, fat: 0 }
@@ -749,6 +778,57 @@ const DietPlanner = () => {
                   )}
                 </div>
 
+              </div>
+
+              {/* Today's Logged Meals list */}
+              <div className={`p-5 rounded-3xl border transition-all duration-300 ${
+                isLight ? 'glass-panel-light border-med-secondary bg-white/70' : 'glass-panel border-white/[0.06] bg-dark-surface/50'
+              }`}>
+                <div className="flex justify-between items-center mb-4">
+                  <h4 className={`text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>Today's Logged Meals</h4>
+                  <span className={`px-2 py-0.5 rounded text-[9px] font-extrabold uppercase ${
+                    isLight ? 'bg-med-secondary text-med-primary' : 'bg-primary/10 text-primary'
+                  }`}>
+                    {mealLogs.filter(log => new Date(log.log_date).toDateString() === new Date().toDateString()).length} Logged
+                  </span>
+                </div>
+                {mealLogs.filter(log => new Date(log.log_date).toDateString() === new Date().toDateString()).length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-80 overflow-y-auto pr-1">
+                    {mealLogs
+                      .filter(log => new Date(log.log_date).toDateString() === new Date().toDateString())
+                      .map((log) => (
+                        <div key={log.id} className={`flex justify-between items-center p-3.5 rounded-2xl border transition-all ${
+                          isLight ? 'bg-med-secondary/35 border-med-primary/5 hover:bg-med-secondary/50' : 'bg-white/[0.01] border-white/5 hover:bg-white/[0.03]'
+                        }`}>
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-2">
+                              <span className={`px-2 py-0.5 rounded text-[8px] font-extrabold uppercase ${
+                                log.meal_type === 'Breakfast' ? 'bg-blue-500/10 text-blue-500 border border-blue-500/20' :
+                                log.meal_type === 'Lunch' ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20' :
+                                log.meal_type === 'Dinner' ? 'bg-indigo-500/10 text-indigo-500 border border-indigo-500/20' :
+                                'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'
+                              }`}>
+                                {log.meal_type}
+                              </span>
+                              <p className={`text-xs font-bold ${isLight ? 'text-med-text' : 'text-gray-200'}`}>{log.food_name}</p>
+                            </div>
+                            <p className={`text-[9px] ${isLight ? 'text-med-gray' : 'text-gray-400'}`}>
+                              Calories: <b>{log.calories} kcal</b> | P: <b>{log.protein}g</b> | C: <b>{log.carbs}g</b> | F: <b>{log.fat}g</b>
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => handleDeleteMealLog(log.id)}
+                            className="p-2 rounded-xl hover:bg-red-500/10 hover:text-red-500 text-gray-400 transition-colors cursor-pointer"
+                            title="Delete meal log"
+                          >
+                            <X className="h-4.5 w-4.5" />
+                          </button>
+                        </div>
+                      ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8 text-gray-500 text-[10px]">No meals logged for today. Try logging one!</div>
+                )}
               </div>
 
             </motion.div>

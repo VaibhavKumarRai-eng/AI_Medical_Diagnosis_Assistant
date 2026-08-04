@@ -156,3 +156,26 @@ def get_bmi_history_logs(
     """Fetch BMI/Weight history records logged by the user."""
     records = bmi_history_repository.get_user_records(db, user_id=current_user.id)
     return records
+
+
+@router.delete("/meal-history/{log_id}", status_code=status.HTTP_200_OK)
+def delete_meal_history_log(
+    log_id: str,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
+) -> Any:
+    """Delete a specific meal history log for the current active user."""
+    log = meal_history_repository.get(db, log_id)
+    if not log:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Meal log not found."
+        )
+    if log.user_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to delete this meal log."
+        )
+    meal_history_repository.remove(db, id=log_id)
+    return {"status": "success", "message": "Meal history log successfully deleted."}
+

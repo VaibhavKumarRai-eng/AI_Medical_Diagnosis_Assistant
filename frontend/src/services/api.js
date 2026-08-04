@@ -199,6 +199,10 @@ export const dietAPI = {
   getBmiHistory: async () => {
     const response = await api.get('/diet/bmi-history');
     return response.data;
+  },
+  deleteMealLog: async (logId) => {
+    const response = await api.delete(`/diet/meal-history/${logId}`);
+    return response.data;
   }
 };
 
